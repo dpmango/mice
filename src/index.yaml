@@ -2,6 +2,18 @@ ProjectTitle: Mice
 
 PageList:
 - file: homepage.html
-  ready: 100
-- file: page.html
+  ready: 70
+- file: articles.html
+  ready: 0
+- file: video.html
+  ready: 0
+- file: post.html
+  ready: 0
+- file: team.html
+  ready: 0
+- file: team-member.html
+  ready: 0
+- file: contact.html
+  ready: 0
+- file: 404.html
   ready: 0
