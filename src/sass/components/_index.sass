@@ -875,7 +875,7 @@
   .view .form
     margin: 44px 0 0
     transition: all .3s ease-in-out
-    form label
+    form label:not(.input-field__validation)
       font-family: "Intro"
       text-transform: uppercase
       font-weight: 600
@@ -899,7 +899,7 @@
     border-color: #8547AD !important
   .view .form
     form input
-      &:focus + label, &.focus + label
+      &:focus + label:not(.input-field__validation), &.focus + label:not(.input-field__validation)
         top: -73px
         color: #696969 !important
         font-size: 15px
@@ -946,6 +946,13 @@
     font-weight: 600
     color: #231F20
     margin: 0px 0 11px
+
+  .input-field__validation
+    display: inline-block
+    font-size: 15px
+    color: red !important
+    transform: translateY(-20px)
+
 
 /* animate input
 
@@ -1078,9 +1085,13 @@ footer .mini__content
   z-index: 200
   background: rgba(0, 0, 0, 0.5)
   transition: all .3s ease-in-out
+  opacity: 0
+  pointer-events: none
+  &.is-active
+    z-index: 5000
+    opacity: 0
+    pointer-events: all
 
-.video-box__up
-  z-index: 5000
 
 .video-box__content
   margin: 30px

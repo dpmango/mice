@@ -9,7 +9,7 @@ block content
   header
     .slider-header
       .menu
-        .menu__control(@click='toggleMenu', :class="{ 'menu_focus': menuStatus }")
+        .menu__control(js-toggleMenu)
           .menu__control__burger
             .menu__control__burger__item
             .menu__control__burger__item
@@ -25,7 +25,7 @@ block content
               //- source(src='video/with_audio.mkv', type='video/mkv')
               source(src='video/with_audio.mp4', type='video/mp4')
               source(src='video/with_audio.webm', type='vide/webm')
-            .video__button.btn(@click='openVideoHeader()')
+            .video__button.btn(js-openVideoHeader)
               .item
               .item
               .item
@@ -277,29 +277,32 @@ block content
       .left
         .view
           div(:class="{ 'hidden': !left.thanks }")
-            .content(:class="{ 'hidden': left.hidden }")
+            .content
               h4 Сотрудничество
               p
                 | Журнал MICE&more приглашает к сотрудничеству всех специалистов и участников индустрии MICE во всем мире. Ваши пожелания и предложения
                 | по сотрудничеству вы можете отправить на адрес editor@miceandmore.org или оставьте ваше имя и адрес электронной почты и мы вышлем вам медиа кит.
-              button(@click='left.hidden=!left.hidden') Запросить медиа-кит
-            .form(:class="{ 'hidden': !left.hidden }")
-              .btn-close(@click='left.hidden=!left.hidden')
+              button(js-openCoopForm) Запросить медиа-кит
+            .form.hidden(js-coopForm)
+              .btn-close(js-closeCoopForm)
                 .item
                 .item
-              form(action='')
+              form(action='' js-validateCoopForm)
                 .input-field
-                  input(type='text', v-model='left.name', :class="{ 'focus': left.name.length > 0, 'require': left.name=='Обязательное поле'  }")
+                  // .focus when the field is not empty
+                  // .require - error state
+                  input(type='text' name="name")
                   label(for='') Имя
                 .input-field
-                  input(type='text', v-model='left.company', :class="{ 'focus': left.company.length > 0, 'require': left.company=='Обязательное поле'  }")
+                  input(type='text' name="company")
                   label(for='') Компания
                 .input-field
-                  input(type='text', v-model='left.email', :class="{ 'focus': left.email.length > 0, 'require': left.email=='Обязательное поле'  }")
+                  input(type='text' name="email")
                   label(for='') email
-                button(@click.prevent='sendLeft') Запросить медиа кит
-          .thanks(:class="{ 'hidden': left.thanks }")
-            .btn-close(@click='left.thanks=!left.thanks')
+                button(type="submit") Запросить медиа кит
+          // toggle hidden class if validated
+          .thanks.hidden
+            .btn-close(js-closeCoopForm)
               .item
               .item
             h6
@@ -331,16 +334,16 @@ block content
                 .item
               form(action='')
                 .input-field
-                  input(type='text', v-model='right.name', :class="{ 'focus': right.name.length > 0, 'require': right.name=='Обязательное поле'  }")
+                  input(type='text' name="name")
                   label(for='') Имя
                 .input-field
-                  input(type='text', v-model='right.company', :class="{ 'focus': right.company.length > 0, 'require': right.company=='Обязательное поле'  }")
+                  input(type='text' name="company")
                   label(for='') Компания
                 .input-field
-                  input(type='text', v-model='right.email', :class="{ 'focus': right.email.length > 0, 'require': right.email=='Обязательное поле'  }")
+                  input(type='text' name="email")
                   label(for='') Email
                 .input-field
-                  input(type='text', v-model='right.adress', :class="{ 'focus': right.adress.length > 0, 'require': right.adress=='Обязательное поле' }")
+                  input(type='text' name="adress")
                   label(for='') Адрес
                 .input-field
                   .payment(@click='right.dropdown = !right.dropdown', :class="{ 'require': right.payment=='Обязательное поле' }")
@@ -372,12 +375,13 @@ block content
       span.loader_name Загрузка
       h2.percentage
         h2
-          .status(v-model='loader')
+          .status
     .text
       h3 Издание №1 для российских MICE-специалистов
+      
   // VIDEO
   transition(name='video')
-    .video-box(@click='openVideoHeader()', v-if='videoStatus', v-bind:class="{ 'video-box__up': videoStatus }")
+    .video-box(js-openVideoHeader)
       .video-box__close-button.btn
         .item
         .item
@@ -386,9 +390,10 @@ block content
         img(src='img/setting/video_close.svg', alt='')
       .video-box__content
         iframe(width='100%', height='710', src='https://www.youtube.com/embed/dsE2d9Np82g?rel=0&showinfo=0', frameborder='0', allow='encrypted-media', allowfullscreen='')
+  
   // MENU
-  .menu-box(:class="{ 'menu_acive': menuStatus }")
-    .menu-box__close-button(@click='toggleMenu')
+  .menu-box
+    .menu-box__close-button(js-toggleMenu)
       img(src='img/setting/navi_close.svg', alt='')
     .menu-box__spoiler
       h3 Темы

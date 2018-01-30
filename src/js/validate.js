@@ -11,46 +11,32 @@ $(document).ready(function(){
   ////////////////////
 
   var validateErrorPlacement = function(error, element) {
-    error.addClass('ui-input__validation');
+    // console.log(error.text())
+    error.addClass('input-field__validation');
     error.appendTo(element.parent("div"));
+    // element().val(error.text())
   }
   var validateHighlight = function(element) {
-    $(element).parent('div').addClass("has-error");
+    $(element).addClass("require");
   }
   var validateUnhighlight = function(element) {
-    $(element).parent('div').removeClass("has-error");
-  }
-  var validateSubmitHandler = function(form) {
-    $(form).addClass('loading');
-    $.ajax({
-      type: "POST",
-      url: $(form).attr('action'),
-      data: $(form).serialize(),
-      success: function(response) {
-        $(form).removeClass('loading');
-        var data = $.parseJSON(response);
-        if (data.status == 'success') {
-          // do something I can't test
-        } else {
-            $(form).find('[data-error]').html(data.message).show();
-        }
-      }
-    });
+    $(element).removeClass("require");
   }
 
-  var validatePhone = {
-    required: true,
-    normalizer: function(value) {
-        var PHONE_MASK = '+X (XXX) XXX-XXXX';
-        if (!value || value === PHONE_MASK) {
-            return value;
-        } else {
-            return value.replace(/[^\d]/g, '');
-        }
-    },
-    minlength: 11,
-    digits: true
-  }
+
+  // var validatePhone = {
+  //   required: true,
+  //   normalizer: function(value) {
+  //       var PHONE_MASK = '+X (XXX) XXX-XXXX';
+  //       if (!value || value === PHONE_MASK) {
+  //           return value;
+  //       } else {
+  //           return value.replace(/[^\d]/g, '');
+  //       }
+  //   },
+  //   minlength: 11,
+  //   digits: true
+  // }
 
   ////////
   // FORMS
@@ -59,39 +45,55 @@ $(document).ready(function(){
   /////////////////////
   // REGISTRATION FORM
   ////////////////////
-  $(".js-registration-form").validate({
+  $("[js-validateCoopForm]").validate({
     errorPlacement: validateErrorPlacement,
     highlight: validateHighlight,
     unhighlight: validateUnhighlight,
-    submitHandler: validateSubmitHandler,
+    submitHandler: function(form){
+      $(form).addClass('loading');
+      // $.ajax({
+      //   type: "POST",
+      //   url: $(form).attr('action'),
+      //   data: $(form).serialize(),
+      //   success: function(response) {
+      //     $(form).removeClass('loading');
+      //     var data = $.parseJSON(response);
+      //     if (data.status == 'success') {
+      //       // do something I can't test
+      //       $(form).closest('.left').find('.thanks').removeClass('hidden')
+      //     } else {
+      //         $(form).find('[data-error]').html(data.message).show();
+      //     }
+      //   }
+      // });
+      var linkedForm = $('[js-coopForm]')
+      linkedForm.addClass('hidden');
+      linkedForm.parent().find('.content').addClass('hidden')
+      $(form).closest('.left').find('.thanks').removeClass('hidden');
+
+      // e.preventDefault();
+    },
     rules: {
-      last_name: "required",
-      first_name: "required",
+      name: {
+        required: true,
+        minlength: 5
+      },
+      company: {
+        required: true,
+        minlength: 5
+      },
       email: {
         required: true,
         email: true
       },
-      password: {
-        required: true,
-        minlength: 6,
-      }
-      // phone: validatePhone
     },
     messages: {
-      last_name: "Заполните это поле",
-      first_name: "Заполните это поле",
+      name: "Обязательное поле",
+      company: "Обязательное поле",
       email: {
-          required: "Заполните это поле",
-          email: "Email содержит неправильный формат"
+          required: "Обязательное поле",
+          email: "Неправильный Email"
       },
-      password: {
-          required: "Заполните это поле",
-          email: "Пароль мимимум 6 символов"
-      },
-      // phone: {
-      //     required: "Заполните это поле",
-      //     minlength: "Введите корректный телефон"
-      // }
     }
   });
 

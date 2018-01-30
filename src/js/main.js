@@ -4,18 +4,31 @@ var i = 0;
 var loadingInterval = setInterval( 'loading()', 10 );
 
 function loading() {
-  document.querySelector('.percentage').innerHTML = i + " %";
-  document.querySelector('.preloader .status').setAttribute('style', 'height: '+ i +'%');
-  if (i === 100) {
+  if (sessionStorage.getItem('preloaderState') == null){
+    document.querySelector('.percentage').innerHTML = i + " %";
+    document.querySelector('.preloader .status').setAttribute('style', 'height: '+ i +'%');
+    if (i === 100) {
+      clearInterval(loadingInterval);
+      preloaderDone();
+      i = -1;
+    }
+    i++;
+
+    sessionStorage.setItem('preloaderState', 'true');
+  } else {
+    preloaderDone();
     clearInterval(loadingInterval);
-    document.querySelector('.preloader').setAttribute('style', 'opacity: 0');
-    document.querySelector('.menu__control').setAttribute('style', 'display: inline-block');
-    document.querySelector('.menu__switch-lang').setAttribute('style', 'display: inline-block');
-    setTimeout("document.querySelector('#vue').classList.add('animated_load');", 300);
-    setTimeout(  "document.querySelector('.preloader').setAttribute('style', 'display: none');", 300);
-    i = -1;
   }
+
   i++;
+}
+
+function preloaderDone(){
+  document.querySelector('.preloader').setAttribute('style', 'opacity: 0');
+  document.querySelector('.menu__control').setAttribute('style', 'display: inline-block');
+  document.querySelector('.menu__switch-lang').setAttribute('style', 'display: inline-block');
+  setTimeout("document.querySelector('#vue').classList.add('animated_load');", 300);
+  setTimeout(  "document.querySelector('.preloader').setAttribute('style', 'display: none');", 300);
 }
 
 // VUE !
@@ -24,9 +37,9 @@ var FORM_URL = "";
 var setting = new Vue({
   el: "#vue",
   data: {
-    menuStatus: false,
-    videoStatus: false,
-    loader: 100,
+    // menuStatus: false,
+    // videoStatus: false,
+    // loader: 100,
     left: {
       hidden: false,
       name: '',
@@ -47,14 +60,14 @@ var setting = new Vue({
 
   },
   methods: {
-    openVideoHeader: function() {
-      this.videoStatus = !this.videoStatus;
-      $('body').toggleClass('overflow');
-    },
-    toggleMenu: function() {
-      this.menuStatus = !this.menuStatus
-      $('body').toggleClass('overflow_mobile');
-    },
+    // openVideoHeader: function() {
+    //   this.videoStatus = !this.videoStatus;
+    //   $('body').toggleClass('overflow');
+    // },
+    // toggleMenu: function() {
+    //   this.menuStatus = !this.menuStatus
+    //   $('body').toggleClass('overflow_mobile');
+    // },
     sendLeft: function() {
       if (this.left.email.length < 1) {
         this.left.email = 'Обязательное поле';
@@ -322,18 +335,16 @@ $(document).ready(function(){
 
 
   // HAMBURGER TOGGLER
-  _document.on('click', '[js-hamburger]', function(){
-    $(this).toggleClass('is-active');
-    $('.header').toggleClass('is-menu-opened')
-    $('[js-header-menu]').toggleClass('is-active');
-    $('.mobile-navi').toggleClass('is-active');
+  _document.on('click', '[js-toggleMenu]', function(){
+    $(this).toggleClass('menu_focus');
+    $('.menu-box').toggleClass('menu_acive')
+    $('body').toggleClass('overflow_mobile')
   });
 
   function closeMobileMenu(){
-    $('[js-hamburger]').removeClass('is-active');
-    $('.header').removeClass('is-menu-opened')
-    $('[js-header-menu]').removeClass('is-active');
-    $('.mobile-navi').removeClass('is-active');
+    $('[js-toggleMenu]').removeClass('is-active');
+    $('.menu-box').removeClass('menu_acive')
+    $('body').toggleClass('overflow_mobile')
   }
 
   // SET ACTIVE CLASS IN HEADER
@@ -351,10 +362,33 @@ $(document).ready(function(){
 
 
   // VIDEO PLAY
-  _document.on('click', '.promo-video .icon', function(){
-    $(this).closest('.promo-video').toggleClass('playing');
-    $(this).closest('.promo-video').find('iframe').attr("src", $("iframe").attr("src").replace("autoplay=0", "autoplay=1"));
+  _document.on('click', '[js-openVideoHeader]', function(){
+    $(this).toggleClass('is-active');
+    $('body').toggleClass('overflow');
+    // $(this).closest('.promo-video').toggleClass('playing');
+    // $(this).closest('.promo-video').find('iframe').attr("src", $("iframe").attr("src").replace("autoplay=0", "autoplay=1"));
   });
+
+  //////////
+  // FORM TOGGLERS
+  //////////
+  _document
+    // open
+    .on('click', '[js-openCoopForm]', function(){
+      $('[js-coopForm]').removeClass('hidden');
+      $('.left .content').addClass('hidden')
+    })
+    // close
+    .on('click', '[js-closeCoopForm]', function(){
+      $('[js-coopForm]').addClass('hidden');
+      $('.left .content').removeClass('hidden')
+
+      if ( $(this).closest('.find') ){
+        $(this).closest('.thanks').addClass('hidden')
+      }
+
+    })
+
 
 
   //////////
@@ -416,6 +450,7 @@ $(document).ready(function(){
       nextArrow: '',
       autoplay: true,
       autoplaySpeed: 4000,
+      pauseOnHover: false,
       infinite: true,
       fade: true,
       customPaging: function(slick,index) {
@@ -566,24 +601,24 @@ $(document).ready(function(){
   });
 
   // numeric input
-  $('.ui-number span').on('click', function(e){
-    var element = $(this).parent().find('input');
-    var currentValue = parseInt($(this).parent().find('input').val()) || 0;
-
-    if( $(this).data('action') == 'minus' ){
-      if(currentValue <= 1){
-        return false;
-      }else{
-        element.val( currentValue - 1 );
-      }
-    } else if( $(this).data('action') == 'plus' ){
-      if(currentValue >= 99){
-        return false;
-      } else{
-        element.val( currentValue + 1 );
-      }
-    }
-  });
+  // $('.ui-number span').on('click', function(e){
+  //   var element = $(this).parent().find('input');
+  //   var currentValue = parseInt($(this).parent().find('input').val()) || 0;
+  //
+  //   if( $(this).data('action') == 'minus' ){
+  //     if(currentValue <= 1){
+  //       return false;
+  //     }else{
+  //       element.val( currentValue - 1 );
+  //     }
+  //   } else if( $(this).data('action') == 'plus' ){
+  //     if(currentValue >= 99){
+  //       return false;
+  //     } else{
+  //       element.val( currentValue + 1 );
+  //     }
+  //   }
+  // });
 
   // textarea autoExpand
   _document
@@ -599,6 +634,23 @@ $(document).ready(function(){
         rows = Math.ceil((this.scrollHeight - this.baseScrollHeight) / 17);
         this.rows = minRows + rows;
     });
+
+
+  // FLOATING LABELS
+  // focus in
+  _document.on('focus', '.input-field', function(){
+    $(this).find('input, textarea').addClass('focus');
+  })
+
+  // focus out
+  _document.on('blur', '.input-field', function(){
+    var thisEl = $(this).find('input, textarea')
+    if ( thisEl.val() !== "" ){
+      thisEl.addClass('focus');
+    } else {
+      thisEl.removeClass('focus');
+    }
+  })
 
   // Masked input
   function initMasks(){
