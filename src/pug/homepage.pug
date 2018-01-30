@@ -276,14 +276,14 @@ block content
     .partnership__container
       .left
         .view
-          div(:class="{ 'hidden': !left.thanks }")
+          div
             .content
               h4 Сотрудничество
               p
                 | Журнал MICE&more приглашает к сотрудничеству всех специалистов и участников индустрии MICE во всем мире. Ваши пожелания и предложения
                 | по сотрудничеству вы можете отправить на адрес editor@miceandmore.org или оставьте ваше имя и адрес электронной почты и мы вышлем вам медиа кит.
               button(js-openCoopForm) Запросить медиа-кит
-            .form.hidden(js-coopForm)
+            .form.hidden
               .btn-close(js-closeCoopForm)
                 .item
                 .item
@@ -315,8 +315,8 @@ block content
               | с вами свяжется наш менеджер.
       .right
         .view
-          div(:class="{ 'hidden': !right.thanks }")
-            .content(:class="{ 'hidden': right.hidden }")
+          div
+            .content
               h4 Подписка
               p
                 | Оформите подписку на журнал сегодня и получите постоянный доступ к самой актуальной подборке свежих новостей, интервью, экспертных статей и других материалов MICE-индустрии в России и за её пределами. 
@@ -327,12 +327,12 @@ block content
                 p годовая подписка
                 span.price 2500
                 .price_name рублей
-                button(@click='right.hidden=!right.hidden') Подписаться
-            .form(:class="{ 'hidden': !right.hidden }")
-              .btn-close(@click='right.hidden=!right.hidden')
+                button(js-openSubsForm) Подписаться
+            .form.hidden
+              .btn-close(js-closeSubsForm)
                 .item
                 .item
-              form(action='')
+              form(action='' js-validateSubsForm)
                 .input-field
                   input(type='text' name="name")
                   label(for='') Имя
@@ -346,17 +346,19 @@ block content
                   input(type='text' name="adress")
                   label(for='') Адрес
                 .input-field
-                  .payment(@click='right.dropdown = !right.dropdown', :class="{ 'require': right.payment=='Обязательное поле' }")
-                    | {{right.payment}} 
-                    .down(:class="{ 'rotate': right.dropdown }")
+                  // js-dropdown, label, dropdown options one single level
+                  input(type="hidden" name="payment")
+                  .payment(js-dropdown)
+                    span 
+                    .down
                       img(src='img/setting/dropdown_arr_white.svg', alt='')
-                  label.dropdown_label(:class="{ 'dropdown_label_translate': right.dropdown, 'dropdown_label_translate_2': right.payment }") ФОРМА ОПЛАТЫ
-                  .dropdown(:class="{ 'dropdown_open': right.dropdown }")
-                    span(@click="right.payment = 'Безналичный расчет'") Безналичный расчет
-                    span(@click="right.payment = 'Банковская карта'") Банковская карта
-                button(@click.prevent='sendRight') Подписаться
-          .thanks(:class="{ 'hidden': right.thanks }")
-            .btn-close(@click='right.thanks=!right.thanks')
+                  label.dropdown_label ФОРМА ОПЛАТЫ
+                  .dropdown(js-dropdown-options)
+                    span(data-val='Безналичный расчет') Безналичный расчет
+                    span(data-val='Банковская карта') Банковская карта
+                button(type="submit") Подписаться
+          .thanks.hidden
+            .btn-close(js-closeSubsForm)
               .item
               .item
             h6

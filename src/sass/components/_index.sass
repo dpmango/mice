@@ -752,8 +752,9 @@
 
 .dropdown_label
   position: absolute
-  top: -24px
+  top: -30px !important
   transition: all .3s ease-in-out
+  pointer-events: none
 
 .dropdown_label_translate_2, .dropdown_label_translate
   top: -56px !important
@@ -842,11 +843,11 @@
       font-family: "Intro"
       font-size: 23px
       cursor: pointer
-      margin: 80px 0 0
+      padding: 40px 0 3px
       font-weight: 600
       display: block
       border-bottom: 3px solid #fff
-      padding: 0px 0 3px
+      // padding: 0px 0 3px
     .dropdown_open
       height: 90px !important
     .payment .down

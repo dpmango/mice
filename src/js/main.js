@@ -31,112 +31,6 @@ function preloaderDone(){
   setTimeout(  "document.querySelector('.preloader').setAttribute('style', 'display: none');", 300);
 }
 
-// VUE !
-var FORM_URL = "";
-
-var setting = new Vue({
-  el: "#vue",
-  data: {
-    // menuStatus: false,
-    // videoStatus: false,
-    // loader: 100,
-    left: {
-      hidden: false,
-      name: '',
-      company: '',
-      email: '',
-      thanks: true
-    },
-    right: {
-      hidden: false,
-      name: '',
-      company: '',
-      email: '',
-      adress: '',
-      payment: '',
-      dropdown: false,
-      thanks: true
-    }
-
-  },
-  methods: {
-    // openVideoHeader: function() {
-    //   this.videoStatus = !this.videoStatus;
-    //   $('body').toggleClass('overflow');
-    // },
-    // toggleMenu: function() {
-    //   this.menuStatus = !this.menuStatus
-    //   $('body').toggleClass('overflow_mobile');
-    // },
-    sendLeft: function() {
-      if (this.left.email.length < 1) {
-        this.left.email = 'Обязательное поле';
-      }
-      if (this.left.name.length < 1) {
-        this.left.name = 'Обязательное поле';
-      }
-      if (this.left.company.length < 1) {
-        this.left.company = 'Обязательное поле';
-      }
-      if (this.left.company.length*this.left.name.length*this.left.email.length > 7
-        && this.left.email.length > 5
-        && this.left.email != 'Обязательное поле'
-        && this.left.name != 'Обязательное поле'
-        && this.left.company != 'Обязательное поле'
-
-        ) {
-        // $.ajax({
-        //   type: 'POST',
-        //   url: FORM_URL,
-        //   data: {
-        //     company: this.left.company,
-        //     name: this.left.name,
-        //     email: this.left.email,
-        //   }
-        // }).done(function(){
-        //   this.left.thanks = false
-        // });
-        this.left.thanks = false;
-        this.left.hidden = false;
-        this.left.email = '';
-        this.left.name = '';
-        this.left.company = '';
-      }
-    },
-    sendRight: function() {
-      if (this.right.email.length < 1) {
-        this.right.email = 'Обязательное поле';
-      }
-      if (this.right.name.length < 1) {
-        this.right.name = 'Обязательное поле';
-      }
-      if (this.right.company.length < 1) {
-        this.right.company = 'Обязательное поле';
-      }
-      if (this.right.adress.length < 1) {
-        this.right.adress = 'Обязательное поле';
-      }
-      if (this.right.payment == 'Форма оплаты') {
-        this.right.payment = 'Обязательное поле';
-      }
-      if (this.right.company.length*this.right.name.length*this.right.email.length*this.right.adress.length > 10
-        && this.right.email.length > 5
-        && this.right.email != 'Обязательное поле'
-        && this.right.name != 'Обязательное поле'
-        && this.right.company != 'Обязательное поле'
-        && this.right.adress != 'Обязательное поле'
-        && this.right.payment != 'Обязательное поле'
-        && this.right.payment != ''
-        ) {
-
-          this.right.thanks = false;
-          this.right.hidden = false;
-      }
-    }
-  }
-})
-
-
 $(document).ready(function(){
 
   //////////
@@ -375,21 +269,33 @@ $(document).ready(function(){
   _document
     // open
     .on('click', '[js-openCoopForm]', function(){
-      $('[js-coopForm]').removeClass('hidden');
+      $('.left .form').removeClass('hidden');
       $('.left .content').addClass('hidden')
     })
     // close
     .on('click', '[js-closeCoopForm]', function(){
-      $('[js-coopForm]').addClass('hidden');
+      $('.left .form').addClass('hidden');
       $('.left .content').removeClass('hidden')
+
+      if ( $(this).closest('.thanks') ){
+        $(this).closest('.thanks').addClass('hidden')
+      }
+    })
+
+    // open
+    .on('click', '[js-openSubsForm]', function(){
+      $('.right .form').removeClass('hidden');
+      $('.right .content').addClass('hidden')
+    })
+    // close
+    .on('click', '[js-closeSubsForm]', function(){
+      $('.right .form').addClass('hidden');
+      $('.right .content').removeClass('hidden')
 
       if ( $(this).closest('.find') ){
         $(this).closest('.thanks').addClass('hidden')
       }
-
     })
-
-
 
   //////////
   // SLIDERS
@@ -560,30 +466,41 @@ $(document).ready(function(){
   ////////////
 
   // custom selects
-  $('.ui-select__visible').on('click', function(e){
-    var that = this
+  _document
+  .on('click', '[js-dropdown]', function(e){
+    // var that = this
     // hide parents
-    $(this).parent().parent().parent().find('.ui-select__visible').each(function(i,val){
-      if ( !$(val).is($(that)) ){
-        $(val).parent().removeClass('active')
-      }
-    });
+    // $(this).parent().parent().parent().find('.ui-select__visible').each(function(i,val){
+    //   if ( !$(val).is($(that)) ){
+    //     $(val).parent().removeClass('active')
+    //   }
+    // });
+    var parent = $(this).closest('.input-field')
 
-    $(this).parent().toggleClass('active');
-  });
+    parent.find('.down').toggleClass('rotate'); // arrow
+    parent.find('.dropdown_label').toggleClass('dropdown_label_translate') // label
+    parent.find('.dropdown').toggleClass('dropdown_open') // dropdown
 
-  $('.ui-select__dropdown span').on('click', function(){
+    // if ( parent.find('input').val() !== "" ){
+    //   parent.find('.dropdown_label').removeClass('dropdown_label_translate')
+    // }
+  })
+  .on('click', '.input-field .dropdown span', function(){
     // parse value and toggle active
     var value = $(this).data('val');
     if (value){
-      $(this).siblings().removeClass('active');
-      $(this).addClass('active');
+      $(this).siblings().removeClass('is-active');
+      $(this).addClass('is-active');
 
       // set visible
-      $(this).closest('.ui-select').removeClass('active');
-      $(this).closest('.ui-select').find('input').val(value);
+      var parent = $(this).closest('.input-field')
+      parent.find('.down').removeClass('rotate'); // arrow
+      parent.find('.dropdown_label').addClass('dropdown_label_translate_2') // label
+      parent.find('.dropdown').removeClass('dropdown_open') // dropdown
 
-      $(this).closest('.ui-select').find('.ui-select__visible span').text(value);
+      // populate values
+      $(this).closest('.input-field').find('input').val(value);
+      $(this).closest('.input-field').find('[js-dropdown] span').text(value);
     }
 
   });
