@@ -2,6 +2,12 @@
 This package intended to solve common front-end development tasks. Works best for psd/sketch to html projects and save you a lot of time setting up local environment
 
 
+SFTP:
+http://mice.dev.glyf.ru/
+s_khmelevskoy
+@SSP6sJ3
+
+
 ## How to start
 * `yarn` - install npm dependencies
 * `bower install` - install bower packages

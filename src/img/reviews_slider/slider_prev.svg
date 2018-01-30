@@ -1,0 +1,28 @@
+<svg width="50" height="50" viewBox="0 0 50 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>arrow_slider</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(-66 -3690)">
+<g id="arrow_slider">
+<g id="Rectangle">
+<use xlink:href="#path0_fill" transform="matrix(-1 -1.22465e-16 1.22465e-16 -1 116 3740)" fill="#FFFFFF" fill-opacity="0.75"/>
+<mask id="mask0_outline_ins">
+<use xlink:href="#path0_fill" fill="white" transform="matrix(-1 -1.22465e-16 1.22465e-16 -1 116 3740)"/>
+</mask>
+<g mask="url(#mask0_outline_ins)">
+<use xlink:href="#path1_stroke_2x" transform="matrix(-1 -1.22465e-16 1.22465e-16 -1 116 3740)" fill="#231F20"/>
+</g>
+</g>
+<g id="Rectangle 2">
+<use xlink:href="#path2_fill" transform="matrix(-0.707107 0.707107 -0.707107 -0.707107 96 3723.5)" fill="#231F20"/>
+</g>
+<g id="Rectangle 2.1">
+<use xlink:href="#path2_fill" transform="matrix(0.707107 0.707107 -0.707107 0.707107 93.8787 3704.4)" fill="#231F20"/>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_fill" d="M 0 0L 50 0L 50 50L 0 50L 0 0Z"/>
+<path id="path1_stroke_2x" d="M 0 0L 0 -3L -3 -3L -3 0L 0 0ZM 50 0L 53 0L 53 -3L 50 -3L 50 0ZM 50 50L 50 53L 53 53L 53 50L 50 50ZM 0 50L -3 50L -3 53L 0 53L 0 50ZM 0 3L 50 3L 50 -3L 0 -3L 0 3ZM 47 0L 47 50L 53 50L 53 0L 47 0ZM 50 47L 0 47L 0 53L 50 53L 50 47ZM 3 50L 3 0L -3 0L -3 50L 3 50Z"/>
+<path id="path2_fill" d="M 0 0L 3 0L 3 15L 0 15L 0 0Z"/>
+</defs>
+</svg>

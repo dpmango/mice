@@ -13,10 +13,19 @@ ul
   li
     display: inline-block
 
+h1
+  font-family: "Oranienbaum"
+
+h2
+  font-family: "Oranienbaum"
+  text-align: center
+  font-size: 70px
+  font-weight: 400
+
 body, html
   background: white
   color: $fontColor
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif
+  font-family: "Intro", 'Helvetica Neue', Helvetica, Arial, sans-serif
   font-size: 16px
   min-width: 320px
   max-width: 100%
@@ -25,30 +34,34 @@ body, html
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
 
-.page
-  display: flex
-  flex-direction: column
-  min-height: 100vh
-  &__content
-    // used for sticky footer (flexbox way)
-    flex: 1 0 auto
-    display: flex
-    flex-direction: column
-    // header offset ex
-    padding: 100px
+body *::selection
+  background-color: #8547AD
+  color: #FFFFFF
+  
+// .page
+//   display: flex
+//   flex-direction: column
+//   min-height: 100vh
+//   &__content
+//     // used for sticky footer (flexbox way)
+//     flex: 1 0 auto
+//     display: flex
+//     flex-direction: column
+//     // header offset ex
+//     padding: 100px
 
-.container
-  max-width: 1200px
-  width: 100%
-  margin-left: auto
-  margin-right: auto
-  padding-left: 40px
-  padding-right: 40px
-
-+r($mobile)
-  .container
-    padding-left: 20px
-    padding-right: 20px
+// .container
+//   max-width: 1200px
+//   width: 100%
+//   margin-left: auto
+//   margin-right: auto
+//   padding-left: 40px
+//   padding-right: 40px
+//
+// +r($mobile)
+//   .container
+//     padding-left: 20px
+//     padding-right: 20px
 
 // REMOVE FOR PRODUCTION !
 .dev-bp-debug

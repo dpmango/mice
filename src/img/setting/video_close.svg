@@ -1,0 +1,29 @@
+<svg width="50" height="50" viewBox="0 0 50 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>video_close</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(-4395 -76)">
+<g id="video_close">
+<g id="Rectangle">
+<use xlink:href="#path0_fill" transform="translate(4395 76)" fill="#231F20" fill-opacity="0.75"/>
+<mask id="mask0_outline_ins">
+<use xlink:href="#path0_fill" fill="white" transform="translate(4395 76)"/>
+</mask>
+<g mask="url(#mask0_outline_ins)">
+<use xlink:href="#path1_stroke_2x" transform="translate(4395 76)" fill="#FFFFFF"/>
+</g>
+</g>
+<g id="Rectangle 2">
+<use xlink:href="#path2_fill" transform="matrix(0.690258 -0.723563 0.690258 0.723563 4412 94.6748)" fill="#FFFFFF"/>
+</g>
+<g id="Rectangle 2.1">
+<use xlink:href="#path3_fill" transform="matrix(0.690454 0.723376 -0.690454 0.723376 4426.14 92.4562)" fill="#FFFFFF"/>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_fill" d="M 0 0L 50 0L 50 50L 0 50L 0 0Z"/>
+<path id="path1_stroke_2x" d="M 0 0L 0 -3L -3 -3L -3 0L 0 0ZM 50 0L 53 0L 53 -3L 50 -3L 50 0ZM 50 50L 50 53L 53 53L 53 50L 50 50ZM 0 50L -3 50L -3 53L 0 53L 0 50ZM 0 3L 50 3L 50 -3L 0 -3L 0 3ZM 47 0L 47 50L 53 50L 53 0L 47 0ZM 50 47L 0 47L 0 53L 50 53L 50 47ZM 3 50L 3 0L -3 0L -3 50L 3 50Z"/>
+<path id="path2_fill" d="M 0 0L 3.07323 0L 3.07323 20.4882L 0 20.4882L 0 0Z"/>
+<path id="path3_fill" d="M 0 0L 3.07235 0L 3.07235 20.4824L 0 20.4824L 0 0Z"/>
+</defs>
+</svg>

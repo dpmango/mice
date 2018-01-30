@@ -5,10 +5,10 @@ html(lang="ru")
     include _head
 
   body(class=bodyClass)
-    .page(class=outClass)
+    .page#vue(class=outClass)
       .page__content
-        block header
-          include ../components/_header
+        //- block header
+        //-   include ../components/_header
         block content
 
       block footer
