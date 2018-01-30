@@ -1,0 +1,89 @@
+.preloader
+  position: fixed
+  z-index: 1000
+  top: 0
+  bottom: 0
+  right: 0
+  transition: all .3s easeInOutExpo
+  opacity: 1
+  left: 0
+  background: #231F20
+  .loading
+    .status
+      background: #8547AD
+      bottom: 0
+      right: 0
+      left: 0
+      position: absolute
+      z-index: -1
+    height: 100%
+    display: inline-block
+  .text
+    height: 100%
+    display: inline-block
+  .loading
+    position: absolute
+    right: 50%
+    bottom: 0
+    left: 0
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    color: #fff
+    .percentage
+      font-family: "Intro"
+      font-weight: 800
+      font-size: 11em !important
+      padding: 20px
+      margin: 0
+    .loader_name
+      font-size: 1.9em
+      font-family: "Intro"
+      font-weight: 800
+      text-transform: uppercase
+      margin: 20vh 0 0
+  .text
+    background: #fff
+    position: absolute
+    right: 0
+    top: 0
+    bottom: 0
+    left: 50%
+    display: flex
+    justify-content: center
+    align-items: center
+    text-align: center
+    h3
+      font-family: "Oranienbaum"
+      font-size: 50px
+      font-weight: normal
+      margin: 0 30px
+
++r($desktop)
+  .preloader
+    .loading
+      width: 100%
+      height: 50vh
+      top: 0
+    .text
+      width: 100%
+      height: 50vh
+      left: 0
+      bottom: 0
+      top: 50%
+
++r(450)
+  .preloader
+    .loading
+      right: 0
+      .percentage
+        line-height: 180px
+        font-size: 90px !important
+        margin: 0 !important
+        padding: 0
+      .loader_name
+        margin: 12vh 0 0
+        font-size: 18px
+    .text h3
+      font-size: 40px !important

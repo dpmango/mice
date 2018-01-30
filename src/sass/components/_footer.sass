@@ -1,7 +1,56 @@
 // FOOTER
-.footer
-  background: #f5f5f5
-  &__wrapper
-    display: flex
-    align-items: center
-    height: 100px
+footer
+  margin: 125px 0 0
+  .container-fluid
+    padding: 0 58px
+    margin: 0 auto
+    max-width: 1680px
+    .row
+      border-top: 3px solid #231F20
+      padding: 48px 0
+      div
+        padding: 0
+  hr
+    border: none
+    border-top: 3px solid #ededed
+    margin: 44px 0 48px
+  .mini__content
+    margin: 20px 0 40px
+    .phone
+      font-size: 30px
+    .design
+      font-size: 14px
+
+.footer__link
+  font-family: "Intro"
+  font-weight: 800
+  font-size: 20px
+  transition: all .3s easeInOutExpo
+  color: #231F20
+
+footer .mini__content
+  a:hover
+    color: #8547AD !important
+  .footer__title
+    font-family: "Intro"
+    font-size: 15px
+    margin: 0 0 11px
+
+
++r($desktop)
+  footer
+    margin: 18px 0
+    .container-fluid
+      padding: 0 31px
+      .row
+        padding: 24px 0
+
+    .col-md-12:last-child .mini__content
+      display: inline-block
+      width: 49%
+      margin: 37px 0 0
+      box-sizing: border-box
+    .mini__content .street
+      font-size: 21px
+      margin: 0 0 0
+      line-height: 27px

@@ -91,9 +91,10 @@ $(document).ready(function(){
     fitText();
     _window.on('resize', throttle(fitText, 200));
 
+    teleportQmark();
+
     // temp - developer
     _window.on('resize', debounce(setBreakpoint, 200));
-
 
 
     shittyCode();
@@ -191,14 +192,14 @@ $(document).ready(function(){
         } else {
           $('.menu').removeClass('menu_fixed');
         }
-      }, 10));
+      }, 25));
 
     }
   }
 
   function shittyCode(){
-    if ( $('.header_slider video').length ){
-      $('.header_slider video').load()
+    if ( $('.header_slider video').length > 0 ){
+      $('.header_slider video').get(0).load()
     }
 
     // please refactor to fitText.js
@@ -279,6 +280,21 @@ $(document).ready(function(){
       }
     })
 
+
+  //////////
+  // TELEPORT Q MARK
+  //////////
+
+  function teleportQmark(){
+    _document.find('.weekly__week__content h4').each(function(i, el){
+      var elText = $(el).text();
+      if ( elText.slice(0,1) == "«" ){
+        $(el).text(elText.substring(1)) // remove first letter
+        $(el).prepend("<span class='teleported-q'>«</span>") // create and append el
+      }
+    })
+  }
+
   //////////
   // SLIDERS
   //////////
@@ -325,9 +341,22 @@ $(document).ready(function(){
       centerMode: true,
       adaptiveHeight: true,
       centerPadding: '30%',
+      // draggable: false,
+      arrows: false,
       slidesToShow: 1,
       infinite: true
     });
+
+    $('.awards__slider .slick-slide').on('mouseenter', function(){
+      $(this).addClass('is-hovered')
+    })
+    $('.awards__slider .slick-slide').on('mouseleave', function(){
+      $(this).removeClass('is-hovered')
+    })
+    $('.awards__slider .slick-slide').on('click', function(){
+      console.log($(this).index())
+      $('.awards__slider .carousel').slick('slickPrev')
+    })
 
     $('.header_slider').slick({
       vertical: true,
