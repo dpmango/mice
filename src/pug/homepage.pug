@@ -8,6 +8,7 @@ block content
   // HEADER :: START
   header
     .slider-header
+      // why the hell header is named as menu?
       .menu
         .menu__control(js-toggleMenu)
           .menu__control__burger
@@ -76,23 +77,24 @@ block content
       .row
         .col-lg-4.col-md-6
           .weekly__week
-            a(href='#')
+            a(href='post.html')
               .weekly__week__image(style="background-image: url('img/weekly/1.png')")
             .weekly__week__properties
               span.tag Тема
               span.data 30 октября
-            a.weekly__week__content(href='#')
+            a.weekly__week__content(href='post.html')
               h4 Провокация — прекрасная начинка для рекламной кампании
               p
                 | На этапе разработки плана продвижения компании сроком на год или сезон от меня зависят стратегические решения
                 | в области позиционирования и партнерства, которые в моих силах правильно преподнести генеральному руководству.
         .col-lg-4.col-md-6
           .weekly__week
-            .weekly__week__image(style="background-image: url('img/weekly/2.png')")
+            a(href='post.html')
+              .weekly__week__image(style="background-image: url('img/weekly/2.png')")
             .weekly__week__properties
               span.tag Событие
               span.data 27 октября
-            a.weekly__week__content(href='#')
+            a.weekly__week__content(href='post.html')
               h4 Хайп. Триггеры. Тотальная визуализация. А на что способна ваша площадка?
               p
                 | При разработке креативной концепции проекта команда организаторов хотела уйти от привычных для DTM стандартных
@@ -100,11 +102,12 @@ block content
                 | из множества линий крышу.
         .col-lg-4.col-md-6
           .weekly__week
-            .weekly__week__image(style="background-image: url('img/weekly/3.png')")
+            a(href='post.html')
+              .weekly__week__image(style="background-image: url('img/weekly/3.png')")
             .weekly__week__properties
               span.tag Интервью
               span.data 26 октября
-            a.weekly__week__content(href='#')
+            a.weekly__week__content(href='post.html')
               h4 «Мной всегда двигала жажда быть впереди»
               p
                 | Приехав в Петербург в 2009, она продолжила постигать искусство преображения пространств и следовать курсу,
@@ -112,11 +115,12 @@ block content
                 | из лучших дизайн-студий, работающих в сегменте «премиум», наш герой придерживается внутренних правил.
         .col-lg-4.col-md-6
           .weekly__week
-            .weekly__week__image(style="background-image: url('img/weekly/4.png')")
+            a(href='post.html')
+              .weekly__week__image(style="background-image: url('img/weekly/4.png')")
             .weekly__week__properties
               span.tag Экспертный совет
               span.data 30 октября
-            a.weekly__week__content(href='#')
+            a.weekly__week__content(href='post.html')
               h4 Идеальное корпоративное событие, или как #успетьвсе?
               p
                 | Краткосрочное планирование — это что-то наше очень национальное, как мне кажется. Сейчас ситуация становится
@@ -124,11 +128,12 @@ block content
                 | и вошел в нормальный ритм.
         .col-lg-4.col-md-6
           .weekly__week
-            .weekly__week__image(style="background-image: url('img/weekly/5.png')")
+            a(href='post.html')
+              .weekly__week__image(style="background-image: url('img/weekly/5.png')")
             .weekly__week__properties
               span.tag Тема
               span.data 19 октября
-            a.weekly__week__content(href='#')
+            a.weekly__week__content(href='post.html')
               h4 MICE&more — журнал для русскоязычных MICE специалистов и о них самих
               p
                 | Российский MICE рынок давно вышел за границы своей страны и добрался до самых экзотических и далеких точек
@@ -136,11 +141,12 @@ block content
                 | и совершенствовании. Наши читатели всегда будут в курсе актуальных событий.
         .col-lg-4.col-md-6
           .weekly__week
-            .weekly__week__image(style="background-image: url('img/weekly/6.png')")
+            a(href='post.html')
+              .weekly__week__image(style="background-image: url('img/weekly/6.png')")
             .weekly__week__properties
               span.tag Спецпредложения
               span.data 19 октября
-            a.weekly__week__content(href='#')
+            a.weekly__week__content(href='post.html')
               h4 MICE&more — журнал для русскоязычных MICE специалистов и о них самих
               p
                 | Российский MICE рынок давно вышел за границы своей страны и добрался до самых экзотических и далеких точек
@@ -370,16 +376,6 @@ block content
               br
               | с вами свяжется наш менеджер.
               
-
-  // POPUP
-  .preloader
-    .loading
-      span.loader_name Загрузка
-      h2.percentage
-        h2
-          .status
-    .text
-      h3 Издание №1 для российских MICE-специалистов
       
   // VIDEO
   transition(name='video')

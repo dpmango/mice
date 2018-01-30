@@ -1,0 +1,44 @@
+// PRELOADER :: START
+.preloader
+  .loading
+    span.loader_name Загрузка
+    h2.percentage
+      h2
+        .status
+  .text
+    h3 Издание №1 для российских MICE-специалистов
+
+// it's important to pop this up ASAP, sorry for inline code
+// don't use jQuery here - it's not loaded yet
+script.
+  var i = 0;
+
+  var loadingInterval = setInterval( 'loading()', 10 );
+
+  function loading() {
+    if (sessionStorage.getItem('preloaderState') == null){
+      document.querySelector('.percentage').innerHTML = i + " %";
+      document.querySelector('.preloader .status').setAttribute('style', 'height: '+ i +'%');
+      if (i === 100) {
+        clearInterval(loadingInterval);
+        preloaderDone();
+        i = -1;
+      }
+      i++;
+
+      sessionStorage.setItem('preloaderState', 'true');
+    } else {
+      preloaderDone();
+      clearInterval(loadingInterval);
+    }
+
+    i++;
+  }
+
+  function preloaderDone(){
+    document.querySelector('.preloader').setAttribute('style', 'opacity: 0');
+    document.querySelector('.menu__control').setAttribute('style', 'display: inline-block');
+    document.querySelector('.menu__switch-lang').setAttribute('style', 'display: inline-block');
+    setTimeout("document.querySelector('.page').classList.add('animated_load');", 300);
+    setTimeout(  "document.querySelector('.preloader').setAttribute('style', 'display: none');", 300);
+  }

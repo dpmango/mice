@@ -1,35 +1,4 @@
-// PRELOADER !
-var i = 0;
-
-var loadingInterval = setInterval( 'loading()', 10 );
-
-function loading() {
-  if (sessionStorage.getItem('preloaderState') == null){
-    document.querySelector('.percentage').innerHTML = i + " %";
-    document.querySelector('.preloader .status').setAttribute('style', 'height: '+ i +'%');
-    if (i === 100) {
-      clearInterval(loadingInterval);
-      preloaderDone();
-      i = -1;
-    }
-    i++;
-
-    sessionStorage.setItem('preloaderState', 'true');
-  } else {
-    preloaderDone();
-    clearInterval(loadingInterval);
-  }
-
-  i++;
-}
-
-function preloaderDone(){
-  document.querySelector('.preloader').setAttribute('style', 'opacity: 0');
-  document.querySelector('.menu__control').setAttribute('style', 'display: inline-block');
-  document.querySelector('.menu__switch-lang').setAttribute('style', 'display: inline-block');
-  setTimeout("document.querySelector('#vue').classList.add('animated_load');", 300);
-  setTimeout(  "document.querySelector('.preloader').setAttribute('style', 'display: none');", 300);
-}
+// PRELOADER
 
 $(document).ready(function(){
 
@@ -119,8 +88,15 @@ $(document).ready(function(){
     revealFooter();
     _window.on('resize', throttle(revealFooter, 100));
 
+    fitText();
+    _window.on('resize', throttle(fitText, 200));
+
     // temp - developer
-    _window.on('resize', debounce(setBreakpoint, 200))
+    _window.on('resize', debounce(setBreakpoint, 200));
+
+
+
+    shittyCode();
   }
 
   pageReady();
@@ -188,44 +164,50 @@ $(document).ready(function(){
   // to disable sticky header
   function initHeaderScroll(){
     if ( $('.header-static').length == 0 ){
+      // _window.on('scroll', throttle(function() {
+      //   var vScroll = _window.scrollTop();
+      //   var header = $('.header').not('.header--static');
+      //   var headerHeight = header.height();
+      //   var heroHeight = $('.hero').outerHeight() - headerHeight;
+      //   // probably should be found as a first child of page contents
+      //
+      //   if ( vScroll > headerHeight ){
+      //     header.addClass('header--transformed');
+      //   } else {
+      //     header.removeClass('header--transformed');
+      //   }
+      //
+      //   if ( vScroll > heroHeight ){
+      //     header.addClass('header--fixed');
+      //   } else {
+      //     header.removeClass('header--fixed');
+      //   }
+      // }, 10));
+
       _window.on('scroll', throttle(function() {
         var vScroll = _window.scrollTop();
-        var header = $('.header').not('.header--static');
-        var headerHeight = header.height();
-        var heroHeight = $('.hero').outerHeight() - headerHeight;
-        // probably should be found as a first child of page contents
-
-        if ( vScroll > headerHeight ){
-          header.addClass('header--transformed');
+        if (vScroll > 150) {
+          $('.menu').addClass('menu_fixed');
         } else {
-          header.removeClass('header--transformed');
-        }
-
-        if ( vScroll > heroHeight ){
-          header.addClass('header--fixed');
-        } else {
-          header.removeClass('header--fixed');
+          $('.menu').removeClass('menu_fixed');
         }
       }, 10));
+
     }
   }
 
-  // REFACTOR
-  window.onscroll = function() {
-    var scrolled = window.pageYOffset || document.documentElement.scrollTop;
-    // console.log(scrolled);
-    if (scrolled > 150) {
-      $('.menu').addClass('menu_fixed');
-    } else {
-      $('.menu').removeClass('menu_fixed');
+  function shittyCode(){
+    if ( $('.header_slider video').length ){
+      $('.header_slider video').load()
     }
+
+    // please refactor to fitText.js
   }
 
-  // WTF IS THIS ?
-  document.querySelector(".header_slider .slide .left video").load();
-  setTimeout("$('html').scrollTop(0);", 100);
-  $('.header_slider .slide .right h3').css({'font-size':''+ 50*(document.documentElement.clientWidth/1440) +'px'});
-  $('.partnership__container .right h4, .partnership__container .left h4, h2').css({'font-size':''+ 70*(document.documentElement.clientWidth/1440) +'px'});
+  function fitText(){
+    $('.header_slider .slide .right h3').css({'font-size':''+ 50*(document.documentElement.clientWidth/1440) +'px'});
+    $('.partnership__container .right h4, .partnership__container .left h4, h2').css({'font-size':''+ 70*(document.documentElement.clientWidth/1440) +'px'});
+  }
 
 
   // HAMBURGER TOGGLER
@@ -667,9 +649,8 @@ $(document).ready(function(){
     return FadeTransition;
   };
 
-  // DISABLE FOR NOW
-  // Barba.Prefetch.init();
-  // Barba.Pjax.start();
+  Barba.Prefetch.init();
+  Barba.Pjax.start();
 
   Barba.Dispatcher.on('newPageReady', function(currentStatus, oldStatus, container, newPageRawHTML) {
 

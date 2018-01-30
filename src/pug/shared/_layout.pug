@@ -5,13 +5,17 @@ html(lang="ru")
     include _head
 
   body(class=bodyClass)
-    .page#vue(class=outClass)
-      .page__content
-        //- block header
-        //-   include ../components/_header
-        block content
+    block preloader
+      include ../components/_preloader
+    
+    #barba-wrapper
+      .page(class=outClass)
+        .page__content
+          //- block header
+          //-   include ../components/_header
+          block content
 
-      block footer
-        include ../components/_footer
-      block scripts
-        include _scripts
+        block footer
+          include ../components/_footer
+        block scripts
+          include _scripts
