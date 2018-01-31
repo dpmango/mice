@@ -8,35 +8,6 @@
 
 
 
-.menu_fixed
-  right: 0 !important
-  left: 0 !important
-  padding: 41px 40px 24px !important
-
-.animated_load .menu_fixed::after
-  opacity: 1
-
-.menu_fixed
-  &::after
-    content: ''
-    height: 3px
-    position: absolute
-    background: $fontColor
-    bottom: 0
-    transition: opacity .3s easeInOutQuad
-    left: 50px
-    right: 50px
-    opacity: 0
-  .menu__logo
-    top: 40px
-    right: -34px
-    img
-      width: 63%
-
-.menu__logo img
-  transition: all .3s easeInOutQuad
-  width: 100%
-
 /* BUTTONS
 
 .btn
@@ -254,73 +225,6 @@
     height: 36px
     left: 18px
 
-.menu
-  background: white
-  z-index: 1010
-  position: fixed
-  top: 0
-  margin: 0
-  right: 0
-  left: 50%
-  transition: all .3s easeInOutQuad
-  padding: 35px 38px
-
-.menu__logo
-  display: inline-block
-  right: 42px
-  position: absolute
-  top: 43px
-  transition: all .3s easeInOutQuad
-
-.menu__control
-  display: none
-  margin-left: 10px
-  margin-right: 47px
-
-.menu__control__click
-  letter-spacing: .02em
-  font-size: 15px
-  transition: all .3s easeInOutQuad
-  padding: 0 0 0 5px
-  cursor: pointer
-
-.menu_focus
-  .menu__control__click
-    color: $fontColor !important
-    opacity: .25
-  .menu__control__burger__item
-    background: $fontColor
-    opacity: .25
-
-.menu__control:hover
-  .menu__control__click
-    text-decoration: none
-    color: #8547AD !important
-  .menu__control__burger__item
-    background: #8547AD
-
-.menu__switch-lang
-  display: none
-  transition: all .3s easeInOutQuad
-  &:hover
-    color: #8547AD !important
-
-.menu__control__burger
-  display: inline-block
-  width: 10px
-  // align to the edge fix
-  margin-left: -3px
-  height: 20px
-  transition: all .3s easeInOutQuad
-  position: relative
-  top: 4px
-
-.menu__control__burger__item
-  background: #333
-  height: 3px
-  width: 3px
-  margin: 3px
-  transition: all .3s easeInOutQuad
 
 /* weekly
 
@@ -421,6 +325,9 @@
     line-height: 1
     top: .237em
     left: -.6em
+    +r($desktop)
+      position: static
+      line-height: inherit
   p
     margin: 20px 0 0
     color: rgba(35, 31, 32, 0.6)
@@ -491,18 +398,19 @@
     z-index: 10
     top: calc(55% - 25px)
     height: 50px
-    left: 50px
+    left: 65px
     &:last-child
-      right: calc(50% + 50px)
+      right: calc(50% + 43px)
       left: unset
   .reviews_slide
     display: flex
     flex-direction: row
     .left
       width: 50%
+      padding-left: 20px
       .bg
         height: 90%
-        width: 75%
+        width: 73%
         background: #ededed
         position: absolute
         bottom: 0
@@ -513,13 +421,13 @@
     .right
       width: 50%
       background-image: url('../img/reviews_slider/Vector.svg')
-      background-position: 80% center
+      background-position: 90% 57%
       background-repeat: no-repeat
       display: flex
       flex-direction: column
       justify-content: center
       text-align: center
-      padding: 50px 50px 0
+      padding: 50px 70px 0 50px
       h4
         -webkit-user-select: text
         -moz-user-select: text
@@ -635,6 +543,7 @@
     display: flex
     align-items: center
     padding: 0 0 0 20px
+    margin-top: 50px
   hr
     margin: 0 auto
     border: none
@@ -653,11 +562,23 @@
 /* awards__slider
 
 .awards__slider
-  background-image: url('../img/awards/background.svg')
-  background-repeat: no-repeat
-  background-size: cover
-  height: 311px
+  position: relative
+  font-size: 0
+  &::before
+    display: inline-block
+    content: ' '
+    position: absolute
+    bottom: 0
+    left: 0
+    right: 0
+    background-image: url('../img/awards/background.svg')
+    height: 311px
+    background-repeat: no-repeat
+    background-size: cover
+  height: 361px
+  padding-top: 50px
   overflow: hidden !important
+  // overflow-y: visible !important
 
 .slick-initialized .slick-slide
   transform: translateY(0)
@@ -878,7 +799,7 @@
       border-bottom: 3px solid #fff
       // padding: 0px 0 3px
     .dropdown_open
-      height: 90px !important
+      height: 100px !important
     .payment .down
       &.rotate
         transform: rotateX(0deg)
@@ -887,6 +808,12 @@
       transform: rotateX(180deg)
       margin-top: -25px
     .dropdown
+      margin-top: -5px
+      padding: 0px 26px 0
+      height: 0
+      cursor: pointer
+      overflow: hidden
+      transition: all .3s easeInOutQuad
       span
         font-family: "Intro"
         font-size: 23px
@@ -897,11 +824,7 @@
         transition: all .3s easeInOutQuad
         &:hover
           color: #8547AD !important
-      padding: 14px 26px 0
-      height: 0
-      cursor: pointer
-      overflow: hidden
-      transition: all .3s easeInOutQuad
+
   .view .form
     margin: 44px 0 0
     transition: all .3s easeInOutQuad
@@ -949,10 +872,12 @@
       transition-delay: .3s
     &:nth-child(5)
       transition-delay: .4s
+    &:last-of-type
+      margin-bottom: 46px
     text-align: left
     transform: translateY(0)
     transition: all .3s easeInOutQuad
-    margin: 0px 0 32px
+    margin: 0px 0 33px
   .right .view .form form
     .input-field
       label
@@ -1099,52 +1024,6 @@ button:focus
 //   z-index: 30
 //   opacity: 1
 
-/* MENUBOX
-
-.menu_acive
-  left: 0 !important
-
-.menu-box__close-button
-  transition: all .3s easeInOutQuad
-  padding: 4px 2px
-  cursor: pointer
-
-.menu-box__spoiler__content
-  margin: 36px 0 87px
-
-.menu-box
-  transition: all 0.3s cubic-bezier(0.79, 0, 0.16, 1.01)
-  background-color: #8547AD
-  position: fixed
-  padding: 45px 41px
-  width: 363px
-  box-shadow: 50px 0 50px 0 rgba(0, 0, 0, 0.5)
-  z-index: 1015
-  top: 0
-  bottom: 0
-  left: -500px
-
-.menu-box__spoiler h3:hover, .menu-box__spoiler__content a:hover, .menu-box__close-button:hover
-  opacity: .8
-
-.menu-box__spoiler h3
-  color: #fff
-  font-size: 30px
-  font-family: "Intro"
-  transition: all .3s easeInOutQuad
-  font-weight: 800
-  text-transform: uppercase
-  margin: 33px 0
-  cursor: pointer
-
-.menu-box__spoiler__content a
-  font-family: "Intro"
-  font-weight: 600
-  font-size: 20px
-  line-height: 30px
-  transition: all .3s easeInOutQuad
-  display: block
-  color: #fff !important
 
 /* SLIDERS
 
@@ -1217,6 +1096,7 @@ button:focus
     outline: none
   img
     position: relative
+    mix-blend-mode: multiply
     max-height: 315px
     width: auto
     transform: scale(0.3)
@@ -1224,7 +1104,8 @@ button:focus
     will-change: transform
     transition: all .3s easeInOutQuad
   .slick-active img
-    transform: scale(0.95)
+    transform-origin: center top
+    transform: scale(.95) translate3d(0,-50px,0)
   // .slick-slide:not(.slick-active)
   //   &:hover
   //     img
@@ -1267,23 +1148,15 @@ button:focus
       padding: 0 !important
 
 @media screen and (max-width: 992px)
-  .menu-box
-    padding: 43px 22px
+
   .partnership__container
     .right, .left
       width: 100%
       margin: 0 0 20px
-  .menu_fixed::after
-    left: 22px
-    right: 22px
-  .menu__control
-    margin-left: 10px
-    transition: all .3s easeInOutQuad
-  .menu_fixed .menu__control
-    margin-left: 0px !important
-  .animated_load .video__button
-    top: 390px
-    bottom: unset
+
+  // .animated_load .video__button
+  //   top: 390px
+  //   bottom: unset
   .video__button
     top: 450px
     bottom: unset
@@ -1322,9 +1195,9 @@ button:focus
       width: 100%
   .animated_load .video__button
     opacity: 1
-    top: 386px
+    top: 316px
     margin: 0 auto
-    left: calc(50% - 105px)
+    // left: calc(50% - 105px)
   .header_slider .slide .right
     h3
       font-size: 40px !important
@@ -1342,26 +1215,19 @@ button:focus
   #weekly
     padding: 0px 0 48px
     .container-fluid
-      padding: 0 22px 0
+      padding: 0 25px 0
+    .col-md-6
+      // padding: 0
     h2
       margin: 9px 0 34px
+    .weekly__week
+      padding: 0
   .weekly__week .col-md-6
     padding: 0
   .video__button
     top: 450px
     margin: 0px 7px
-  .menu__logo
-    top: 24px
-    right: 26px
-  .menu
-    position: fixed
-    top: 0
-    margin: 0
-    z-index: 100
-    padding: 16px 12px 41px
-    left: 0
-    right: 0
-    transition: all .3s easeInOutQuad
+
   .next_issue__container__text
     margin: 0 0 40px
   #next_issue
@@ -1408,7 +1274,7 @@ button:focus
   /*
   #partners
     margin: 20px 0 0px
-    padding: 0 15px
+    padding: 0 25px
     h2
       font-size: 60px
     .container-fluid
@@ -1423,14 +1289,8 @@ button:focus
     margin-top: 93px
 
 @media screen and (max-width: 450px)
-  .menu-box
-    padding: 30px 15px
-  .menu_fixed .menu__logo
-    top: 25px
 
-  .menu__logo
-    top: 38px
-    right: 13px !important
+
   .header_slider .slide .right
     padding: 0 0 55px
   .video-box__content
@@ -1493,8 +1353,9 @@ button:focus
         .left
           .bg
             height: 212px
-            width: 92%
-            left: 4%
+            width: calc(100% - 30px)
+            left: 15px
+            right: 15px
             bottom: 0
             top: 34px
           img
@@ -1516,27 +1377,15 @@ button:focus
       font-size: 30px !important
       padding: 0 5%
       line-height: 40px
-  .menu_fixed
-    padding: 22px 12px !important
-    &::after
-      left: 15px
-      right: 15px
-  .menu__control
-    margin: 0px 25px 0 0px
-  .menu_fixed .menu__logo img, .menu__logo img
-    width: 130px
-    transition: all .3s easeInOutQuad
-    /* margin-right: 50px;
+
   .video__button
     margin: 0
   .animated_load .video__button
-    top: 210px
+    top: 150px
+    bottom: auto
     transform: scale(0.76)
     left: calc(50% - 103px)
-  .menu
-    padding: 28px 12px 35px
-    max-width: 450px
-    overflow: hidden
+
   h2
     font-size: 39px !important
     margin: 0 42px 10px !important
@@ -1570,6 +1419,8 @@ button:focus
     left: 6px
   #partners
     margin: 20px 0 0
+    padding-left: 15px
+    padding-right: 15px
     h2
       margin: 0 !important
       padding: 9px 18px 15px

@@ -1,0 +1,156 @@
+
+
+.menu_fixed
+  right: 0 !important
+  left: 0 !important
+  padding: 41px 40px 24px !important
+
+.animated_load .menu_fixed::after
+  opacity: 1
+
+.menu_fixed
+  &::after
+    content: ''
+    height: 3px
+    position: absolute
+    background: $fontColor
+    bottom: 0
+    transition: opacity .3s easeInOutQuad
+    left: 50px
+    right: 50px
+    opacity: 0
+  .menu__logo
+    top: 40px
+    right: -34px
+    img
+      width: 63%
+
+.menu__logo img
+  transition: all .3s easeInOutQuad
+  width: 100%
+
+
+.menu
+  background: white
+  z-index: 1010
+  position: fixed
+  top: 0
+  margin: 0
+  right: 0
+  left: 50%
+  transition: all .3s easeInOutQuad
+  padding: 35px 38px
+
+.menu__logo
+  display: inline-block
+  right: 42px
+  position: absolute
+  top: 43px
+  transition: all .3s easeInOutQuad
+
+.menu__control
+  display: none
+  margin-left: 10px
+  margin-right: 47px
+
+.menu__control__click
+  letter-spacing: .02em
+  font-size: 15px
+  transition: all .3s easeInOutQuad
+  padding: 0 0 0 5px
+  cursor: pointer
+
+.menu_focus
+  .menu__control__click
+    color: $fontColor !important
+    opacity: .25
+  .menu__control__burger__item
+    background: $fontColor
+    opacity: .25
+
+.menu__control:hover
+  .menu__control__click
+    text-decoration: none
+    color: #8547AD !important
+  .menu__control__burger__item
+    background: #8547AD
+
+.menu__switch-lang
+  display: none
+  transition: all .3s easeInOutQuad
+  &:hover
+    color: #8547AD !important
+
+.menu__control__burger
+  display: inline-block
+  width: 10px
+  // align to the edge fix
+  margin-left: -3px
+  height: 20px
+  transition: all .3s easeInOutQuad
+  position: relative
+  top: 4px
+
+.menu__control__burger__item
+  background: #333
+  height: 3px
+  width: 3px
+  margin: 3px
+  transition: all .3s easeInOutQuad
+
+
++r($desktop)
+  .menu_fixed
+    padding: 16px 15px 40px !important
+    .menu__logo img
+      width: 100%
+    &::after
+      left: 25px
+      right: 25px
+    .menu__logo
+      top: 24px
+      right: 25px
+  .menu__control
+    margin-left: 10px
+    transition: all .3s easeInOutQuad
+  .menu_fixed .menu__control
+    // margin-left: 0px !important
+
+  .menu__logo
+    top: 24px
+    right: 25px
+  .menu
+    position: fixed
+    top: 0
+    margin: 0
+    z-index: 100
+    padding: 16px 15px 40px
+    left: 0
+    right: 0
+    transition: all .3s easeInOutQuad
+
+
++r(450)
+  .menu_fixed .menu__logo
+    top: 16px
+
+  .menu__logo
+    top: 16px
+    right: 15px !important
+
+  .menu_fixed
+    padding: 6px 15px 35px !important
+    &::after
+      left: 15px
+      right: 15px
+  .menu__control
+    margin: 0px 28px 0 0px
+  .menu_fixed .menu__logo img, .menu__logo img
+    width: 125px
+    transition: all .3s easeInOutQuad
+    /* margin-right: 50px;
+
+  .menu
+    padding: 6px 15px 35px
+    max-width: 450px
+    overflow: hidden

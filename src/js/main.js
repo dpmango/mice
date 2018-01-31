@@ -50,7 +50,7 @@ $(document).ready(function(){
     mobileS: 375,
     mobile: 568,
     tablet: 768,
-    desktop: 1024,
+    desktop: 992,
     wide: 1336,
     hd: 1680
   }
@@ -96,6 +96,7 @@ $(document).ready(function(){
     _window.on('resize', throttle(fitText, 200));
 
     teleportQmark();
+    // _window.on('resize', debounce(teleportQmark, 200));
 
     // temp - developer
     _window.on('resize', debounce(setBreakpoint, 200));
@@ -217,16 +218,67 @@ $(document).ready(function(){
 
   // HAMBURGER TOGGLER
   _document.on('click', '[js-toggleMenu]', function(){
-    $(this).toggleClass('menu_focus');
-    $('.menu-box').toggleClass('menu_acive')
-    $('body').toggleClass('overflow_mobile')
+    $('[js-toggleMenu]').toggleClass('menu_focus');
+    $('.menu-box').toggleClass('menu_acive');
+    $('body').toggleClass('overflow_mobile');
+
+    blockScroll();
   });
 
   function closeMobileMenu(){
-    $('[js-toggleMenu]').removeClass('is-active');
+    blockScroll(true); // true is for the unlock option
+    $('[js-toggleMenu]').removeClass('menu_focus');
     $('.menu-box').removeClass('menu_acive')
     $('body').toggleClass('overflow_mobile')
   }
+
+  var preventKeys = {
+    37: 1, 38: 1, 39: 1, 40: 1
+  };
+
+  function preventDefault(e) {
+    e = e || window.event;
+    if (e.preventDefault)
+      e.preventDefault();
+    e.returnValue = false;
+  }
+
+  function preventDefaultForScrollKeys(e) {
+    if (preventKeys[e.keyCode]) {
+      preventDefault(e);
+      return false;
+    }
+  }
+
+  function disableScroll() {
+    if (window.addEventListener) // older FF
+      window.addEventListener('DOMMouseScroll', preventDefault, false);
+    window.onwheel = preventDefault; // modern standard
+    window.onmousewheel = document.onmousewheel = preventDefault; // older browsers, IE
+    window.ontouchmove = preventDefault; // mobile
+    document.onkeydown = preventDefaultForScrollKeys;
+  }
+
+  function enableScroll() {
+    if (window.removeEventListener)
+      window.removeEventListener('DOMMouseScroll', preventDefault, false);
+    window.onmousewheel = document.onmousewheel = null;
+    window.onwheel = null;
+    window.ontouchmove = null;
+    document.onkeydown = null;
+  }
+
+  function blockScroll(unlock) {
+    if ($('[js-toggleMenu]').is('.menu_focus')) {
+      disableScroll();
+    } else {
+      enableScroll();
+    }
+
+    if (unlock) {
+      enableScroll();
+    }
+  };
 
   // SET ACTIVE CLASS IN HEADER
   // * could be removed in production and server side rendering
@@ -296,6 +348,10 @@ $(document).ready(function(){
         $(el).text(elText.substring(1)) // remove first letter
         $(el).prepend("<span class='teleported-q'>«</span>") // create and append el
       }
+
+      if ( _window.width() < bp.desktop ){
+
+      }
     })
   }
 
@@ -337,6 +393,7 @@ $(document).ready(function(){
 
     $('.reviews__slider').slick({
       fade: true,
+      draggable: false,
       prevArrow: '<div class="btn"><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><img src="img/reviews_slider/slider_prev.svg"></div>',
       nextArrow: '<div class="btn"><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><img src="img/reviews_slider/slider_next.svg"></div>',
     });
@@ -719,11 +776,8 @@ $(document).ready(function(){
   Barba.Dispatcher.on('newPageReady', function(currentStatus, oldStatus, container, newPageRawHTML) {
 
     pageReady();
+    closeMobileMenu();
 
-    // close mobile menu
-    if ( _window.width() < bp.mobile ){
-      closeMobileMenu();
-    }
   });
 
 

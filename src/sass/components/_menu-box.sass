@@ -1,0 +1,72 @@
+
+/* MENUBOX
+
+.menu_acive
+  left: 0 !important
+
+.menu-box__close-button
+  transition: all .3s easeInOutQuad
+  // padding: 4px 2px
+  cursor: pointer
+
+.menu-box__spoiler__content
+  margin: 36px 0 87px
+
+.menu-box
+  transition: all 0.3s cubic-bezier(0.79, 0, 0.16, 1.01)
+  background-color: #8547AD
+  position: fixed
+  padding: 45px 50px
+  width: 372px
+  box-shadow: 50px 0 50px 0 rgba(0, 0, 0, 0.5)
+  z-index: 1015
+  top: 0
+  bottom: 0
+  left: -500px
+
+.menu-box__spoiler h3:hover, .menu-box__spoiler__content a:hover, .menu-box__close-button:hover
+  opacity: .8
+
+.menu-box__spoiler h3
+  color: #fff
+  font-size: 30px
+  font-family: "Intro"
+  transition: all .3s easeInOutQuad
+  font-weight: 800
+  text-transform: uppercase
+  margin: 35px 0
+  cursor: pointer
+
+.menu-box__spoiler__content a
+  display: inline-block
+  font-family: "Intro"
+  font-weight: 600
+  font-size: 20px
+  line-height: 30px
+  transition: all .3s easeInOutQuad
+  display: block
+  color: #fff !important
+
+
++r($desktop)
+  .menu-box
+    padding: 25px 25px
+    &__spoiler
+      padding-left: 25px
+
++r(450)
+  .menu-box
+    padding: 15px 15px
+    width: 240px
+    &__spoiler
+      padding-left: 30px
+      h3
+        font-size: 20px
+        margin-bottom: 20px
+      &__content
+        margin-top: 30px
+        margin-bottom: 80px
+        a
+          font-size: 15px
+          line-height: 26px
+          // margin-bottom: 5px

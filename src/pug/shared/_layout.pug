@@ -9,7 +9,10 @@ html(lang="ru")
       include ../components/_preloader
     
     #barba-wrapper
+      block menu
+        include ../components/_menu
       .page(class=outClass)
+        
         .page__content
           //- block header
           //-   include ../components/_header
@@ -19,3 +22,4 @@ html(lang="ru")
           include ../components/_footer
         block scripts
           include _scripts
+  

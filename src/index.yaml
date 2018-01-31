@@ -2,7 +2,7 @@ ProjectTitle: Mice
 
 PageList:
 - file: homepage.html
-  ready: 80
+  ready: 90
 - file: articles.html
   ready: 0
 - file: video.html
