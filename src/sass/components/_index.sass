@@ -21,9 +21,9 @@
     content: ''
     height: 3px
     position: absolute
-    background: #231F20
+    background: $fontColor
     bottom: 0
-    transition: opacity .3s easeInOutExpo
+    transition: opacity .3s easeInOutQuad
     left: 50px
     right: 50px
     opacity: 0
@@ -34,7 +34,7 @@
       width: 63%
 
 .menu__logo img
-  transition: all .3s easeInOutExpo
+  transition: all .3s easeInOutQuad
   width: 100%
 
 /* BUTTONS
@@ -46,7 +46,7 @@
   .item
     background: #8547AD
     position: absolute
-    transition: all .3s easeInOutExpo
+    transition: all .3s easeInOutQuad
     &:nth-child(1)
       height: 3px
       width: 250px
@@ -112,7 +112,7 @@
       font-size: 15px
       margin: 0 5px
       font-weight: 100
-      transition: all .3s easeInOutExpo
+      transition: all .3s easeInOutQuad
       &:hover
         color: #8547AD !important
 
@@ -125,11 +125,14 @@
     height: 100vh
     width: 50%
     display: inline-block
-    transition: all .3s easeInOutExpo
+    transition: all .3s easeInOutQuad
   .left
+    position: relative
     background: #8547AD
     overflow: hidden
     .bg
+      &--mobile
+        display: none
       .video__button
         color: #fff !important
         padding: 29px 53px 28px
@@ -141,6 +144,10 @@
       background-size: cover
       background-repeat: no-repeat
     video
+      object-fit: cover
+      position: absolute
+      left: 50%
+      transform: translateX(-50%)
       height: 100%
   .right
     background: #fff
@@ -150,18 +157,26 @@
     text-align: center
     justify-content: center
 
+.is-mobile
+  .header_slider .slide .left
+    video
+      display: none
+    .bg--mobile
+      display: inline-block
+
+
 /* .header_slider .slick-active .right h3, .header_slider .slick-active .right .hr, .header_slider .slick-active .right p{
  *  transform: translateY(0)!important;
  *  transition-delay: 0s!important;
  *}
 
 .hr
-  background: #231F20
+  background: $fontColor
   width: 220px
   height: 3px
   margin: 38px 0 20px
-  background: #231F20
-  transition: all .3s easeInOutExpo
+  background: $fontColor
+  transition: all .3s easeInOutQuad
   transition-delay: .3s
   opacity: 0
   transform: translateY(50px)
@@ -176,7 +191,7 @@
 .header_slider .slide .right
   h3
     font-family: "Oranienbaum"
-    transition: all .3s easeInOutExpo
+    transition: all .3s easeInOutQuad
     transition-delay: 0s
     font-size: 50px
     font-weight: 100
@@ -194,7 +209,7 @@
     font-size: 20px
     line-height: 30px
     opacity: .6
-    transition: all .3s easeInOutExpo
+    transition: all .3s easeInOutQuad
     transition-delay: .6s
     opacity: 0
     transform: translateY(50px)
@@ -207,11 +222,13 @@
 
 .video__button
   position: absolute
-  transition: all .3s easeInOutExpo
+  transition: all .3s easeInOutQuad
+  left: 50%
+  transform: translateX(-50%)
   bottom: 0px
   opacity: 0
   display: inline
-  margin: 0 0 0 calc(26% - 112px)
+  margin: 0 0 0 0
   font-weight: 800
   font-family: "Intro"
   text-transform: uppercase
@@ -231,7 +248,7 @@
     content: ''
     position: absolute
     top: 19px
-    transition: all .3s easeInOutExpo
+    transition: all .3s easeInOutQuad
     background: url(../img/setting/fullscreen.svg)
     width: 35px
     height: 36px
@@ -245,7 +262,7 @@
   margin: 0
   right: 0
   left: 50%
-  transition: all .3s easeInOutExpo
+  transition: all .3s easeInOutQuad
   padding: 35px 38px
 
 .menu__logo
@@ -253,7 +270,7 @@
   right: 42px
   position: absolute
   top: 43px
-  transition: all .3s easeInOutExpo
+  transition: all .3s easeInOutQuad
 
 .menu__control
   display: none
@@ -263,16 +280,16 @@
 .menu__control__click
   letter-spacing: .02em
   font-size: 15px
-  transition: all .3s easeInOutExpo
+  transition: all .3s easeInOutQuad
   padding: 0 0 0 5px
   cursor: pointer
 
 .menu_focus
   .menu__control__click
-    color: #231F20 !important
+    color: $fontColor !important
     opacity: .25
   .menu__control__burger__item
-    background: #231F20
+    background: $fontColor
     opacity: .25
 
 .menu__control:hover
@@ -284,7 +301,7 @@
 
 .menu__switch-lang
   display: none
-  transition: all .3s easeInOutExpo
+  transition: all .3s easeInOutQuad
   &:hover
     color: #8547AD !important
 
@@ -294,7 +311,7 @@
   // align to the edge fix
   margin-left: -3px
   height: 20px
-  transition: all .3s easeInOutExpo
+  transition: all .3s easeInOutQuad
   position: relative
   top: 4px
 
@@ -303,12 +320,12 @@
   height: 3px
   width: 3px
   margin: 3px
-  transition: all .3s easeInOutExpo
+  transition: all .3s easeInOutQuad
 
 /* weekly
 
 #weekly
-  padding: 0 15px 77px
+  padding: 0 25px 77px
   margin: 0 auto
   max-width: 1680px
   h2
@@ -333,7 +350,7 @@
   background: rgba(133, 71, 173, 0.25)
   position: absolute
   opacity: 0
-  transition: all 0.3s easeInOutExpo
+  transition: all 0.3s easeInOutQuad
   top: 0
   bottom: 0
   right: 0
@@ -341,7 +358,7 @@
 
 .weekly__week:hover
   .tag
-    color: #231F20
+    color: $fontColor
   .weekly__week__image::after
     opacity: 1
 
@@ -355,7 +372,7 @@
     font-size: 15px
     text-transform: uppercase
     color: #8547AD
-    transition: all .3s easeInOutExpo
+    transition: all .3s easeInOutQuad
     padding: 0 0 5px
     position: relative
     /* border-bottom: 3px solid #333;
@@ -369,14 +386,14 @@
       content: ''
       background: #333
       width: 100%
-      transition: all .3s easeInOutExpo
+      transition: all .3s easeInOutQuad
       bottom: -2px
       right: 0
       position: absolute
       height: 3px
     &::after
       content: ''
-      transition: all .3s easeInOutExpo
+      transition: all .3s easeInOutQuad
       transition-delay: .2s
       background: #333
       width: 0%
@@ -393,12 +410,12 @@
 .weekly__week__content
   position: relative
   h4
-    transition: all 0.3s easeInOutExpo
+    transition: all 0.3s easeInOutQuad
     font-size: 23px
     font-weight: 600
     line-height: 29px
     margin: 24px 0 0
-    color: #231F20
+    color: $fontColor
   .teleported-q
     position: absolute
     line-height: 1
@@ -415,7 +432,7 @@
 /* next_issue
 
 #next_issue
-  padding: 75px 18px
+  padding: 75px 25px
   background: #ededed
   hr
     width: 180px
@@ -436,7 +453,7 @@
     margin: 47px 0 34px
     text-transform: uppercase
     font-size: 15px
-    color: #231F20
+    color: $fontColor
   h2
     color: #8547AD
     font-size: 70px
@@ -446,13 +463,14 @@
   color: #333 !important
 
 #next_issue img
-  width: 99%
+  width: 100%
+  font-size: 0
   background: #aaa
   margin: 0 0px 0 -30px
 
 .next_issue__container__text
   font-family: "Intro"
-  color: #231F20
+  color: $fontColor
   opacity: .8
   font-weight: 400
   font-size: 20px
@@ -515,20 +533,20 @@
         transform: translateY(50px)
         opacity: 0
         transition-delay: 0s
-        transition: all .3s easeInOutExpo
+        transition: all .3s easeInOutQuad
       hr
         width: 180px
         border: none
-        border-bottom: 3px solid #231F20
+        border-bottom: 3px solid $fontColor
         margin: 40px auto
         transform: translateY(50px)
         opacity: 0
         transition-delay: 0s
-        transition: all .3s easeInOutExpo
+        transition: all .3s easeInOutQuad
       p
         font-family: "Intro"
         font-size: 20px
-        color: #231F20
+        color: $fontColor
         opacity: .8
         font-weight: 400
         margin: 0
@@ -536,16 +554,16 @@
         transform: translateY(50px)
         opacity: 0
         transition-delay: 0s
-        transition: all .3s easeInOutExpo
+        transition: all .3s easeInOutQuad
       .social_link
         margin-top: 40px
         transform: translateY(50px)
         opacity: 0
         transition-delay: 0s
-        transition: all .3s easeInOutExpo
+        transition: all .3s easeInOutQuad
         a
           svg path
-            transition: all .3s easeInOutExpo
+            transition: all .3s easeInOutQuad
           &:hover svg path
             fill: #8547AD
     &.slick-active .right
@@ -570,7 +588,7 @@
 /* partners
 
 #partners
-  padding: 0 43px
+  padding: 0 50px
   margin: 75px auto
   max-width: 1680px
   text-align: center
@@ -584,7 +602,7 @@
     display: inline-block
     position: relative
   .container-fluid
-    border: 3px solid #231F20
+    border: 3px solid $fontColor
     padding: 37px 69px 0
 
 .partners__row
@@ -608,6 +626,7 @@
 /* AWARDS
 
 #awards
+  padding: 0 25px
   h2
     margin: 98px 0 56px
   .container-fluid
@@ -624,7 +643,7 @@
   p
     text-align: center
     margin: 40px
-    color: #231F20
+    color: $fontColor
     opacity: .8
     line-height: 30px
     font-size: 20px
@@ -642,13 +661,13 @@
 
 .slick-initialized .slick-slide
   transform: translateY(0)
-  transition: all .3s easeInOutExpo
+  transition: all .3s easeInOutQuad
 
 .awards__slider .slick-list
   overflow: unset !important
 
 .slick-track
-  transition: all .3s easeInOutExpo
+  transition: all .3s easeInOutQuad
 
 /* partnership
 
@@ -667,7 +686,7 @@
     padding: 0 25px
     box-sizing: border-box
   .right .view
-    background: #231F20
+    background: $fontColor
     color: #fff
   .left .view
     background: #EDEDED
@@ -675,7 +694,8 @@
   .right h4, .left h4
     font-family: "Oranienbaum"
     font-size: 70px
-    font-weight: 100
+    padding-left: .1em
+    // font-weight: 100
     margin: 0 0 26px
   .right .view, .left .view
     padding: 48px 75px 50px
@@ -686,23 +706,24 @@
       font-family: "Intro"
       padding: 0 45px
       margin: 20px 0 9px
-      line-height: 22px
+      line-height: 1.53
   .left p
     font-size: 15px
     font-family: "Intro"
     padding: 0 45px
     margin: 20px 0 9px
-    line-height: 22px
+    color: rgba($fontColor, .8)
+    line-height: 1.53
   .right button
     color: #fff !important
     border: none !important
     border-top: 3px solid #8547AD !important
     /* background: #8547AD!important;
   .left button
-    color: #231F20 !important
-    border-color: #231F20 !important
+    color: $fontColor !important
+    border-color: $fontColor !important
     position: relative
-    margin: 47px 0 0 !important
+    margin: 40px 0 23px !important
     &::after
       content: ""
       background: #fff
@@ -712,7 +733,7 @@
       left: 0
       bottom: 0
       right: 100%
-      transition: all .3s easeInOutExpo
+      transition: all .3s easeInOutQuad
     &::before
       content: ""
       background: #fff
@@ -722,7 +743,7 @@
       left: 0
       bottom: 0
       right: 0
-      transition: all .3s easeInOutExpo
+      transition: all .3s easeInOutQuad
     &:hover
       &::after
         right: 0 !important
@@ -746,7 +767,7 @@
       bottom: 0
       transition-delay: 0s
       right: 0
-      transition: all .3s easeInOutExpo
+      transition: all .3s easeInOutQuad
     &::before
       content: ""
       background: #8547AD
@@ -756,12 +777,12 @@
       left: 0
       bottom: 0
       right: 100%
-      transition: all .3s easeInOutExpo
+      transition: all .3s easeInOutQuad
 
 .dropdown_label
   position: absolute
   top: -30px !important
-  transition: all .3s easeInOutExpo
+  transition: all .3s easeInOutQuad
   pointer-events: none
 
 .dropdown_label_translate_2, .dropdown_label_translate
@@ -779,7 +800,7 @@
       box-sizing: border-box
       border: 3px solid #8547AD
       cursor: pointer
-      color: #231F20
+      color: $fontColor
       width: 100%
       font-family: "Intro"
       font-weight: 900
@@ -797,7 +818,7 @@
     box-sizing: border-box
     border: 3px solid #8547AD
     cursor: pointer
-    color: #231F20
+    color: $fontColor
     width: 100%
     font-family: "Intro"
     font-weight: 900
@@ -837,7 +858,7 @@
 .partnership__container
   .view .form.hiddenform.hidden form
     opacity: 0 !important
-    transition: all .3s easeInOutExpo
+    transition: all .3s easeInOutQuad
   .right .view .form input
     color: #fff
     cursor: pointer
@@ -862,7 +883,7 @@
       &.rotate
         transform: rotateX(0deg)
       float: right
-      transition: all .3s easeInOutExpo
+      transition: all .3s easeInOutQuad
       transform: rotateX(180deg)
       margin-top: -25px
     .dropdown
@@ -873,36 +894,36 @@
         font-weight: 600
         display: block
         padding: 7px 0
-        transition: all .3s easeInOutExpo
+        transition: all .3s easeInOutQuad
         &:hover
           color: #8547AD !important
       padding: 14px 26px 0
       height: 0
       cursor: pointer
       overflow: hidden
-      transition: all .3s easeInOutExpo
+      transition: all .3s easeInOutQuad
   .view .form
     margin: 44px 0 0
-    transition: all .3s easeInOutExpo
+    transition: all .3s easeInOutQuad
     form label:not(.input-field__validation)
       font-family: "Intro"
       text-transform: uppercase
       font-weight: 600
       font-size: 23px
-      color: #231F20
+      color: $fontColor
       position: relative
-      transition: all .3s easeInOutExpo
+      transition: all .3s easeInOutQuad
       top: -41px
       display: block
       height: 20px
   .right .view .content
-    transition: all .3s easeInOutExpo
+    transition: all .3s easeInOutQuad
     opacity: 1
   .left .view .content
-    transition: all .3s easeInOutExpo
+    transition: all .3s easeInOutQuad
   .view .form form
     padding: 0
-    transition: all .3s easeInOutExpo
+    transition: all .3s easeInOutQuad
     opacity: 1
   .right .view .form form .input-field input:focus, .left .view .form form .input-field input:focus
     border-color: #8547AD !important
@@ -930,7 +951,7 @@
       transition-delay: .4s
     text-align: left
     transform: translateY(0)
-    transition: all .3s easeInOutExpo
+    transition: all .3s easeInOutQuad
     margin: 0px 0 32px
   .right .view .form form
     .input-field
@@ -944,8 +965,8 @@
     width: 100%
     background: transparent
     border: none
-    transition: all .3s easeInOutExpo
-    border-bottom: 3px solid #231F20
+    transition: all .3s easeInOutQuad
+    border-bottom: 3px solid $fontColor
     padding: 14px 0 3px
     z-index: 20
     cursor: pointer
@@ -953,7 +974,7 @@
     font-size: 23px
     font-family: "Intro"
     font-weight: 600
-    color: #231F20
+    color: $fontColor
     margin: 0px 0 11px
 
   .input-field__validation
@@ -970,7 +991,7 @@
 input:-webkit-autofill
   -webkit-box-shadow: inset 0 0 0 50px #ededed !important
   /* Цвет фона
-  -webkit-text-fill-color: #231F20 !important
+  -webkit-text-fill-color: $fontColor !important
   /* цвет текста
   color: #999 !important
   /* цвет текста
@@ -1001,17 +1022,17 @@ input:-webkit-autofill
     width: 20px
     margin-bottom: -3px
     transform: rotate(45deg)
-    transition: .3s all easeInOutExpo
-    background: #231F20
+    transition: .3s all easeInOutQuad
+    background: $fontColor
 
 .video-transition, .video-enter-active, .video-leave-active
-  transition: all .3s easeInOutExpo
+  transition: all .3s easeInOutQuad
 
 .video-enter, .video-leave-to
   opacity: 0
 
 .coop-transition, .coop-enter-active, .coop-leave-active
-  transition: all .3s easeInOutExpo
+  transition: all .3s easeInOutQuad
 
 .coop-enter, .coop-leave-to
   opacity: 0
@@ -1042,40 +1063,41 @@ button:focus
 /* POPUP
 
 .video-box__close-button
+  position: relative
   height: 50px
-  right: 50px
-  top: 50px
+  right: 0px
+  top: 0px
   z-index: 100
 
-.video-box
-  position: fixed
-  top: 0
-  bottom: 0
-  right: 0
-  left: 0
-  z-index: 200
-  background: rgba(0, 0, 0, 0.5)
-  transition: all .3s easeInOutExpo
-  opacity: 0
-  pointer-events: none
-  &.is-active
-    z-index: 5000
-    opacity: 0
-    pointer-events: all
+// .video-box
+//   position: fixed
+//   top: 0
+//   bottom: 0
+//   right: 0
+//   left: 0
+//   z-index: 200
+//   background: rgba(0, 0, 0, 0.5)
+//   transition: all .3s easeInOutQuad
+//   opacity: 0
+//   pointer-events: none
+//   &.is-active
+//     z-index: 5000
+//     opacity: 1
+//     pointer-events: all
 
 
-.video-box__content
-  margin: 30px
-  padding-bottom: 56.25%
-  position: relative
-  iframe
-    position: absolute
-    height: 100%
-    width: 100%
-
-.video-active
-  z-index: 30
-  opacity: 1
+// .video-box__content
+//   margin: 30px
+//   padding-bottom: 56.25%
+//   position: relative
+//   iframe
+//     position: absolute
+//     height: 100%
+//     width: 100%
+//
+// .video-active
+//   z-index: 30
+//   opacity: 1
 
 /* MENUBOX
 
@@ -1083,7 +1105,7 @@ button:focus
   left: 0 !important
 
 .menu-box__close-button
-  transition: all .3s easeInOutExpo
+  transition: all .3s easeInOutQuad
   padding: 4px 2px
   cursor: pointer
 
@@ -1109,7 +1131,7 @@ button:focus
   color: #fff
   font-size: 30px
   font-family: "Intro"
-  transition: all .3s easeInOutExpo
+  transition: all .3s easeInOutQuad
   font-weight: 800
   text-transform: uppercase
   margin: 33px 0
@@ -1120,7 +1142,7 @@ button:focus
   font-weight: 600
   font-size: 20px
   line-height: 30px
-  transition: all .3s easeInOutExpo
+  transition: all .3s easeInOutQuad
   display: block
   color: #fff !important
 
@@ -1148,9 +1170,9 @@ button:focus
       margin: 0 7px
       display: inline-block
       font-family: "Oranienbaum"
-      color: #231F20
+      color: $fontColor
       font-size: 15px
-      transition: .3s easeInOutExpo
+      transition: .3s easeInOutQuad
       cursor: pointer
 
 /* reviews-slider
@@ -1200,7 +1222,7 @@ button:focus
     transform: scale(0.3)
     margin: 0 auto
     will-change: transform
-    transition: all .3s easeInOutExpo
+    transition: all .3s easeInOutQuad
   .slick-active img
     transform: scale(0.95)
   // .slick-slide:not(.slick-active)
@@ -1256,7 +1278,7 @@ button:focus
     right: 22px
   .menu__control
     margin-left: 10px
-    transition: all .3s easeInOutExpo
+    transition: all .3s easeInOutQuad
   .menu_fixed .menu__control
     margin-left: 0px !important
   .animated_load .video__button
@@ -1339,7 +1361,7 @@ button:focus
     padding: 16px 12px 41px
     left: 0
     right: 0
-    transition: all .3s easeInOutExpo
+    transition: all .3s easeInOutQuad
   .next_issue__container__text
     margin: 0 0 40px
   #next_issue
@@ -1503,7 +1525,7 @@ button:focus
     margin: 0px 25px 0 0px
   .menu_fixed .menu__logo img, .menu__logo img
     width: 130px
-    transition: all .3s easeInOutExpo
+    transition: all .3s easeInOutQuad
     /* margin-right: 50px;
   .video__button
     margin: 0

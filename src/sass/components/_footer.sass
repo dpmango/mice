@@ -2,14 +2,27 @@
 footer
   margin: 125px 0 0
   .container-fluid
-    padding: 0 58px
+    padding: 0 50px
     margin: 0 auto
     max-width: 1680px
     .row
-      border-top: 3px solid #231F20
-      padding: 48px 0
-      div
-        padding: 0
+      position: relative
+      // border-top: 3px solid
+      padding: 52px 0 90px 0
+      margin-left: -25px
+      margin-right: -25px
+      &::before
+        display: inline-block
+        content: ' '
+        position: absolute
+        top: 0
+        left: 25px
+        right: 25px
+        height: 3px
+        background: $fontColor
+      .col-lg-4
+        padding-left: 25px
+        padding-right: 25px
   hr
     border: none
     border-top: 3px solid #ededed
@@ -17,11 +30,18 @@ footer
   .mini__content
     margin: 20px 0 40px
     .phone
+      display: inline-block
       font-size: 30px
+      margin-top: 3px
     .design
       font-size: 14px
+    .street
+      display: inline-block
+      margin-top: -2px
+      line-height: 1.5
 
 .footer__link
+  display: inline-block
   font-family: "Intro"
   font-weight: 800
   font-size: 20px

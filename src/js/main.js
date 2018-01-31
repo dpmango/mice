@@ -41,6 +41,10 @@ $(document).ready(function(){
     $('body').addClass('is-ie');
   }
 
+  if ( _mobileDevice ){
+    $('body').addClass('is-mobile');
+  }
+
   // BREAKPOINT SETTINGS
   var bp = {
     mobileS: 375,
@@ -239,12 +243,12 @@ $(document).ready(function(){
 
 
   // VIDEO PLAY
-  _document.on('click', '[js-openVideoHeader]', function(){
-    $(this).toggleClass('is-active');
-    $('body').toggleClass('overflow');
-    // $(this).closest('.promo-video').toggleClass('playing');
-    // $(this).closest('.promo-video').find('iframe').attr("src", $("iframe").attr("src").replace("autoplay=0", "autoplay=1"));
-  });
+  // _document.on('click', '[js-openVideoHeader]', function(){
+  //   $('[js-openVideoHeader]').toggleClass('is-active');
+  //   $('body').toggleClass('overflow');
+  //   // $(this).closest('.promo-video').toggleClass('playing');
+  //   // $(this).closest('.promo-video').find('iframe').attr("src", $("iframe").attr("src").replace("autoplay=0", "autoplay=1"));
+  // });
 
   //////////
   // FORM TOGGLERS
@@ -450,6 +454,37 @@ $(document).ready(function(){
       }
     });
 
+    $('[js-popupVideo]').magnificPopup({
+      // disableOn: 700,
+      type: 'iframe',
+      fixedContentPos: true,
+      fixedBgPos: true,
+      overflowY: 'auto',
+      closeBtnInside: true,
+      preloader: false,
+      midClick: true,
+      removalDelay: 300,
+      mainClass: 'popup-buble',
+      callbacks: {
+        beforeOpen: function() {
+          // startWindowScroll = _window.scrollTop();
+          // $('html').addClass('mfp-helper');
+        }
+      },
+      patterns: {
+        youtube: {
+          index: 'youtube.com/',
+          id: 'v=', // String that splits URL in a two parts, second part should be %id%
+          // Or null - full URL will be returned
+          // Or a function that should return %id%, for example:
+          // id: function(url) { return 'parsed id'; }
+
+          src: '//www.youtube.com/embed/%id%?autoplay=1&controls=0&showinfo=0' // URL that will be set as a source for iframe.
+        }
+      },
+      closeMarkup: '<button class="mfp-close"><div class="video-box__close-button btn"><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><img src=img/setting/video_close.svg alt=></img></div></button>'
+    });
+
     $('[js-popup-gallery]').magnificPopup({
   		delegate: 'a',
   		type: 'image',
@@ -466,10 +501,10 @@ $(document).ready(function(){
   	});
   }
 
+  _document.on('click', '.mfp-close', closeMfp);
+
   function closeMfp(){
-    if ( _window.width() < bp.desktop ){
-      $.magnificPopup.close();
-    }
+    $.magnificPopup.close();
   }
 
   ////////////
