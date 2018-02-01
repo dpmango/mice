@@ -85,7 +85,9 @@ $(document).ready(function(){
     initHeaderScroll();
 
     initPopups();
-    _window.on('load', initSliders)
+    window.onload = function(){
+      initSliders()
+    }
     // initSliders();
     runScrollMonitor();
     initMasks();
