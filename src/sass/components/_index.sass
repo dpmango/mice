@@ -15,7 +15,7 @@
   position: absolute
   cursor: pointer
   .item
-    background: #8547AD
+    background: $primaryColor
     position: absolute
     transition: all .3s easeInOutQuad
     &:nth-child(1)
@@ -63,8 +63,6 @@
 .slick-vertical .slick-slide
   border: none !important
 
-.animated_load .slick-active .hr::before
-  width: 100%
 
 .slick-dots
   text-align: center
@@ -78,7 +76,7 @@
     display: inline-block
     cursor: pointer
     &.slick-active a
-      color: #8547AD !important
+      color: $primaryColor !important
       font-size: 25px
     a
       background: none
@@ -89,7 +87,7 @@
       font-weight: 100
       transition: all .3s easeInOutQuad
       &:hover
-        color: #8547AD !important
+        color: $primaryColor !important
 
 .header_slider .slide
   display: flex !important
@@ -103,7 +101,7 @@
     transition: all .3s easeInOutQuad
   .left
     position: relative
-    background: #8547AD
+    background: $primaryColor
     overflow: hidden
     .bg
       &--mobile
@@ -123,6 +121,7 @@
       position: absolute
       left: 50%
       transform: translateX(-50%)
+      min-width: 100vw
       height: 100%
   .right
     background: #fff
@@ -146,6 +145,8 @@
  *}
 
 .hr
+  position: relative
+  overflow: hidden
   background: $fontColor
   width: 220px
   height: 3px
@@ -156,12 +157,23 @@
   opacity: 0
   transform: translateY(50px)
   &::before
-    transition: all 4.4s linear
+    transition: all 4.5s linear
     content: ""
-    background: #8547AD
+    background: $primaryColor
     width: 0px
     display: block
     height: 3px
+
+.animated_load
+  .slick-active .hr::before
+    width: 125%
+
+.animated_load
+  .is-ready .slick-active .hr::before
+    width: 105%
+
+// .slick-active .hr::before
+//   width: 110%
 
 .header_slider .slide .right
   h3
@@ -251,7 +263,7 @@
     position: relative
 
 .weekly__week:hover .weekly__week__content h4
-  color: #8547AD
+  color: $primaryColor
 
 .weekly__week__image::after
   content: ''
@@ -279,13 +291,13 @@
     cursor: pointer
     font-size: 15px
     text-transform: uppercase
-    color: #8547AD
+    color: $primaryColor
     transition: all .3s easeInOutQuad
     padding: 0 0 5px
     position: relative
     /* border-bottom: 3px solid #333;
     &:hover
-      color: #8547AD !important
+      color: $primaryColor !important
       &::after
         width: 100%
       &::before
@@ -348,7 +360,7 @@
   hr
     width: 180px
     border: none
-    border-bottom: 3px solid #8547AD
+    border-bottom: 3px solid $primaryColor
     margin: 59px auto
 
 .next_issue__container
@@ -366,7 +378,7 @@
     font-size: 15px
     color: $fontColor
   h2
-    color: #8547AD
+    color: $primaryColor
     font-size: 70px
     margin: 0
 
@@ -414,7 +426,8 @@
       padding-left: 20px
       .bg
         height: 90%
-        width: 73%
+        width: calc(74% + 25px)
+        left: -20px
         background: #ededed
         position: absolute
         bottom: 0
@@ -477,7 +490,7 @@
           svg path
             transition: all .3s easeInOutQuad
           &:hover svg path
-            fill: #8547AD
+            fill: $primaryColor
     &.slick-active .right
       h4, hr, p, .social_link
         transform: translateY(0)
@@ -551,7 +564,7 @@
   hr
     margin: 0 auto
     border: none
-    border-bottom: 3px solid #8547AD
+    border-bottom: 3px solid $primaryColor
     width: 180px
   p
     text-align: center
@@ -620,7 +633,7 @@
     font-family: "Oranienbaum"
     font-size: 70px
     padding-left: .1em
-    // font-weight: 100
+    font-weight: 400
     margin: 0 0 26px
   .right .view, .left .view
     padding: 48px 75px 50px
@@ -642,8 +655,8 @@
   .right button
     color: #fff !important
     border: none !important
-    border-top: 3px solid #8547AD !important
-    /* background: #8547AD!important;
+    border-top: 3px solid $primaryColor !important
+    /* background: $primaryColor!important;
   .left button
     color: $fontColor !important
     border-color: $fontColor !important
@@ -684,7 +697,7 @@
         transition-delay: .3s
     &::after
       content: ""
-      background: #8547AD
+      background: $primaryColor
       z-index: -1
       position: absolute
       top: 0
@@ -695,7 +708,7 @@
       transition: all .3s easeInOutQuad
     &::before
       content: ""
-      background: #8547AD
+      background: $primaryColor
       z-index: -1
       position: absolute
       top: 0
@@ -723,7 +736,7 @@
       background: none
       line-height: 67px
       box-sizing: border-box
-      border: 3px solid #8547AD
+      border: 3px solid $primaryColor
       cursor: pointer
       color: $fontColor
       width: 100%
@@ -741,7 +754,7 @@
     background: none
     line-height: 67px
     box-sizing: border-box
-    border: 3px solid #8547AD
+    border: 3px solid $primaryColor
     cursor: pointer
     color: $fontColor
     width: 100%
@@ -757,7 +770,7 @@
     transition-delay: .25s
   .right
     .content .div
-      border: 3px solid #8547AD
+      border: 3px solid $primaryColor
       margin: 50px 0 0
     .div
       .price
@@ -800,8 +813,13 @@
       padding: 40px 0 3px
       font-weight: 600
       display: block
+      max-height: 46px
       border-bottom: 3px solid #fff
       // padding: 0px 0 3px
+      >span
+        position: absolute
+        left: 0
+        top: 13px
     .dropdown_open
       height: 100px !important
     .payment .down
@@ -827,8 +845,11 @@
         padding: 7px 0
         transition: all .3s easeInOutQuad
         &:hover
-          color: #8547AD !important
+          color: $primaryColor !important
 
+  input
+    -webkit-apperance: none
+    border-radius: 0
   .view .form
     margin: 44px 0 0
     transition: all .3s easeInOutQuad
@@ -853,7 +874,7 @@
     transition: all .3s easeInOutQuad
     opacity: 1
   .right .view .form form .input-field input:focus, .left .view .form form .input-field input:focus
-    border-color: #8547AD !important
+    border-color: $primaryColor !important
   .view .form
     form input
       &:focus + label:not(.input-field__validation), &.focus + label:not(.input-field__validation)
@@ -889,7 +910,7 @@
       input
         border-color: #fff !important
     button
-      border: 3px solid #8547AD !important
+      border: 3px solid $primaryColor !important
   .view .form form input
     width: 100%
     background: transparent
@@ -928,14 +949,17 @@ input:-webkit-autofill
 .partnership__container
   .view
     .btn-close
+      display: inline-block
+      position: relative
+      overflow: visible
       float: right
       cursor: pointer
-      height: 20px
+      height: 30px
       padding: 8px 3px 3px
       display: inline-block
       margin: -45px -30px -38px
       &:hover .item
-        background: #8547AD !important
+        background: $primaryColor !important
     .thanks h6
       font-size: 40px
       margin: 45px 0 45px
@@ -951,6 +975,7 @@ input:-webkit-autofill
     width: 20px
     margin-bottom: -3px
     transform: rotate(45deg)
+    will-change: transform
     transition: .3s all easeInOutQuad
     background: $fontColor
 
@@ -997,6 +1022,7 @@ button:focus
   right: 0px
   top: 0px
   z-index: 100
+
 
 // .video-box
 //   position: fixed
@@ -1048,7 +1074,7 @@ button:focus
     li
       &.active
         font-size: 24px
-        color: #8547AD
+        color: $primaryColor
         margin: 0 !important
       margin: 0 7px
       display: inline-block
@@ -1156,7 +1182,7 @@ button:focus
   .partnership__container
     .right, .left
       width: 100%
-      margin: 0 0 20px
+      margin: 0 0 78px
 
   // .animated_load .video__button
   //   top: 390px
@@ -1318,15 +1344,15 @@ button:focus
   .awards__slider .carousel img
     transform: scale(.5)
 
-@media screen and (max-width: 450px)
++r($mobile)
 
   .header_slider .slide .right
     padding: 0 0 55px
   .video-box__content
     margin: 10px !important
   .video-box__close-button
-    right: 20px
-    top: 20px
+    right: 00px
+    top: 00px
   .partnership__container
     padding: 0 15px 0 !important
 

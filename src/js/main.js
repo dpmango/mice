@@ -85,7 +85,8 @@ $(document).ready(function(){
     initHeaderScroll();
 
     initPopups();
-    initSliders();
+    _window.on('load', initSliders)
+    // initSliders();
     runScrollMonitor();
     initMasks();
 
@@ -415,11 +416,17 @@ $(document).ready(function(){
       autoplay: true,
       autoplaySpeed: 4000,
       pauseOnHover: false,
+      pauseOnFocus: false,
+      pauseOnDotsHover: false,
       infinite: true,
       fade: true,
       customPaging: function(slick,index) {
             return '<a>0' + (index + 1) + '</a>';
       }
+    });
+
+    $('.header_slider').on('beforeChange', function(event, slick, currentSlide, nextSlide){
+      slick.$list.addClass('is-ready')
     });
 
     // SLICK - UNSLICK EXAMPLE

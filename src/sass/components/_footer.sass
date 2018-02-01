@@ -26,7 +26,7 @@ footer
   hr
     border: none
     border-top: 3px solid #ededed
-    margin: 44px 0 48px
+    margin: 44px 0 45px
   .mini__content
     margin: 20px 0 40px
     .phone
@@ -34,12 +34,14 @@ footer
       font-size: 30px
       margin-top: 3px
     .design
-      font-size: 14px
+      font-size: 15px
+      margin-bottom: 5px
     .street
       display: inline-block
       margin-top: -2px
       line-height: 1.5
-
+  .copiright
+    font-size: 15px
 .footer__link
   display: inline-block
   font-family: "Intro"
@@ -47,6 +49,8 @@ footer
   font-size: 20px
   transition: all .3s easeInOutExpo
   color: #231F20
+  &--mail
+    margin-bottom: 5px
 
 footer .mini__content
   a:hover
@@ -59,7 +63,7 @@ footer .mini__content
 
 +r($desktop)
   footer
-    margin: 18px 0
+    margin: 18px 0 73px 0
     .container-fluid
       padding: 0 25px
       .row
@@ -96,8 +100,9 @@ footer .mini__content
     .copiright
       font-size: 15px
 
-+r(450)
++r($mobile)
   footer
+    margin-bottom: 60px
     .container-fluid
       padding: 0 15px
     .mini__content

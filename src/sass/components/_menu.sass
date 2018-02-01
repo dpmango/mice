@@ -12,7 +12,7 @@
     position: absolute
     background: $fontColor
     bottom: 0
-    transition: opacity .3s easeInOutQuad
+    transition: all .3s easeInOutQuad
     left: 50px
     right: 50px
     opacity: 0
@@ -22,7 +22,7 @@
     opacity: 1
   .menu__logo
     top: 40px
-    right: -34px
+    right: -24px
     img
       width: 63%
 
@@ -40,13 +40,13 @@
   right: 0
   left: 50%
   transition: all .3s easeInOutQuad
-  padding: 35px 38px
+  padding: 41px 40px
 
 .menu__logo
   display: inline-block
-  right: 42px
+  right: 50px
   position: absolute
-  top: 43px
+  top: 47px
   transition: all .3s easeInOutQuad
 
 .menu__control
@@ -101,13 +101,14 @@
 
 
 +r($desktop)
+  .menu
+    &::after
+      left: 25px
+      right: 25px
   .menu_fixed
     padding: 16px 15px 40px !important
     .menu__logo img
       width: 100%
-    &::after
-      left: 25px
-      right: 25px
     .menu__logo
       top: 24px
       right: 25px
@@ -155,3 +156,6 @@
     padding: 6px 15px 35px
     max-width: 450px
     overflow: hidden
+    &::after
+      left: 15px
+      right: 15px

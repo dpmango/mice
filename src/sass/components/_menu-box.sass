@@ -1,8 +1,6 @@
 
 /* MENUBOX
 
-.menu_acive
-  left: 0 !important
 
 .menu-box__close-button
   transition: all .3s easeInOutQuad
@@ -22,7 +20,12 @@
   z-index: 1015
   top: 0
   bottom: 0
-  left: -500px
+  left: 0
+  pointer-events: none
+  transform: translate3d(-500px,0,0)
+.menu_acive
+  transform: translate3d(0,0,0)
+  pointer-events: all
 
 .menu-box__spoiler h3:hover, .menu-box__spoiler__content a:hover, .menu-box__close-button:hover
   opacity: .8
@@ -56,7 +59,7 @@
     &__spoiler
       padding-left: 25px
 
-+r(450)
++r($mobile)
   .menu-box
     padding: 15px 15px
     width: 240px
