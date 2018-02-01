@@ -414,7 +414,7 @@ $(document).ready(function(){
       draggable: false,
       prevArrow: '',
       nextArrow: '',
-      autoplay: false,
+      autoplay: true,
       autoplaySpeed: 4000,
       pauseOnHover: false,
       pauseOnFocus: false,
