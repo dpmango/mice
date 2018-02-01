@@ -1320,7 +1320,6 @@ button:focus
 
 @media screen and (max-width: 450px)
 
-
   .header_slider .slide .right
     padding: 0 0 55px
   .video-box__content
@@ -1332,18 +1331,18 @@ button:focus
     padding: 0 15px 0 !important
 
   .slick-dots
-    top: 336px
+    top: 315px
   .partnership__container
     .right, .left
       padding: 0
-      margin-bottom: 25px
+      margin-bottom: 15px
     .right p, .left p
       padding: 0 15px 0
       margin: 14px 0 3px
     .view .form .btn-close
       margin: -30px 0 -38px
     .right .view, .left .view
-      padding: 15px
+      padding: 15px 15px 30px 15px
     .right button, .left button
       font-size: 20px
     .right
@@ -1351,6 +1350,7 @@ button:focus
         p
           margin: 22px 0 13px
         margin: 0
+        margin-top: 25px
       .view .content h4
         font-size: 40px !important
         margin: 0
@@ -1358,8 +1358,12 @@ button:focus
       font-size: 40px !important
       margin: 0
   .header_slider .slide .left
-    height: 250px
+    margin-top: 65px
+    height: 230px
     width: 100%
+  .header_slider .slide .right
+    margin-top: 57px
+
   #reviews
     h2
       margin: 74px 42px 22px !important
@@ -1367,8 +1371,9 @@ button:focus
       .reviews_slide
         .right
           margin: 5px 0 7px
-          background-position: 94% 43%
+          background-position: 94% 55%
           background-size: 32%
+          padding: 0 15px
           .social_link
             margin-top: 20px
           h4
@@ -1379,7 +1384,7 @@ button:focus
             margin: 14px auto 20px
           p
             font-size: 15px
-            line-height: 25px
+            line-height: 1.57
         .left
           .bg
             height: 212px
@@ -1399,10 +1404,13 @@ button:focus
     width: 105px
     margin: 18px 0 10px
   .header_slider .slide .right
+    padding-bottom: 52px
     p
+      margin-top: 8px
       padding: 0 5%
       font-family: "Intro"
       font-size: 15px
+      line-height: 1.6
     h3
       font-size: 30px !important
       padding: 0 5%
@@ -1410,11 +1418,27 @@ button:focus
 
   .video__button
     margin: 0
+    padding-top: 24px
+    padding-bottom: 24px
+    min-height: 50px
+
   .animated_load .video__button
-    top: 150px
+    top: 140px
     bottom: auto
     transform: scale(0.76)
     left: calc(50% - 103px)
+
+  .header_slider .slide .left .bg .video__button
+    padding-top: 24px
+    padding-bottom: 24px
+    min-height: 50px
+    // font-size: 14px
+  .video__button::after
+    width: 30px
+    height: 31px
+    top: 16px
+    background-size: contain
+
 
   h2
     font-size: 39px !important
@@ -1426,10 +1450,18 @@ button:focus
     .weekly__week__image
       height: 240px
       margin: 27px 0 0
+    .weekly__week
+      margin-bottom: 15px
   #next_issue
     padding: 0px 0px 25px
-  .next_issue__container h2
-    font-size: 40px
+    img
+      max-width: 100%
+  .next_issue__container
+    padding-left: 15px
+    padding-right: 15px
+    h2
+      font-size: 40px
+
   #next_issue hr
     margin: 19px auto 20px
     width: 106px
@@ -1463,6 +1495,8 @@ button:focus
   #partners .container-fluid
     padding: 25px 7px 0
   #awards
+    padding-left: 15px
+    padding-right: 15px
     h2
       margin: 77px 0 22px !important
     hr
@@ -1475,6 +1509,10 @@ button:focus
     height: 165px
     overflow: visible !important
     margin-top: 65px
+    margin-left: -25px
+    margin-right: -40px
+    &::before
+      height: 115px
     .carousel img
       max-height: 180px
   /* #awards .content {
@@ -1485,3 +1523,8 @@ button:focus
 
   header .col-lg-6
     overflow: hidden
+
+  .next_issue__container h5
+    margin-bottom: 25px
+  .next_issue__container h2
+    margin-bottom: 0 !important
