@@ -118,11 +118,11 @@ $(document).ready(function(){
 
   function initBuggifill(){
     // Viewport units buggyfill
-    window.viewportUnitsBuggyfill.init({
-      force: false,
-      refreshDebounceWait: 150,
-      appendToBody: false
-    });
+    // window.viewportUnitsBuggyfill.init({
+    //   force: false,
+    //   refreshDebounceWait: 150,
+    //   appendToBody: false
+    // });
   }
 
 
