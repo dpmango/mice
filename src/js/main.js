@@ -729,7 +729,7 @@ $(document).ready(function(){
 
   Barba.Dispatcher.on('newPageReady', function(currentStatus, oldStatus, container, newPageRawHTML) {
 
-    $('body, html').animate({scrollTop: 0}, 200);
+    // $('body, html').animate({scrollTop: 0}, 200);
     $('.page').addClass('animated_load');
     pageReady();
     closeMobileMenu();

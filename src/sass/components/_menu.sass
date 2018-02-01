@@ -5,10 +5,7 @@
   left: 0 !important
   padding: 41px 40px 24px !important
 
-.animated_load .menu_fixed::after
-  opacity: 1
-
-.menu_fixed
+.menu
   &::after
     content: ''
     height: 3px
@@ -19,6 +16,10 @@
     left: 50px
     right: 50px
     opacity: 0
+
+.menu_fixed
+  &::after
+    opacity: 1
   .menu__logo
     top: 40px
     right: -34px

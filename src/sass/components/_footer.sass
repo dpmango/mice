@@ -61,16 +61,42 @@ footer .mini__content
   footer
     margin: 18px 0
     .container-fluid
-      padding: 0 15px
+      padding: 0 25px
       .row
         padding: 24px 0
+        margin-left: -12px
+        margin-right: -12px
+        &::before
+          left: 12px
+          right: 12px
+        .col-lg-4
+          padding-left: 12px
+          padding-right: 12px
+          // &:nth-child(even)
+          //   padding-left: 12px
 
     .col-md-12:last-child .mini__content
       display: inline-block
-      // width: 49%
-      margin: 37px 0 0
+      width: 49%
+      margin: 43px 0 0
       box-sizing: border-box
-    .mini__content .street
-      font-size: 21px
-      margin: 0 0 0
-      line-height: 27px
+      &:nth-child(2)
+        padding-left: 15px
+    .mini__content
+      margin-bottom: 45px
+      &--licence
+        margin-top: -10px
+      .street
+        font-size: 21px
+        margin: 0 0 0
+        // line-height: 27px
+      .design
+        font-size: 15px
+
+    .copiright
+      font-size: 15px
+
++r(450)
+  footer
+    .container-fluid
+      padding: 0 15px
