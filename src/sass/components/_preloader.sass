@@ -8,41 +8,41 @@
   opacity: 1
   left: 0
   background: #231F20
-  .loading
-    .status
-      background: #8547AD
-      bottom: 0
-      right: 0
-      left: 0
-      position: absolute
-      z-index: -1
-    height: 100%
-    display: inline-block
+  // .loading
+  //   .status
+  //     background: #8547AD
+  //     bottom: 0
+  //     right: 0
+  //     left: 0
+  //     position: absolute
+  //     z-index: -1
+  //   height: 100%
+  //   display: inline-block
   .text
     height: 100%
     display: inline-block
-  .loading
-    position: absolute
-    right: 50%
-    bottom: 0
-    left: 0
-    display: flex
-    flex-direction: column
-    justify-content: center
-    align-items: center
-    color: #fff
-    .percentage
-      font-family: "Intro"
-      font-weight: 800
-      font-size: 11em !important
-      padding: 20px
-      margin: 0
-    .loader_name
-      font-size: 1.9em
-      font-family: "Intro"
-      font-weight: 800
-      text-transform: uppercase
-      margin: 20vh 0 0
+  // .loading
+  //   position: absolute
+  //   right: 50%
+  //   bottom: 0
+  //   left: 0
+  //   display: flex
+  //   flex-direction: column
+  //   justify-content: center
+  //   align-items: center
+  //   color: #fff
+  //   .percentage
+  //     font-family: "Intro"
+  //     font-weight: 800
+  //     font-size: 11em !important
+  //     padding: 20px
+  //     margin: 0
+  //   .loader_name
+  //     font-size: 1.9em
+  //     font-family: "Intro"
+  //     font-weight: 800
+  //     text-transform: uppercase
+  //     margin: 20vh 0 0
   .text
     background: #fff
     position: absolute
@@ -62,10 +62,10 @@
 
 +r($desktop)
   .preloader
-    .loading
-      width: 100%
-      height: 50vh
-      top: 0
+    // .loading
+    //   width: 100%
+    //   height: 50vh
+    //   top: 0
     .text
       width: 100%
       height: 50vh
@@ -87,3 +87,92 @@
         font-size: 18px
     .text h3
       font-size: 40px !important
+
+
+.pace
+  position: fixed
+  z-index: 2000
+  top: 0
+  bottom: 0
+  left: 0
+  width: 50vw
+  height: 100vh
+  pointer-events: none
+  user-select: none
+  background: #231F20
+  transition: .2s easeInOutExpo
+  &-inactive
+    opacity: 0
+    // display: none
+
+  .pace-progress
+    position: relative
+    z-index: 2
+    height: 100vh
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    color: #fff
+    transform: translate3d(0, 0, 0) !important
+    // loader %
+    &::after
+      display: inline-block
+      // position: absolute
+      // top: 50%
+      // transform: translateY(-50%)
+      content: attr(data-progress-text)
+      font-family: "Intro"
+      font-weight: 800
+      font-size: 11em !important
+      padding: 20px
+      margin: 0
+    // loader name
+    &::before
+      width: 100%
+      display: inline-block
+      text-align: center
+      content: 'Загрузка'
+      font-size: 1.9em
+      font-family: "Intro"
+      font-weight: 800
+      text-transform: uppercase
+      margin: 0vh 0 0
+  // loader text
+  .pace-progress-inner
+
+  .pace-activity
+    position: absolute
+    z-index: 1
+    background: $primaryColor
+    height: 100vh
+    bottom: -100vh
+    right: 0
+    left: 0
+    will-change: transform
+    transition: transform .1s easeInOutExpo
+
++r($desktop)
+  .pace
+    width: 100vw
+    height: 50vh
+    top: 0
+    bottom: auto
+    overflow: hidden
+    .pace-progress
+      height: 50vh
+    .pace-activity
+      height: 50vh
+      bottom: -50vh
+
++r($mobile)
+  .pace
+    .pace-progress
+      &::before
+        margin: 12vh 0 0
+        font-size: 18px
+      &::after
+        line-height: 180px
+        font-size: 90px !important
+        margin: 0 !important
+        padding: 0

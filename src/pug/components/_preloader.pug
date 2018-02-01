@@ -1,10 +1,10 @@
 // PRELOADER :: START
 .preloader
-  .loading
-    span.loader_name Загрузка
-    h2.percentage
-      h2
-        .status
+  //- .loading
+  //-   span.loader_name Загрузка
+  //-   h2.percentage
+  //-     h2
+  //-       .status
   .text
     h3 Издание №1 для российских MICE-специалистов
 
@@ -15,33 +15,18 @@ script.
       selectors: ['.slider-header, .menu']
     }
   }
-  // Pace.on('start', function(){
-  // })
+  Pace.on('done', function(){
+    document.querySelector('.preloader').setAttribute('style', 'opacity: 0');
+    document.querySelector('.menu__control').setAttribute('style', 'display: inline-block');
+    document.querySelector('.menu__switch-lang').setAttribute('style', 'display: inline-block');
+    setTimeout("document.querySelector('.page').classList.add('animated_load');", 300);
+    // setTimeout(  "document.querySelector('.preloader').setAttribute('style', 'display: none');", 300);
+  })
 
-style.
-  .pace {
-    pointer-events: none;
-    -webkit-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
-  }
-  .pace-inactive {
-    display: none;
-  }
-  .pace .pace-progress {
-    background: white;
-    position: fixed;
-    z-index: 2000;
-    top: 0;
-    right: 100%;
-    width: 100%;
-    height: 3px;
-  }
           
 // it's important to pop this up ASAP, sorry for inline code
 // don't use jQuery here - it's not loaded yet
-script.
+// script.
   var i = 0;
 
   var loadingInterval = setInterval( 'loading()', 10 );
