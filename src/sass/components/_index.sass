@@ -121,7 +121,7 @@
       position: absolute
       left: 50%
       transform: translateX(-50%)
-      min-width: 100vw
+      min-width: 50vw
       height: 100%
   .right
     background: #fff
@@ -1177,7 +1177,7 @@ button:focus
     .right p, .left p
       padding: 0 !important
 
-@media screen and (max-width: 992px)
++r($desktop)
 
   .partnership__container
     .right, .left
@@ -1223,6 +1223,8 @@ button:focus
       height: 440px
       margin: 70px 0 0
       width: 100%
+    .left video
+      min-width: 100vw
   .animated_load .video__button
     opacity: 1
     top: 316px

@@ -12,10 +12,10 @@ block content
       .header_slider
         .slide
           .left
-            video(autoplay='', muted='', loop='', poster="video/placeholder.jpg")
-              //- source(src='video/with_audio.mkv', type='video/mkv')
-              source(src='video/with_audio.mp4', type='video/mp4')
+            video(autoplay muted loop poster="video/placeholder.jpg")
               source(src='video/with_audio.webm', type='vide/webm')
+              source(src='video/with_audio.mp4', type='video/mp4')
+              
             .bg.bg--mobile(style='background-image: url(video/placeholder.jpg)')
             a.video__button.btn(js-popupVideo href="https://www.youtube.com/watch?v=6j5t6WjtSfk")
               .item

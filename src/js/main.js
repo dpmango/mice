@@ -85,9 +85,6 @@ $(document).ready(function(){
     initHeaderScroll();
 
     initPopups();
-    window.onload = function(){
-      initSliders()
-    }
     // initSliders();
     runScrollMonitor();
     initMasks();
@@ -104,10 +101,14 @@ $(document).ready(function(){
     // temp - developer
     _window.on('resize', debounce(setBreakpoint, 200));
 
-    shittyCode();
   }
 
   pageReady();
+
+  window.onload = function(){
+    initSliders();
+    forceAutoplay();
+  }
 
 
   //////////
@@ -184,12 +185,10 @@ $(document).ready(function(){
     }
   }
 
-  function shittyCode(){
+  function forceAutoplay(){
     if ( $('.header_slider video').length > 0 ){
-      $('.header_slider video').get(0).load()
+      $('.header_slider video').get(0).play()
     }
-
-    // please refactor to fitText.js
   }
 
   function fitText(){
@@ -415,7 +414,7 @@ $(document).ready(function(){
       draggable: false,
       prevArrow: '',
       nextArrow: '',
-      autoplay: true,
+      autoplay: false,
       autoplaySpeed: 4000,
       pauseOnHover: false,
       pauseOnFocus: false,
@@ -741,6 +740,10 @@ $(document).ready(function(){
     // $('body, html').animate({scrollTop: 0}, 200);
     $('.page').addClass('animated_load');
     pageReady();
+    window.onload = function(){
+      initSliders();
+      forceAutoplay();
+    }
     closeMobileMenu();
 
   });
