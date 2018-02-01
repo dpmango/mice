@@ -89,8 +89,8 @@ $(document).ready(function(){
     runScrollMonitor();
     initMasks();
 
-    revealFooter();
-    _window.on('resize', throttle(revealFooter, 100));
+    // revealFooter();
+    // _window.on('resize', throttle(revealFooter, 100));
 
     fitText();
     _window.on('resize', throttle(fitText, 200));
@@ -100,7 +100,6 @@ $(document).ready(function(){
 
     // temp - developer
     _window.on('resize', debounce(setBreakpoint, 200));
-
 
     shittyCode();
   }
@@ -122,7 +121,7 @@ $(document).ready(function(){
     window.viewportUnitsBuggyfill.init({
       force: false,
       refreshDebounceWait: 150,
-      appendToBody: true
+      appendToBody: false
     });
   }
 
@@ -140,56 +139,36 @@ $(document).ready(function(){
     })
 
   // FOOTER REVEAL
-  function revealFooter() {
-    var footer = $('[js-reveal-footer]');
-    if (footer.length > 0) {
-      var footerHeight = footer.outerHeight();
-      var maxHeight = _window.height() - footerHeight > 100;
-      if (maxHeight && !msieversion() ) {
-        $('body').css({
-          'margin-bottom': footerHeight
-        });
-        footer.css({
-          'position': 'fixed',
-          'z-index': -10
-        });
-      } else {
-        $('body').css({
-          'margin-bottom': 0
-        });
-        footer.css({
-          'position': 'static',
-          'z-index': 10
-        });
-      }
-    }
-  }
+  // function revealFooter() {
+  //   var footer = $('[js-reveal-footer]');
+  //   if (footer.length > 0) {
+  //     var footerHeight = footer.outerHeight();
+  //     var maxHeight = _window.height() - footerHeight > 100;
+  //     if (maxHeight && !msieversion() ) {
+  //       $('body').css({
+  //         'margin-bottom': footerHeight
+  //       });
+  //       footer.css({
+  //         'position': 'fixed',
+  //         'z-index': -10
+  //       });
+  //     } else {
+  //       $('body').css({
+  //         'margin-bottom': 0
+  //       });
+  //       footer.css({
+  //         'position': 'static',
+  //         'z-index': 10
+  //       });
+  //     }
+  //   }
+  // }
 
   // HEADER SCROLL
   // add .header-static for .page or body
   // to disable sticky header
   function initHeaderScroll(){
-    if ( $('.header-static').length == 0 ){
-      // _window.on('scroll', throttle(function() {
-      //   var vScroll = _window.scrollTop();
-      //   var header = $('.header').not('.header--static');
-      //   var headerHeight = header.height();
-      //   var heroHeight = $('.hero').outerHeight() - headerHeight;
-      //   // probably should be found as a first child of page contents
-      //
-      //   if ( vScroll > headerHeight ){
-      //     header.addClass('header--transformed');
-      //   } else {
-      //     header.removeClass('header--transformed');
-      //   }
-      //
-      //   if ( vScroll > heroHeight ){
-      //     header.addClass('header--fixed');
-      //   } else {
-      //     header.removeClass('header--fixed');
-      //   }
-      // }, 10));
-
+    if ( _document.find('.header-static').length == 0 ){
       _window.on('scroll', throttle(function() {
         var vScroll = _window.scrollTop();
         if (vScroll > 150) {
@@ -224,6 +203,13 @@ $(document).ready(function(){
 
     blockScroll();
   });
+
+  // hide on content click when opened
+  _document.on('click', '.page', function(){
+    if ( _document.find('body').is('.overflow_mobile') ){
+      closeMobileMenu();
+    }
+  })
 
   function closeMobileMenu(){
     blockScroll(true); // true is for the unlock option
@@ -360,45 +346,45 @@ $(document).ready(function(){
   //////////
 
   function initSliders(){
-    var slickNextArrow = '<div class="slick-prev"><svg class="ico ico-back-arrow"><use xlink:href="img/sprite.svg#ico-back-arrow"></use></svg></div>';
-    var slickPrevArrow = '<div class="slick-next"><svg class="ico ico-next-arrow"><use xlink:href="img/sprite.svg#ico-next-arrow"></use></svg></div>'
-
-    // General purpose sliders
-    $('[js-slider]').each(function(i, slider){
-      var self = $(slider);
-
-      // set data attributes on slick instance to control
-      if (self && self !== undefined) {
-        self.slick({
-          autoplay: self.data('slick-autoplay') !== undefined ? true : false,
-          dots: self.data('slick-dots') !== undefined ? true : false,
-          arrows: self.data('slick-arrows') !== undefined ? true : false,
-          prevArrow: slickNextArrow,
-          nextArrow: slickPrevArrow,
-          infinite: self.data('slick-infinite') !== undefined ? true : true,
-          speed: 300,
-          slidesToShow: 1,
-          accessibility: false,
-          adaptiveHeight: true,
-          draggable: self.data('slick-no-controls') !== undefined ? false : true,
-          swipe: self.data('slick-no-controls') !== undefined ? false : true,
-          swipeToSlide: self.data('slick-no-controls') !== undefined ? false : true,
-          touchMove: self.data('slick-no-controls') !== undefined ? false : true
-        });
-      }
-
-    })
+    // var slickNextArrow = '<div class="slick-prev"><svg class="ico ico-back-arrow"><use xlink:href="img/sprite.svg#ico-back-arrow"></use></svg></div>';
+    // var slickPrevArrow = '<div class="slick-next"><svg class="ico ico-next-arrow"><use xlink:href="img/sprite.svg#ico-next-arrow"></use></svg></div>'
+    //
+    // // General purpose sliders
+    // $('[js-slider]').each(function(i, slider){
+    //   var self = $(slider);
+    //
+    //   // set data attributes on slick instance to control
+    //   if (self && self !== undefined) {
+    //     self.slick({
+    //       autoplay: self.data('slick-autoplay') !== undefined ? true : false,
+    //       dots: self.data('slick-dots') !== undefined ? true : false,
+    //       arrows: self.data('slick-arrows') !== undefined ? true : false,
+    //       prevArrow: slickNextArrow,
+    //       nextArrow: slickPrevArrow,
+    //       infinite: self.data('slick-infinite') !== undefined ? true : true,
+    //       speed: 300,
+    //       slidesToShow: 1,
+    //       accessibility: false,
+    //       adaptiveHeight: true,
+    //       draggable: self.data('slick-no-controls') !== undefined ? false : true,
+    //       swipe: self.data('slick-no-controls') !== undefined ? false : true,
+    //       swipeToSlide: self.data('slick-no-controls') !== undefined ? false : true,
+    //       touchMove: self.data('slick-no-controls') !== undefined ? false : true
+    //     });
+    //   }
+    //
+    // })
 
     // other individual sliders goes here
 
-    $('.reviews__slider').slick({
+    $('.reviews__slider').not('.slick-initialized').slick({
       fade: true,
       draggable: false,
       prevArrow: '<div class="btn"><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><img src="img/reviews_slider/slider_prev.svg"></div>',
       nextArrow: '<div class="btn"><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><img src="img/reviews_slider/slider_next.svg"></div>',
     });
 
-    $('.awards__slider .carousel').slick({
+    $('.awards__slider .carousel').not('.slick-initialized').slick({
       centerMode: true,
       adaptiveHeight: true,
       centerPadding: '30%',
@@ -419,7 +405,7 @@ $(document).ready(function(){
       $('.awards__slider .carousel').slick('slickPrev')
     })
 
-    $('.header_slider').slick({
+    $('.header_slider').not('.slick-initialized').slick({
       vertical: true,
       dots: true,
       slidesToShow: 1,
@@ -608,38 +594,6 @@ $(document).ready(function(){
 
   });
 
-  // handle outside click
-  $(document).click(function (e) {
-    var container = new Array();
-    container.push($('.ui-select'));
-
-    $.each(container, function(key, value) {
-        if (!$(value).is(e.target) && $(value).has(e.target).length === 0) {
-            $(value).removeClass('active');
-        }
-    });
-  });
-
-  // numeric input
-  // $('.ui-number span').on('click', function(e){
-  //   var element = $(this).parent().find('input');
-  //   var currentValue = parseInt($(this).parent().find('input').val()) || 0;
-  //
-  //   if( $(this).data('action') == 'minus' ){
-  //     if(currentValue <= 1){
-  //       return false;
-  //     }else{
-  //       element.val( currentValue - 1 );
-  //     }
-  //   } else if( $(this).data('action') == 'plus' ){
-  //     if(currentValue >= 99){
-  //       return false;
-  //     } else{
-  //       element.val( currentValue + 1 );
-  //     }
-  //   }
-  // });
-
   // textarea autoExpand
   _document
     .one('focus.autoExpand', '.ui-group textarea', function(){
@@ -775,10 +729,11 @@ $(document).ready(function(){
 
   Barba.Dispatcher.on('newPageReady', function(currentStatus, oldStatus, container, newPageRawHTML) {
 
+    $('body, html').animate({scrollTop: 0}, 200);
+    $('.page').addClass('animated_load');
     pageReady();
     closeMobileMenu();
 
   });
-
 
 });

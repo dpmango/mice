@@ -1,22 +1,11 @@
-// HEADER :: START
-header.header
-  .container
-    .header__wrapper
-      a(href="#").header__logo
-        +icon('ico-email')
-      ul.header__menu
-        - var list = ["Homepage", "Shop", "Blog", "Lorem"]
-          each item in list
-            li
-              a.header__menu-link(href="#")=item
-      
-      .header__cta
-        .header__cart
-          +icon('ico-email')
-      
-      .header__hamburger
-        .hamburger.hamburger--squeeze(js-hamburger)
-          .hamburger-box
-            .hamburger-inner
-        
-// HEADER :: END
+// HEADER .menu
+.menu
+  .menu__control(js-toggleMenu)
+    .menu__control__burger
+      .menu__control__burger__item
+      .menu__control__burger__item
+      .menu__control__burger__item
+    a.menu__control__click МЕНЮ
+  a.menu__switch-lang(href='#') EN
+  a(href="homepage.html").menu__logo
+    img(src='img/setting/logo.svg', alt='')
