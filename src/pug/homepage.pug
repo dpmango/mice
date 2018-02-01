@@ -12,7 +12,7 @@ block content
       .header_slider
         .slide
           .left
-            video(autoplay muted loop poster="video/placeholder.jpg")
+            video(muted loop poster="video/placeholder.jpg")
               source(src='video/with_audio.webm', type='vide/webm')
               source(src='video/with_audio.mp4', type='video/mp4')
               
@@ -262,7 +262,13 @@ block content
             hr
         .col-lg-6.col-sm-12
           .awards__slider
-            .carousel
+            .carousel.owl-carousel
+              .slide
+                img(src='img/awards/slider/1.png', alt='')
+              .slide
+                img(src='img/awards/slider/2.png', alt='')
+              .slide
+                img(src='img/awards/slider/3.png', alt='')
               .slide
                 img(src='img/awards/slider/1.png', alt='')
               .slide

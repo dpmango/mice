@@ -41,6 +41,16 @@ body *::selection
   background-color: #8547AD
   color: #FFFFFF
 
+body
+  pointer-events: none
+  height: 100vh
+  overflow: hidden
+  &.pace-done
+    height: auto
+    overflow: auto
+    overflow-x: hidden
+    pointer-events: all
+
 .page
   display: flex
   flex-direction: column

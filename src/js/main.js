@@ -192,8 +192,21 @@ $(document).ready(function(){
   }
 
   function fitText(){
-    $('.header_slider .slide .right h3').css({'font-size':''+ 50*(document.documentElement.clientWidth/1440) +'px'});
-    $('.partnership__container .right h4, .partnership__container .left h4, h2').css({'font-size':''+ 70*(document.documentElement.clientWidth/1440) +'px'});
+    var defaults = {
+      headerSlide: 50,
+      forms: 70
+    }
+    // make it a bit smaller to fit
+    if ( _window.width() < 1250 ){
+      defaults.headerSlide = 45;
+      defaults.forms = 60
+    }
+    $('.header_slider .slide .right h3').css({
+      'font-size':''+ Math.floor(defaults.headerSlide*(_document.width()/1440)) +'px'
+    });
+    $('.partnership__container .right h4, .partnership__container .left h4, h2').css({
+      'font-size':''+ Math.floor(defaults.forms*(_document.width()/1440)) +'px'
+    });
   }
 
 
@@ -217,7 +230,7 @@ $(document).ready(function(){
     blockScroll(true); // true is for the unlock option
     $('[js-toggleMenu]').removeClass('menu_focus');
     $('.menu-box').removeClass('menu_acive')
-    $('body').toggleClass('overflow_mobile')
+    $('body').removeClass('overflow_mobile')
   }
 
   var preventKeys = {
@@ -386,26 +399,58 @@ $(document).ready(function(){
       nextArrow: '<div class="btn"><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><img src="img/reviews_slider/slider_next.svg"></div>',
     });
 
-    $('.awards__slider .carousel').not('.slick-initialized').slick({
-      centerMode: true,
-      adaptiveHeight: true,
-      centerPadding: '30%',
-      // draggable: false,
-      arrows: false,
-      slidesToShow: 1,
-      infinite: true
-    });
+    // $('.awards__slider .carousel').not('.slick-initialized').slick({
+    //   centerMode: true,
+    //   // adaptiveHeight: true,
+    //   // centerPadding: '0%',
+    //   slidesToShow: 3,
+    //   // slidesToScroll: 1,
+    //   // draggable: false,
+    //   arrows: true,
+    //   dots: false,
+    //   // infinite: true
+    // });
+    //
+    // $('.awards__slider .slick-slide').on('mouseenter', function(){
+    //   $(this).addClass('is-hovered')
+    // })
+    // $('.awards__slider .slick-slide').on('mouseleave', function(){
+    //   $(this).removeClass('is-hovered')
+    // })
+    // $('.awards__slider .slick-slide').on('click', function(){
+    //   var thisIndex = $(this).index();
+    //
+    //   $('.awards__slider .carousel').slick('slickNext')
+    // })
 
-    $('.awards__slider .slick-slide').on('mouseenter', function(){
+    var owl = $('.awards__slider .carousel');
+    owl.owlCarousel({
+      center: true,
+      items: 3,
+      loop: true,
+      margin: 10,
+      dots: false,
+      // rewind: false,
+
+    });
+    _document.on('click', '.awards__slider .owl-item', function(){
+      var thisIndex = $(this).index();
+      var curIndex = $(this).parent().find('.center').index();
+
+      if (thisIndex > curIndex) {
+        owl.trigger('next.owl.carousel');
+      } else {
+        owl.trigger('prev.owl.carousel');
+      }
+    })
+
+    _document.on('mouseenter', '.awards__slider .owl-item', function(){
       $(this).addClass('is-hovered')
     })
-    $('.awards__slider .slick-slide').on('mouseleave', function(){
+    _document.on('mouseleave', '.awards__slider .owl-item', function(){
       $(this).removeClass('is-hovered')
     })
-    $('.awards__slider .slick-slide').on('click', function(){
-      console.log($(this).index())
-      $('.awards__slider .carousel').slick('slickPrev')
-    })
+
 
     $('.header_slider').not('.slick-initialized').slick({
       vertical: true,
@@ -740,10 +785,8 @@ $(document).ready(function(){
     // $('body, html').animate({scrollTop: 0}, 200);
     $('.page').addClass('animated_load');
     pageReady();
-    window.onload = function(){
-      initSliders();
-      forceAutoplay();
-    }
+    initSliders();
+    forceAutoplay();
     closeMobileMenu();
 
   });

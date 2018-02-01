@@ -63,6 +63,13 @@
 .slick-vertical .slick-slide
   border: none !important
 
+.slider-header
+  min-height: 100vh
+
++r($desktop)
+  .slider-header
+    min-height: auto
+
 
 .slick-dots
   text-align: center
@@ -356,6 +363,9 @@
 
 #next_issue
   padding: 75px 25px
+  // max-width: 1680px
+  // margin-left: auto
+  // margin-right: auto
   background: #ededed
   hr
     width: 180px
@@ -369,7 +379,7 @@
   padding: 0 25px
   text-align: center
   margin: 0 auto
-  max-width: 1680px
+  max-width: 1630px
   h5
     font-family: "Intro"
     font-weight: 100
@@ -406,7 +416,12 @@
 *:focus
   outline: none
 
+#reviews
+  h2
+    margin-top: 95px
+    margin-bottom: 33px
 #reviews .reviews__slider
+  .slick-list
   max-width: 1680px
   margin: 0 auto
   .slick-arrow
@@ -514,7 +529,7 @@
 
 #partners
   padding: 0 50px
-  margin: 75px auto
+  margin: 50px auto
   max-width: 1680px
   text-align: center
   h2
@@ -553,7 +568,7 @@
 #awards
   padding: 0 25px
   h2
-    margin: 98px 0 56px
+    margin: 50px 0 0px
   .container-fluid
     max-width: 1680px
   .content
@@ -587,22 +602,23 @@
     position: absolute
     bottom: 0
     left: 0
-    right: 0
+    right: -50px
     background-image: url('../img/awards/background.svg')
     height: 311px
     background-repeat: no-repeat
     background-size: cover
   height: 361px
-  padding-top: 50px
-  overflow: hidden !important
+  // padding-top: 50px
+  // overflow: hidden !important
   // overflow-y: visible !important
 
 .slick-initialized .slick-slide
   transform: translateY(0)
   transition: all .3s easeInOutQuad
 
-.awards__slider .slick-list
-  overflow: unset !important
+.awards__slider .owl-stage-outer
+  padding-top: 50px !important
+  // overflow: unset !important
 
 .slick-track
   transition: all .3s easeInOutQuad
@@ -734,7 +750,7 @@
       padding: 48px 75px 75px
     button
       background: none
-      line-height: 67px
+      line-height: 1.3
       box-sizing: border-box
       border: 3px solid $primaryColor
       cursor: pointer
@@ -743,6 +759,7 @@
       font-family: "Intro"
       font-weight: 900
       margin: 30px 0 0px
+      padding: 19px 10px
       font-size: 25px
       text-transform: uppercase
       position: relative
@@ -750,24 +767,29 @@
       transform: translate(0)
       transition: all .3s easeInOutExpo
       transition-delay: .25s
-  .left button
-    background: none
-    line-height: 67px
-    box-sizing: border-box
-    border: 3px solid $primaryColor
-    cursor: pointer
-    color: $fontColor
-    width: 100%
-    font-family: "Intro"
-    font-weight: 900
-    margin: 30px 0 0px
-    font-size: 25px
-    text-transform: uppercase
-    position: relative
-    z-index: 0
-    transform: translate(0)
-    transition: all .3s easeInOutExpo
-    transition-delay: .25s
+
+  .left
+    button
+      background: none
+      line-height: 1.3
+      box-sizing: border-box
+      border: 3px solid $primaryColor
+      cursor: pointer
+      color: $fontColor
+      width: 100%
+      font-family: "Intro"
+      font-weight: 900
+      margin: 30px 0 0px
+      padding: 19px 10px
+      font-size: 25px
+      text-transform: uppercase
+      position: relative
+      z-index: 0
+      transform: translate(0)
+      transition: all .3s easeInOutExpo
+      transition-delay: .25s
+    form button
+      margin-top: 35px !important
   .right
     .content .div
       border: 3px solid $primaryColor
@@ -800,6 +822,7 @@
   .right .view .form input
     color: #fff
     cursor: pointer
+
 
 .require
   color: red !important
@@ -866,13 +889,14 @@
       height: 20px
   .right .view .content
     transition: all .3s easeInOutQuad
-    opacity: 1
+    // opacity: 1
   .left .view .content
     transition: all .3s easeInOutQuad
+    // opacity: 1
   .view .form form
     padding: 0
     transition: all .3s easeInOutQuad
-    opacity: 1
+    // opacity: 1
   .right .view .form form .input-field input:focus, .left .view .form form .input-field input:focus
     border-color: $primaryColor !important
   .view .form
@@ -1124,26 +1148,43 @@ button:focus
   //   width: 100px
   .slide:focus
     outline: none
+
   img
     position: relative
     mix-blend-mode: multiply
     max-height: 315px
     width: auto
-    transform: scale(0.3)
-    margin: 0 auto
+    max-width: 100%
+    transform: scale(0.4)
+    margin: auto
     will-change: transform
     transition: all .3s easeInOutQuad
-  .slick-active img
-    transform-origin: center top
-    transform: scale(.95) translate3d(0,-50px,0)
+  .center img
+    transform-origin: center center
+    transform: scale(1) translate3d(0,-50px,0)
   // .slick-slide:not(.slick-active)
   //   &:hover
   //     img
   //       transform: scale(.45)
   // hmm .. js way
-  .slick-slide.is-hovered:not(.slick-active)
+  .owl-item.is-hovered:not(.center)
     img
-      transform: scale(.45)
+      transform: scale(.6)
+  .owl-stage
+    display: flex
+  .owl-item
+    height: auto
+    display: flex
+    flex-direction: column
+    align-items: center
+    .slide
+      flex: 1
+      display: flex
+      flex-direction: column
+      align-items: center
+
+    &:not(.center)
+      cursor: pointer
 
 #awards .col-lg-6
   padding: 0 25px
@@ -1180,9 +1221,12 @@ button:focus
 +r($desktop)
 
   .partnership__container
-    .right, .left
+    .left
       width: 100%
       margin: 0 0 78px
+    .right
+      width: 100%
+      margin: 0 0 20px
 
   // .animated_load .video__button
   //   top: 390px
@@ -1293,17 +1337,22 @@ button:focus
     .content
       margin-top: 0
     h2
+      margin-top: 75px
       margin-bottom: 33px
     hr
       width: 220px
   .awards__slider
     &::before
-      right: 0
-      width: 100%
+      right: -25px
+      width: calc(100% + 50px)
     .slick-active
       transform: translateY(-45px)
       img
         transform: scale(1) !important
+
+  #partnership
+    margin-top: 100px
+
   .partnership__container
     flex-direction: column-reverse
     padding: 0 !important
@@ -1360,6 +1409,7 @@ button:focus
 
   .slick-dots
     top: 315px
+
   .partnership__container
     .right, .left
       padding: 0
@@ -1369,10 +1419,16 @@ button:focus
       margin: 14px 0 3px
     .view .form .btn-close
       margin: -30px 0 -38px
-    .right .view, .left .view
+    .right .view
       padding: 15px 15px 30px 15px
+    .left .view
+      padding: 15px 15px 10px 15px
     .right button, .left button
       font-size: 20px
+      padding-top: 22px
+      padding-bottom: 22px
+    .left button
+      margin-top: 20px !important
     .right
       .content .div
         p
@@ -1453,8 +1509,9 @@ button:focus
   .animated_load .video__button
     top: 140px
     bottom: auto
-    transform: scale(0.76)
-    left: calc(50% - 103px)
+    transform-origin: left center
+    transform: scale(0.76) translateX(-50%)
+    left: 50%
 
   .header_slider .slide .left .bg .video__button
     padding-top: 24px
@@ -1534,20 +1591,21 @@ button:focus
       line-height: 22px
       font-size: 15px
   .awards__slider
-    height: 165px
+    height: 205px
     overflow: visible !important
-    margin-top: 65px
+    margin-top: 25px
     margin-left: -25px
     margin-right: -40px
     &::before
-      height: 115px
+      height: 165px
+      width: calc(100% + 30px)
     .carousel img
       max-height: 180px
   /* #awards .content {
    *  margin: -23px -10px 63px;
    *}
   #partnership
-    margin: 64px 0 0
+    margin: 90px 0 55px
 
   header .col-lg-6
     overflow: hidden
