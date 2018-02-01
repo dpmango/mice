@@ -417,9 +417,21 @@
   outline: none
 
 #reviews
+  position: relative
   h2
     margin-top: 95px
     margin-bottom: 33px
+  +rmin(1680)
+    .bg-hotfix
+      display: inline-block
+      content: ' '
+      position: absolute
+      bottom: 0
+      left: 0
+      height: 0
+      // to be set with js
+      width: 100px
+      background: #ededed
 #reviews .reviews__slider
   .slick-list
   max-width: 1680px
@@ -596,7 +608,7 @@
 .awards__slider
   position: relative
   font-size: 0
-  &::before
+  &-bg
     display: inline-block
     content: ' '
     position: absolute
@@ -1342,7 +1354,7 @@ button:focus
     hr
       width: 220px
   .awards__slider
-    &::before
+    &-bg
       right: -25px
       width: calc(100% + 50px)
     .slick-active
@@ -1596,7 +1608,7 @@ button:focus
     margin-top: 25px
     margin-left: -25px
     margin-right: -40px
-    &::before
+    &-bg
       height: 165px
       width: calc(100% + 30px)
     .carousel img

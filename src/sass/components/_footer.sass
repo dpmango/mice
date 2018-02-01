@@ -11,18 +11,18 @@ footer
       padding: 52px 0 90px 0
       margin-left: -25px
       margin-right: -25px
-      &::before
-        display: inline-block
-        content: ' '
-        position: absolute
-        top: 0
-        left: 25px
-        right: 25px
-        height: 3px
-        background: $fontColor
       .col-lg-4
         padding-left: 25px
         padding-right: 25px
+  .footer-bg-top
+    display: inline-block
+    content: ' '
+    position: absolute
+    top: 0
+    left: 25px
+    right: 25px
+    height: 3px
+    background: $fontColor
   hr
     border: none
     border-top: 3px solid #ededed
@@ -64,15 +64,15 @@ footer .mini__content
 +r($desktop)
   footer
     margin: 18px 0 73px 0
+    .footer-bg-top
+      left: 12px
+      right: 12px
     .container-fluid
       padding: 0 25px
       .row
         padding: 24px 0
         margin-left: -12px
         margin-right: -12px
-        &::before
-          left: 12px
-          right: 12px
         .col-lg-4
           padding-left: 12px
           padding-right: 12px

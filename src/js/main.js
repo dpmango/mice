@@ -97,6 +97,8 @@ $(document).ready(function(){
 
     teleportQmark();
     // _window.on('resize', debounce(teleportQmark, 200));
+    dirtyFixes()
+    _window.on('resize', debounce(dirtyFixes, 200));
 
     // temp - developer
     _window.on('resize', debounce(setBreakpoint, 200));
@@ -106,6 +108,7 @@ $(document).ready(function(){
   pageReady();
 
   window.onload = function(){
+    setTimeout(dirtyFixes, 300)
     initSliders();
     forceAutoplay();
   }
@@ -355,6 +358,32 @@ $(document).ready(function(){
       }
     })
   }
+
+
+  //////////
+  // dirtyFixes
+  //////////
+  function dirtyFixes(){
+    if ( _window.width() > 1680 ){
+      var wWidth2 = ( _window.width() - 1680 ) / 2 // calf free space on edges of 1680
+      _document.find('#reviews .bg-hotfix').css({
+        width: wWidth2 + 'px',
+        height: _document.find('#reviews .reviews__slider.slick-initialized .reviews_slide .left .bg').height() + 'px'
+      })
+      _document.find('.awards__slider-bg').css({
+        right: (-50 - wWidth2) + 'px',
+      })
+      _document.find('.footer-bg-top').css({
+        right: (25 - wWidth2) + 'px',
+        left: (25 - wWidth2) + 'px',
+      })
+      _document.find('footer hr').css({
+        width: 'calc(100% + ' + ( wWidth2) + 'px)'
+      })
+    }
+
+  }
+
 
   //////////
   // SLIDERS
