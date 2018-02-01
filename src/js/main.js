@@ -380,6 +380,12 @@ $(document).ready(function(){
       _document.find('footer hr').css({
         width: 'calc(100% + ' + ( wWidth2) + 'px)'
       })
+    } else {
+      _document.find('#reviews .bg-hotfix').attr('style', '')
+      _document.find('.awards__slider-bg').attr('style', '')
+      _document.find('.footer-bg-top').attr('style', '')
+      _document.find('footer hr').attr('style', '')
+
     }
 
   }
