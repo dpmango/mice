@@ -433,6 +433,7 @@
       width: 100px
       background: #ededed
 #reviews .reviews__slider
+  transform: translate3d(0,0,0)
   .slick-list
   max-width: 1680px
   margin: 0 auto
@@ -442,6 +443,8 @@
     top: calc(55% - 25px)
     height: 50px
     left: 65px
+    will-change: transform
+    transform: translate3d(0,0,0)
     &:last-child
       right: calc(50% + 43px)
       left: unset
