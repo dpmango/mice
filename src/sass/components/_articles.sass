@@ -1,0 +1,305 @@
+.articles-page
+  .menu
+    left: 0
+    
+.articles-sec
+  padding-top: 25px !important
+  padding-bottom: 0 !important
+  h2
+    letter-spacing: -0.03em
+  &__tag-wrapper
+    text-align: center
+    margin-top: -30px
+    margin-bottom: 50px
+  &__tag
+    text-transform: uppercase
+    text-align: center
+    text-decoration: none
+    font-size: 15px
+    font-weight: 500
+    color: $primaryColor
+    &:hover
+      text-decoration: underline
+  .weekly__week__properties
+    overflow: hidden
+    .data
+      float: left
+    .tag:before,
+    .tag:after
+      display: none
+  .weekly__week__content h4
+    margin-top: 5px
+  .weekly__week__image
+    position: relative
+    display: flex
+    justify-content: center
+    align-items: center
+  &__video-btn
+    background-repeat: no-repeat
+    width: 100px
+    z-index: 10
+    height: 100px
+    display: block
+    background-image: url(../../img/play.svg)
+    
+.one-article
+  max-width: 1680px
+  padding-left: 25px
+  padding-right: 25px
+  padding-top: 125px
+  &__category
+    text-align: center
+    span
+      font-size: 15px
+      font-weight: 700
+      padding-bottom: 6px
+      display: inline-block
+      margin-bottom: 20px
+      text-transform: uppercase
+      text-align: center
+      border-bottom: 3px solid $fontColor
+      color: $primaryColor
+  &__date
+    display: block
+    margin-left: auto
+    margin-right: auto
+    text-align: center
+    font-size: 15px
+    font-weight: 400
+    color: transparentize($fontColor, 0.4)
+  h1
+    max-width: 825px
+    margin-left: auto
+    margin-right: auto
+    margin-top: 22px
+    text-align: center
+    margin-bottom: 40px
+    font-size: 50px
+    font-weight: 400
+    letter-spacing: -0.03em
+  img
+    display: block
+    width: 100%
+    max-width: 1110px
+    margin-left: auto
+    margin-right: auto
+    height: auto
+  &__short
+    display: block
+    max-width: 760px
+    margin-left: auto
+    margin-right: auto
+    font-size: 23px
+    text-transform: uppercase
+    margin-top: 41px
+    line-height: 150%
+    font-weight: 300
+    font-family: 'Intro'
+  h2
+    margin-top: 110px
+    margin-bottom: 37px
+    font-size: 35px !important
+    font-family: 'Intro'
+    font-weight: bold
+    color: $fontColor
+    text-align: left
+    max-width: 760px
+    margin-left: auto
+    margin-right: auto
+  h3
+    font-family: 'Intro'
+    margin-top: 35px
+    margin-bottom: 18px
+    font-size: 23px
+    line-height: 130%
+    font-weight: 300
+    max-width: 760px
+    margin-left: auto
+    margin-right: auto
+  p
+    font-family: 'Intro Book'
+    font-size: 15px
+    line-height: 150%
+    margin-left: auto
+    margin-right: auto
+    max-width: 760px
+    margin-top: 0
+    margin-bottom: 25px
+  figcaption
+    display: block
+    font-size: 12px
+    line-height: 150%
+    margin-left: auto
+    margin-right: auto
+    max-width: 760px
+    margin-top: 28px
+    padding-bottom: 5px
+    color: transparentize($fontColor, 0.4)
+    margin-bottom: 0
+    span
+      display: block
+      max-width: 350px
+  blockquote
+    font-family: 'Intro'
+    text-transform: uppercase
+    max-width: 875px
+    margin-left: auto
+    margin-right: auto
+    margin-top: 70px
+    margin-bottom: 70px
+    text-align: center
+    font-size: 23px
+    line-height: 150%
+    padding-top: 45px
+    padding-bottom: 42px
+    border-top: 3px solid $primaryColor
+    border-bottom: 3px solid $primaryColor
+    span
+      display: block
+      margin-left: auto
+      margin-right: auto
+      max-width: 645px
+      
+  &__slider
+    max-width: 760px
+    margin-left: auto
+    margin-right: auto
+    margin-top: 45px
+    .slick-arrow
+      z-index: 10
+      top: 50%
+      transform: translateY(-50%)
+      &:first-child
+        left: -25px
+      &:last-child
+        right: -25px
+  &__slide
+    max-width: 760px
+    margin-left: auto
+    margin-right: auto
+    img
+      display: block
+      height: auto
+      width: 100%
+  &__video-sec
+    background-color: #EDEDED
+    padding: 75px 0
+    width: calc(100% + 50px)
+    transform: translateX(-25px)
+    margin-bottom: 125px
+    margin-top: 120px
+  &__video-wrap
+    width: 100%
+    min-height: 440px
+    max-width: 760px
+    margin-left: auto
+    margin-right: auto
+    background-repeat: no-repeat
+    background-position: 50%
+    background-image: url(../../img/video-bg.jpg)
+    display: flex
+    justify-content: center
+    align-items: center
+  &__video-btn
+    background-repeat: no-repeat
+    width: 100px
+    height: 100px
+    display: block
+    background-image: url(../../img/play.svg)
+  &__facts
+    max-width: 875px
+    margin-left: auto
+    margin-right: auto
+    padding: 62px 53px
+    border: 3px solid $fontColor
+    margin-bottom: 115px
+    h2
+      margin-top: 0
+      margin-bottom: 35px
+    ul
+      padding-left: 20px
+      margin-top: 0
+      margin-bottom: 0
+    
+    li
+      display: list-item
+      list-style-type: disc
+      font-size: 15px
+      line-height: 23px
+      
+  &__tags
+    margin-bottom: 120px
+    text-align: center
+    h3
+      text-align: center
+      font-size: 23px
+      margin-top: 0
+      margin-bottom: 39px
+      font-weight: 700
+  &__tag
+    text-transform: uppercase
+    text-align: center
+    text-decoration: none
+    font-size: 15px
+    font-weight: 500
+    color: $primaryColor
+    margin-right: 15px
+    &:last-child
+      margin-right: 0
+    &:hover
+      text-decoration: underline
+  &__info
+    margin-bottom: 113px
+    padding-top: 44px
+    border-top: 3px solid #EDEDED
+    text-align: center
+    max-width: 875px
+    margin-left: auto
+    margin-right: auto
+    span
+      display: inline-block
+      vertical-align: middle
+      color: transparentize($fontColor, 0.4)
+      font-size: 12px
+      margin: 0 10px
+      
+  &__share
+    text-align: center
+    h3
+      margin-top: 0
+      margin-bottom: 43px
+      text-align: center
+      font-size: 23px
+      font-weight: 700
+    a
+      display: inline-block
+      vertical-align: middle
+      width: 75px
+      height: 50px
+      box-shadow: inset 0 0 0 3px $fontColor
+      font-size: 26px
+      padding: 11px 5px
+      text-align: center
+      &:last-child
+        position: relative
+        left: -3px
+    
+    
++r($desktop)
+  .articles-sec
+    padding-top: 0px !important
+    &__tag-wrapper
+      margin-top: -20px
+      margin-bottom: 35px
+  
++r($tablet)
+  .articles-sec
+    padding-top: 0px !important
+  
++r($mobile)
+  .articles-sec
+    &__tag-wrapper
+      margin-top: 0
+      margin-bottom: 20px
+    &__tag
+      font-size: 12px

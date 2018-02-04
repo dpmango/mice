@@ -1,0 +1,43 @@
+.breadcrumbs
+  position: fixed
+  z-index: 1010
+  top: 50px
+  left: 50%
+  transform: translateX(-50%)
+  max-width: 420px
+  width: 100%
+  text-align: center
+  &__link
+    font-size: 12px
+    line-height: 16px
+    font-weight: 400
+    color: transparentize($fontColor, 0.4)
+    margin-right: 20px
+    position: relative
+    &:hover,
+    &.is-active
+      text-decoration: underline
+    &:after
+      content: '→'
+      position: absolute
+      top: 55%
+      right: -16px
+      transform: translateY(-50%)
+    &:last-child:after
+      display: none
+    
++r($desktop)
+  .breadcrumbs
+    position: relative
+    left: 0
+    top: 0
+    padding-top: 85px
+    z-index: 10
+    transform: none
+    margin-left: auto
+    margin-right: auto
+  
++r($mobile)
+  .breadcrumbs
+    padding-top: 65px
+    margin-bottom: 10px

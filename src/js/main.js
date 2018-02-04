@@ -825,5 +825,25 @@ $(document).ready(function(){
     closeMobileMenu();
 
   });
+  
+  
+  //////////
+  // POST SLIDER
+  //////////
+  
+  $('.one-article__slider').slick({
+      dots: false,
+      arrows: true,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      draggable: false,
+      pauseOnHover: false,
+      pauseOnFocus: false,
+      pauseOnDotsHover: false,
+      infinite: true,
+      fade: true,
+      prevArrow: '<div class="btn"><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><img src="img/reviews_slider/slider_prev.svg"></div>',
+      nextArrow: '<div class="btn"><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><img src="img/reviews_slider/slider_next.svg"></div>'
+    });
 
 });
