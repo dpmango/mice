@@ -1,12 +1,6 @@
 <svg width="13" height="26" viewBox="0 0 13 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <title>Blue 2</title>
-<desc>Created using Figma</desc>
-<g id="Canvas" transform="translate(-5298 -5877)">
-<g id="Blue 2">
-<use xlink:href="#path0_fill" transform="translate(5298 5877.74)" fill="#231F20"/>
-</g>
-</g>
-<defs>
+<g id="facebook">
 <path id="path0_fill" d="M 3.84367 24.9678L 3.84367 13.5747L 0 13.5747L 0 9.13428L 3.84367 9.13428L 3.84367 5.8618C 3.84367 2.07146 6.16313 0 9.565 0C 11.1886 0 12.5913 0.121203 13 0.176295L 13 4.14293L 10.6474 4.14293C 8.80289 4.14293 8.4384 5.01338 8.4384 6.30254L 8.4384 9.13428L 12.8454 9.13428L 12.271 13.5747L 8.4384 13.5747L 8.4384 24.9678L 3.84367 24.9678Z"/>
-</defs>
+</g>
 </svg>
