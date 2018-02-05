@@ -43,6 +43,21 @@
   left: 50%
   transition: all .3s easeInOutQuad
   padding: 41px 40px
+  &__progress
+    display: none
+    position: absolute
+    bottom: 0
+    z-index: 10
+    left: 50px
+    width: calc(100% - 100px)
+    height: 3px
+    background-color: #fff
+  &__progress-bar
+    height: 3px
+    width: 0%
+    max-width: 100%
+    background-color: $fontColor
+    transition: width 0.1s linear
 
 .menu__logo
   display: inline-block
@@ -107,6 +122,9 @@
     &::after
       left: 25px
       right: 25px
+    &__progress
+      width: calc(100% - 50px)
+      left: 25px
   .menu_fixed
     padding: 16px 15px 40px !important
     .menu__logo img
@@ -161,3 +179,6 @@
     &::after
       left: 15px
       right: 15px
+    &__progress
+      width: calc(100% - 30px)
+      left: 15px

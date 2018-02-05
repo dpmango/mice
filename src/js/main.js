@@ -103,6 +103,32 @@ $(document).ready(function(){
     // temp - developer
     _window.on('resize', debounce(setBreakpoint, 200));
     
+    // Breadcrumbs
+    if (_window.width() > 992) {
+      if ($('.breadcrumbs').innerHeight() > 19) {
+        $('.breadcrumbs').css('top', '40px')
+      }
+    }
+    _window.resize(function(){
+      if (_window.width() > 992) {
+        if ($('.breadcrumbs').innerHeight() > 19) {
+          $('.breadcrumbs').css('top', '40px')
+        }
+      }
+    });
+    
+    Pace.on('hide', function(){
+      $('.breadcrumbs').css('opacity', 1)
+    });
+    
+    
+    $(window).scroll(function() {
+      var wintop = $(window).scrollTop(), docheight = $('body').height(), winheight = $(window).height();
+      //console.log(wintop);
+      var totalScroll = (wintop/(docheight-winheight))*100;
+      //console.log("total scroll" + totalScroll);
+      $('.menu__progress-bar').css("width",totalScroll+"%");
+    });
 
   }
 
@@ -554,6 +580,25 @@ $(document).ready(function(){
     //     return _socialsSlickMobile.slick(socialsSlickMobileOptions);
     //   }
     // }, 300));
+    
+      //////////
+  // POST SLIDER
+  //////////
+  
+  $('.one-article__slider').slick({
+      dots: false,
+      arrows: true,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      draggable: false,
+      pauseOnHover: false,
+      pauseOnFocus: false,
+      pauseOnDotsHover: false,
+      infinite: true,
+      fade: true,
+      prevArrow: '<div class="btn"><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><img src="img/reviews_slider/slider_prev.svg"></div>',
+      nextArrow: '<div class="btn"><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><img src="img/reviews_slider/slider_next.svg"></div>'
+    });
 
   }
 
@@ -827,38 +872,5 @@ $(document).ready(function(){
     
 
   });
-  
-  
-  //////////
-  // POST SLIDER
-  //////////
-  
-  $('.one-article__slider').slick({
-      dots: false,
-      arrows: true,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      draggable: false,
-      pauseOnHover: false,
-      pauseOnFocus: false,
-      pauseOnDotsHover: false,
-      infinite: true,
-      fade: true,
-      prevArrow: '<div class="btn"><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><img src="img/reviews_slider/slider_prev.svg"></div>',
-      nextArrow: '<div class="btn"><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><img src="img/reviews_slider/slider_next.svg"></div>'
-    });
-  
-  if (_window.width() > 992) {
-    if ($('.breadcrumbs').innerHeight() > 19) {
-      $('.breadcrumbs').css('top', '40px')
-    }
-  }
-  _window.resize(function(){
-    if (_window.width() > 992) {
-      if ($('.breadcrumbs').innerHeight() > 19) {
-        $('.breadcrumbs').css('top', '40px')
-      }
-  }
-  })
 
 });
