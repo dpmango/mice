@@ -102,6 +102,7 @@ $(document).ready(function(){
 
     // temp - developer
     _window.on('resize', debounce(setBreakpoint, 200));
+    
 
   }
 
@@ -823,6 +824,7 @@ $(document).ready(function(){
     initSliders();
     forceAutoplay();
     closeMobileMenu();
+    
 
   });
   
