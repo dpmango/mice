@@ -336,11 +336,13 @@
       position: relative !important
       display: inline-block
       vertical-align: middle
+      flex-direction: row
       width: 75px
       height: 50px
       font-size: 26px
       padding: 11px 5px
       text-align: center
+      z-index: 10
       &:before
         content: '';
         position: absolute;
@@ -351,8 +353,12 @@
         border: 3px solid $fontColor;
       &:last-child
         position: relative
-        &:before
-          border-left: 0
+        left: -3px
+      &:hover
+        z-index: 15
+  &__vk
+    font-size: 17px !important
+    padding: 17px 5px !important
     
     
 +r($wide)

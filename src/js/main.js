@@ -847,5 +847,18 @@ $(document).ready(function(){
       prevArrow: '<div class="btn"><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><img src="img/reviews_slider/slider_prev.svg"></div>',
       nextArrow: '<div class="btn"><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><img src="img/reviews_slider/slider_next.svg"></div>'
     });
+  
+  if (_window.width() > 992) {
+    if ($('.breadcrumbs').innerHeight() > 19) {
+      $('.breadcrumbs').css('top', '40px')
+    }
+  }
+  _window.resize(function(){
+    if (_window.width() > 992) {
+      if ($('.breadcrumbs').innerHeight() > 19) {
+        $('.breadcrumbs').css('top', '40px')
+      }
+  }
+  })
 
 });
