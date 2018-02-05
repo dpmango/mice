@@ -1,18 +1,20 @@
 # Gulp Starter Pack
 This package intended to solve common front-end development tasks. Works best for psd/sketch to html projects and save you a lot of time setting up local environment
 
-
-SFTP:
-http://mice.dev.glyf.ru/
-s_khmelevskoy
-@SSP6sJ3
-
+## DEMO
+https://mice.surge.sh
 
 ## How to start
 * `yarn` - install npm dependencies
 * `bower install` - install bower packages
 * `gulp` - run dev-server
 * `gulp build` - build project from sources
+
+### Build fails using npm ?
+* Install yarn - Follow instructions on https://yarnpkg.com/en/docs/install
+* Remove node_modules folder `rm -rf node_modules`
+* Reinstall packages with yarn - `yarn`
+* Start `gulp` or `gulp build`
 
 ## List of Gulp tasks
 
@@ -51,6 +53,6 @@ All available tasks are placed in a folder `./gulp/tasks` as separate *.js files
 ##Other
 You can also use [npm scripts](https://docs.npmjs.com/misc/scripts):
 
-* `npm run start` - same as `gulp default`.
-* `npm run build` - same as `gulp build`.
-* `npm run ghpages` to push only `./dist` folder to **gh-pages** branch on github (very useful for previews).
+* `yarn start` - same as `gulp default`.
+* `yarn build` - same as `gulp build`.
+* `yarn surge` - deploy `./dist` folder to **surge** (used for previews). Request deploy rights from owner (surge --add)
