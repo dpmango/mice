@@ -1,22 +1,50 @@
 ---
-title: HOME - TEAM
+title: TEAM - MICE
+bodyClass: team-page
 ---
 extends shared/_layout
 block content
   
-  section#weekly
+  .breadcrumbs
+    a.breadcrumbs__link.is-active(href="#") Главная
+    a.breadcrumbs__link(href="#") Команда
+  section.team-members
     .container-fluid
-      h2 Команда
+      h2 Команда журнала
       .row
         .col-lg-4.col-md-6
-          .weekly__week
-            a(href='post.html')
-              .weekly__week__image(style="background-image: url('img/weekly/1.png')")
-            .weekly__week__properties
-              span.tag Тема
-              span.data 30 октября
-            a.weekly__week__content(href='post.html')
-              h4 Провокация — прекрасная начинка для рекламной кампании
-              p
-                | На этапе разработки плана продвижения компании сроком на год или сезон от меня зависят стратегические решения
-                | в области позиционирования и партнерства, которые в моих силах правильно преподнести генеральному руководству.
+          a.team-members__member(href="#")
+            .team-members__photo
+              img(src="img/member1.png" srcset="img/member1@2x.png 2x")
+            h3.team-members__name Антон Гроза
+            span.team-members__position Исполнительный директор
+        .col-lg-4.col-md-6
+          a.team-members__member(href="#")
+            .team-members__photo
+              img(src="img/member2.png" srcset="img/member2@2x.png 2x")
+            h3.team-members__name Алина Высоцкая
+            span.team-members__position Копирайтер
+        .col-lg-4.col-md-6
+          a.team-members__member(href="#")
+            .team-members__photo
+              img(src="img/member3.png" srcset="img/member3@2x.png 2x")
+            h3.team-members__name Олег Конышев
+            span.team-members__position Интернет-маркетолог
+        .col-lg-4.col-md-6
+          a.team-members__member(href="#")
+            .team-members__photo
+              img(src="img/member4.png" srcset="img/member4@2x.png 2x")
+            h3.team-members__name Валерия Семенович
+            span.team-members__position Менеджер по работе с клиентами
+        .col-lg-4.col-md-6
+          a.team-members__member(href="#")
+            .team-members__photo
+              img(src="img/member5.png" srcset="img/member5@2x.png 2x")
+            h3.team-members__name Ицхак Пинтосевич
+            span.team-members__position Арт-директор
+        .col-lg-4.col-md-6
+          a.team-members__member(href="#")
+            .team-members__photo
+              img(src="img/member6.png" srcset="img/member6@2x.png 2x")
+            h3.team-members__name Ольга Поздняк
+            span.team-members__position Дизайнер

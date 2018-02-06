@@ -8,11 +8,11 @@ PageList:
 - file: video.html
   ready: 80
 - file: post.html
-  ready: 70
+  ready: 80
 - file: team.html
-  ready: 0
+  ready: 80
 - file: team-member.html
-  ready: 0
+  ready: 70
 - file: contact.html
   ready: 0
 - file: 404.html
