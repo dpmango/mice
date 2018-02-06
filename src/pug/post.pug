@@ -5,11 +5,15 @@ bodyClass: articles-page one-article-page
 extends shared/_layout
 block content
   
+  
+  // BREADCRUMBS
   .breadcrumbs
     a.breadcrumbs__link.is-active(href="#") Главная
     a.breadcrumbs__link(href="#") Темы
     a.breadcrumbs__link.is-active(href="#") Интервью
     a.breadcrumbs__link(href="#") Хайп. Триггеры. Тотальная визуализация. А на что способна ваша площадка?
+    
+  // ONE ARTICLE SECTION
   .one-article
     .one-article__category
       span Интервью
@@ -45,12 +49,16 @@ block content
     h3 — Знаю, что вы делаете упор на корпоративные коммуникации. Подскажите, пожалуйста, ваши креативные решения стандартизированы?
     p — Юбилейное мероприятие QIWI. В этой компании развита культура, которая заявляет, что бывших сотрудников не бывает. Они действительно отличаются большой лояльностью к людям, которые покидают стены компании. Статистически известно, что у них большой возврат, а офис — это место, куда часто приходят друзья сотрудников, бывшие коллеги, чтобы проводить свое личное время.
     p И эта культура — «нет бывших сотрудников QIWI» — была интегрирована в концепцию исполнения нескольких заветных желаний, где среди прочих было первоначальное волеизъявление самих топ-менеджеров, чтобы собраться всем-всем вместе.
+    
+    // ONE ARTICLE VIDEO
     .one-article__video-sec
       .one-article__video-wrap
         a.one-article__video-btn(js-popupVideo href="https://www.youtube.com/watch?v=6j5t6WjtSfk")
       
       figcaption 
         span Transparent Box, or Vanity Fair. Из серии «Тело прекрасно. Красота не знает боли». 1965–1972. Фотомонтаж. Courtesy автор
+        
+    // ONE ARTICLE FACTS
     .one-article__facts
       h2 Факты и цифры
       ul
@@ -63,6 +71,8 @@ block content
         li Продюсер проекта — Егор Горшков.
         li Режиссер проекта — Вахтанг Вахтангишвили.
         li Менеджмент — Николай Михайлов и Дмитрий Жуков.
+        
+    // ONE ARTICLE TAGS
     .one-article__tags
       h3.one-article__tags-title Теги
       a.one-article__tag(href="#") # Селебрити
@@ -72,6 +82,8 @@ block content
     .one-article__info
       span Интервью: Лина Москвина
       span Фотографии: Антон Самойлов
+      
+    // ONE ARTICLE SHARE
     .one-article__share
       h3.one-article__share-title Поделиться материалом в соцсетях:
       a.one-article__fb.btn(href="#")
@@ -88,6 +100,7 @@ block content
         +icon('ico-vk')
       
     
+  // ONE ARTICLE ANOTHER INTERVIEW
   section.articles-sec#weekly
     .container-fluid
       h2 Другие интервью
@@ -163,6 +176,8 @@ block content
                 | Российский MICE рынок давно вышел за границы своей страны и добрался до самых экзотических и далеких точек
                 | нашего земного шара. Задачей журнала MICE&more является помощь в развитии рынка, его профессиональном образовании
                 | и совершенствовании. Наши читатели всегда будут в курсе актуальных событий.
+                
+      // PAGINATION/LOAD MORE
       .page-pagination
         a.page-pagination__more.btn(href="#") Загрузить еще
           .item

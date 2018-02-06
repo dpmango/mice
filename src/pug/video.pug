@@ -5,10 +5,14 @@ bodyClass: articles-page
 extends shared/_layout
 block content
   
+  
+  // BREADCRUMBS
   .breadcrumbs
     a.breadcrumbs__link.is-active(href="#") Главная
     a.breadcrumbs__link(href="#") Темы
     a.breadcrumbs__link(href="#") Видео
+    
+  // ARTICLES SECTION
   section.articles-sec#weekly
     .container-fluid
       h2 Видео
@@ -93,6 +97,8 @@ block content
                 | нашего земного шара. Задачей журнала MICE&more является помощь в развитии рынка, его профессиональном образовании
                 | и совершенствовании. Наши читатели всегда будут в курсе актуальных событий.
       
+      
+      // PAGINATION
       .page-pagination
         a.page-pagination__more.btn(href="#") Загрузить еще
           .item

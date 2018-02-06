@@ -813,6 +813,7 @@ $(document).ready(function(){
     initSliders();
     forceAutoplay();
     closeMobileMenu();
+    $('.breadcrumbs').css('opacity', 1)
 
 
   });
