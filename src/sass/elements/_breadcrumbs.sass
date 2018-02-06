@@ -2,13 +2,12 @@
   opacity: 0
   position: fixed
   z-index: 1010
-  top: 50px
+  top: 46px
   left: 50%
   transform: translateX(-50%)
   max-width: 420px
   width: 100%
   text-align: center
-  transition: all $transitionSpeed $ease
   &__link
     font-size: 12px
     line-height: 16px
@@ -25,6 +24,8 @@
       top: 55%
       right: -16px
       transform: translateY(-50%)
+    &:last-child
+      margin-right: 0
     &:last-child:after
       display: none
     
