@@ -85,50 +85,29 @@ $(document).ready(function(){
     initHeaderScroll();
 
     initPopups();
-    // initSliders();
+    // initSliders(); // moved to onload
     runScrollMonitor();
     initMasks();
-
-    // revealFooter();
-    // _window.on('resize', throttle(revealFooter, 100));
 
     fitText();
     _window.on('resize', throttle(fitText, 200));
 
     teleportQmark();
-    // _window.on('resize', debounce(teleportQmark, 200));
-    dirtyFixes()
+
+    adjustBreadcrumbs();
+    _window.on('resize', debounce(adjustBreadcrumbs, 200));
+
+    Pace.on('hide', function(){
+      $('.breadcrumbs').css('opacity', 1)
+    });
+    setArticleProgressBar();
+    _window.on('scroll', throttle(ArticleProgressBar, 5))
+
+    dirtyFixes();
     _window.on('resize', debounce(dirtyFixes, 200));
 
     // temp - developer
     _window.on('resize', debounce(setBreakpoint, 200));
-    
-    // Breadcrumbs
-    if (_window.width() > 992) {
-      if ($('.breadcrumbs').innerHeight() > 19) {
-        $('.breadcrumbs').css('top', '40px')
-      }
-    }
-    _window.resize(function(){
-      if (_window.width() > 992) {
-        if ($('.breadcrumbs').innerHeight() > 19) {
-          $('.breadcrumbs').css('top', '40px')
-        }
-      }
-    });
-    
-    Pace.on('hide', function(){
-      $('.breadcrumbs').css('opacity', 1)
-    });
-    
-    
-    $(window).scroll(function() {
-      var wintop = $(window).scrollTop(), docheight = $('body').height(), winheight = $(window).height();
-      //console.log(wintop);
-      var totalScroll = (wintop/(docheight-winheight))*100;
-      //console.log("total scroll" + totalScroll);
-      $('.menu__progress-bar').css("width",totalScroll+"%");
-    });
 
   }
 
@@ -171,32 +150,6 @@ $(document).ready(function(){
           scrollTop: $(el).offset().top}, 1000);
       return false;
     })
-
-  // FOOTER REVEAL
-  // function revealFooter() {
-  //   var footer = $('[js-reveal-footer]');
-  //   if (footer.length > 0) {
-  //     var footerHeight = footer.outerHeight();
-  //     var maxHeight = _window.height() - footerHeight > 100;
-  //     if (maxHeight && !msieversion() ) {
-  //       $('body').css({
-  //         'margin-bottom': footerHeight
-  //       });
-  //       footer.css({
-  //         'position': 'fixed',
-  //         'z-index': -10
-  //       });
-  //     } else {
-  //       $('body').css({
-  //         'margin-bottom': 0
-  //       });
-  //       footer.css({
-  //         'position': 'static',
-  //         'z-index': 10
-  //       });
-  //     }
-  //   }
-  // }
 
   // HEADER SCROLL
   // add .header-static for .page or body
@@ -417,6 +370,38 @@ $(document).ready(function(){
 
   }
 
+  //////////
+  // BREADCRUMBS
+  //////////
+  function adjustBreadcrumbs(){
+    if (_window.width() > bp.desktop) {
+      if ($('.breadcrumbs').innerHeight() > 19) {
+        $('.breadcrumbs').css('top', '40px')
+      }
+    }
+  }
+
+  //////////
+  // ARTICLE PROGRESS
+  //////////
+  function setArticleProgressBar(){
+    var menuPB = _document.find('.menu__progress')
+    if ( _document.find('.one-article').length > 0 ){
+      menuPB.addClass('is-visible');
+    } else {
+      menuPB.removeClass('is-visible');
+    }
+  }
+
+  function ArticleProgressBar(){
+    var wintop = _window.scrollTop();
+    var targetHeight = _document.find('.one-article').height(); // get article height
+    var winheight = _window.height();
+
+    var totalScroll = Math.floor((wintop/(targetHeight-winheight)) * 100);
+
+    $('.menu__progress-bar').css("width",totalScroll+"%");
+  }
 
   //////////
   // SLIDERS
@@ -453,12 +438,13 @@ $(document).ready(function(){
     // })
 
     // other individual sliders goes here
-
+    var slickPrev = '<div class="btn"><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><img src="img/reviews_slider/slider_prev.svg"></div>';
+    var slickNextBtn = '<div class="btn"><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><img src="img/reviews_slider/slider_next.svg"></div>'
     $('.reviews__slider').not('.slick-initialized').slick({
       fade: true,
       draggable: false,
-      prevArrow: '<div class="btn"><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><img src="img/reviews_slider/slider_prev.svg"></div>',
-      nextArrow: '<div class="btn"><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><img src="img/reviews_slider/slider_next.svg"></div>',
+      prevArrow: slickPrev,
+      nextArrow: slickNextBtn,
     });
 
     // $('.awards__slider .carousel').not('.slick-initialized').slick({
@@ -537,55 +523,11 @@ $(document).ready(function(){
       slick.$list.addClass('is-ready')
     });
 
-    // SLICK - UNSLICK EXAMPLE
-    // used when slick should be disabled on certain breakpoints
+    //////////
+    // POST SLIDER
+    //////////
 
-    // var _socialsSlickMobile = $('.socials__wrapper');
-    // var socialsSlickMobileOptions = {
-    //   mobileFirst: true,
-    //   dots: true,
-    //   responsive: [
-    //     {
-    //       breakpoint: 0,
-    //       settings: {
-    //         slidesToShow: 1,
-    //         slidesToScroll: 1,
-    //       }
-    //     },
-    //     {
-    //       breakpoint: 568,
-    //       settings: {
-    //         slidesToShow: 2,
-    //         slidesToScroll: 2,
-    //       }
-    //
-    //     },
-    //     {
-    //       breakpoint: 992,
-    //       settings: "unslick"
-    //     }
-    //
-    //   ]
-    // }
-    // _socialsSlickMobile.slick(socialsSlickMobileOptions);
-    //
-    // _window.on('resize', debounce(function(e){
-    //   if ( _window.width() > 992 ) {
-    //     if (_socialsSlickMobile.hasClass('slick-initialized')) {
-    //       _socialsSlickMobile.slick('unslick');
-    //     }
-    //     return
-    //   }
-    //   if (!_socialsSlickMobile.hasClass('slick-initialized')) {
-    //     return _socialsSlickMobile.slick(socialsSlickMobileOptions);
-    //   }
-    // }, 300));
-    
-      //////////
-  // POST SLIDER
-  //////////
-  
-  $('.one-article__slider').slick({
+    $('.one-article__slider').not('.slick-initialized').slick({
       dots: false,
       arrows: true,
       slidesToShow: 1,
@@ -596,8 +538,8 @@ $(document).ready(function(){
       pauseOnDotsHover: false,
       infinite: true,
       fade: true,
-      prevArrow: '<div class="btn"><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><img src="img/reviews_slider/slider_prev.svg"></div>',
-      nextArrow: '<div class="btn"><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><img src="img/reviews_slider/slider_next.svg"></div>'
+      prevArrow: slickPrev,
+      nextArrow: slickNextBtn,
     });
 
   }
@@ -862,6 +804,8 @@ $(document).ready(function(){
   Barba.Pjax.start();
 
   Barba.Dispatcher.on('newPageReady', function(currentStatus, oldStatus, container, newPageRawHTML) {
+    var newBodyClass = $(newPageRawHTML).find('[js-bodyClassToggler]').attr('class')
+    _document.find('body').attr('class', '').addClass('pace-done').addClass(newBodyClass);
 
     // $('body, html').animate({scrollTop: 0}, 200);
     $('.page').addClass('animated_load');
@@ -869,7 +813,7 @@ $(document).ready(function(){
     initSliders();
     forceAutoplay();
     closeMobileMenu();
-    
+
 
   });
 
