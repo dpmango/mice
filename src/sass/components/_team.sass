@@ -10,8 +10,9 @@
   margin: 0 auto
   margin-bottom: -45px
   max-width: 1680px
+  width: 100%
   h2
-    font-size: 70px
+    font-size: 70px !important
     margin-top: 94px
     margin-bottom: 25px
     letter-spacing: -0.03em
@@ -45,23 +46,127 @@
     font-size: 15px
     font-weight: 400
     
+    
+    
+.one-member
+  margin-top: 30px
+  &__photo
+    max-height: 450px
+    background-image: linear-gradient(to bottom, #fff 55px, #ededed 55px, #ededed 100%)
+    display: flex
+    justify-content: center
+    align-items: stretch
+    max-width: 1110px
+    margin-left: auto
+    margin-right: auto
+    position: relative
+    img
+      width: auto
+      max-width: 380px
+      max-height: 100%
+      margin-left: auto
+      margin-right: auto
+  &__wrapper
+    position: relative
+  &__prev,
+  &__next
+    position: absolute
+    top: 55px
+    font-size: 15px
+    text-transform: uppercase
+    font-weight: 400
+    color: #1C1C1C
+  &__prev
+    transform: rotate(-90deg)
+    transform-origin: top right
+    left: -170px
+    min-width: 170px
+  &__next
+    transform: rotate(90deg)
+    transform-origin: top left
+    right: -170px
+    min-width: 170px
+  h3
+    margin-top: 43px
+    margin-bottom: 35px
+    text-align: center
+    max-width: 760px
+    margin-left: auto
+    margin-right: auto
+    font-size: 35px
+    font-weight: 600
+  p
+    font-size: 15px
+    line-height: 150%
+    margin-top: 0
+    margin-bottom: 25px
+    max-width: 760px
+    margin-left: auto
+    margin-right: auto
+  &__back-btn
+    position: absolute
+    top: 25px
+    right: -25px
+    width: 50px
+    height: 50px
+    display: flex
+    justify-content: center
+    align-items: center
+    background-color: #fff
+    &:before
+      content: ''
+      position: absolute
+      width: 100%
+      height: 100%
+      border: 3px solid $fontColor
+    img
+      width: 40%
+      height: 40%
+    
+    
 +r($desktop)
   .team-members
     padding-top: 0
     padding-bottom: 90px
-    padding-left: 15px
-    padding-right: 15px
+    padding-left: 10px
+    padding-right: 10px
     h2
       margin-top: 0
       font-size: 60px !important
       margin-bottom: 15px
     
+  .one-member
+    &__back-btn
+      top: 35px
+      right: -15px
+    
 +r($tablet)
   .team-members
     padding-bottom: 80px
+    padding-left: 0px
+    padding-right: 0px
     h2
       font-size: 40px !important
       margin-left: auto !important
       margin-right: auto !important
     &__member
       margin-bottom: 32px
+  .one-member
+    &__photo
+      max-height: 350px
+      width: calc(100% + 30px)
+      transform: translateX(-15px)
+    h3
+      margin-top: 23px
+      margin-bottom: 15px
+      font-size: 23px
+      line-height: 100%
+    &__back-btn
+      right: 15px
+      
++r($mobile)
+  .one-member
+    &__photo
+      max-height: 225px
+      img
+        max-width: 205px
