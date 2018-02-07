@@ -12,8 +12,8 @@ PageList:
 - file: team.html
   ready: 80
 - file: team-member.html
-  ready: 70
+  ready: 80
 - file: contact.html
-  ready: 0
+  ready: 80
 - file: 404.html
   ready: 0

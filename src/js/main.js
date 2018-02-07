@@ -108,6 +108,9 @@ $(document).ready(function(){
 
     // temp - developer
     _window.on('resize', debounce(setBreakpoint, 200));
+    
+    // map
+    initMap();
 
   }
 
@@ -817,5 +820,39 @@ $(document).ready(function(){
 
 
   });
+  
+  
+  
+  // Map
+  function initMap() {
+	  var cntr = {
+	  	lat: 55.753892,
+	  	lng: 37.603144
+	  }
+	  var myicon = '../img/map-marker.svg';
+    
+    if($('#contacts-map').length > 0) {
+      var contactMap = new google.maps.Map(document.getElementById('contacts-map'), {
+	    	center: cntr,
+	    	zoom: 17
+	    });
+    }
+    
+    var locations = [
+  	  {
+  	  	lat: 55.753892,
+	  	  lng: 37.603144
+  	  }
+    ];
+    
+	  var markers = locations.map(function (location, i) {
+	  	return new google.maps.Marker({
+	  		position: location,
+	  		map: contactMap,
+	  		icon: myicon
+	  	});
+	  });
+    
+  }
 
 });

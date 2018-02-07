@@ -5,8 +5,8 @@
 .team-members
   padding-top: 25px
   padding-bottom: 0
-  padding-left: 25px
-  padding-right: 25px
+  padding-left: 35px
+  padding-right: 35px
   margin: 0 auto
   margin-bottom: -45px
   max-width: 1680px
@@ -163,8 +163,6 @@
 +r($tablet)
   .team-members
     padding-bottom: 80px
-    padding-left: 0px
-    padding-right: 0px
     h2
       font-size: 40px !important
       margin-left: auto !important
@@ -174,8 +172,8 @@
   .one-member
     &__photo
       max-height: 350px
-      width: calc(100% + 30px)
-      transform: translateX(-15px)
+      width: calc(100% + 50px)
+      transform: translateX(-25px)
       img
         max-width: 340px
     h3
@@ -184,9 +182,12 @@
       font-size: 23px
       line-height: 100%
     &__back-btn
-      right: 15px
+      right: 25px
       
 +r($mobile)
+  .team-members
+    padding-left: 0
+    padding-right: 0
   .one-member
     &__photo
       max-height: 225px

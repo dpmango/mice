@@ -1,0 +1,95 @@
+.contacts-page
+  .menu
+    left: 0
+    
+.contacts
+  padding-top: 25px
+  padding-bottom: 0
+  padding-left: 35px
+  padding-right: 35px
+  margin: 0 auto
+  max-width: 1680px
+  width: 100%
+  .col-lg-6
+    padding-left: 25px
+    padding-right: 25px
+  .row
+    margin-left: -25px
+    margin-right: -25px
+    align-items: stretch
+    
+  h2
+    font-size: 70px !important
+    margin-top: 100px
+    margin-bottom: 55px
+    letter-spacing: 0
+  &__map
+    margin-top: 78px
+    background-color: #ccc
+    min-height: 550px
+    iframe
+      width: 100%
+      height: 100%
+  &__info
+    background-color: $fontColor
+    padding: 48px 52px
+    height: calc(100% - 78px)
+  &__subtitle
+    margin-top: 0
+    margin-bottom: 10px
+    font-size: 15px
+    color: #fff
+    font-weight: 400
+  &__link
+    display: inline-block
+    text-decoration: none
+    color: #fff
+    font-weight: 700
+    font-size: 23px
+    line-height: 150%
+    margin-top: 0
+    margin-bottom: 39px
+    transition: all $transitionSpeed $ease
+    &:last-child
+      margin-bottom: 0
+    &:hover:not(p)
+      color: $primaryColor
+    
++r($desktop)
+  .contacts
+    padding-left: 10px
+    padding-right: 10px
+    padding-bottom: 83px
+    .col-lg-6
+      padding-left: 13px
+      padding-right: 13px
+    .row
+      margin-left: -13px
+      margin-right: -13px
+    h2
+      margin-top: 0
+      font-size: 60px !important
+      margin-bottom: 35px
+    &__info
+      padding: 26px 30px
+    &__map
+      margin-top: 48px
+      
++r($tablet)
+  .contacts
+    .row
+      align-items: flex-start
+    h2
+      font-size: 40px !important
+      margin-bottom: 30px !important
+      margin-left: auto !important
+      margin-right: auto !important
+    &__map
+      min-height: 345px
+      margin-top: 0
+      margin-bottom: 30px
+      
++r($mobile)
+  .contacts
+    padding-left: 0
+    padding-right: 0

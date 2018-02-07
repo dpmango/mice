@@ -1,0 +1,31 @@
+---
+title: CONTACTS - MICE
+bodyClass: contacts-page
+---
+extends shared/_layout
+block content
+  
+  
+  // BREADCRUMBS
+  .breadcrumbs
+    a.breadcrumbs__link.is-active(href="#") Главная
+    a.breadcrumbs__link(href="#") Контакты
+    
+  // TEAM MEMBERS SECTION
+  section.contacts
+    .container-fluid
+      h2 Контакты
+      .row
+        .col-lg-6.col-md-6
+          .contacts__map#contacts-map
+            
+        .col-lg-6.col-md-6
+          .contacts__info
+            h3.contacts__subtitle Телефон
+            a.contacts__link(href="tel:84956498637") 8 (495) 649-86-37
+            h3.contacts__subtitle Электронная почта
+            a.contacts__link(href="mailto:editor@miceandmore.org") editor@miceandmore.org
+            h3.contacts__subtitle Facebook
+            a.contacts__link(href="#") miceandmorerus
+            h3.contacts__subtitle Адрес
+            p.contacts__link Москва, Н. Кисловский пер. 7 стр. 1, офис 317
