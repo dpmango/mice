@@ -101,13 +101,13 @@
 @keyframes animateTeamTranstion
   from
     width: 100%
-    height: 100%
+    bottom: 0
   60%
     width: 166vw
-    height: 100%
+    bottom: 0
   100%
-    width: 160vw
-    height: 80vh
+    width: 166vw
+    bottom: -80vh
 
 @keyframes animateTeamTranstionPhoto
   from
@@ -176,6 +176,9 @@
     max-width: 760px
     margin-left: auto
     margin-right: auto
+  h3, p
+    opacity: 0
+    transform: translate3d(0,20px,0)
   &__back-btn
     position: absolute
     top: 25px
@@ -195,6 +198,15 @@
     img
       width: 40%
       height: 40%
+
+.one-team-anim, .team-member
+  .one-member
+    h3, p
+      opacity: 1
+      transform: translate3d(0,0,0)
+      transition: .25s .5s easeInOutQuad
+    p
+      transition-delay: .7s
 
 
 +r($desktop)

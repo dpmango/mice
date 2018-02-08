@@ -829,8 +829,8 @@ $(document).ready(function(){
       teamBlock.addClass('is-growing').removeClass('is-hovered');
 
       setTimeout(function(){
-        teamBlock.parent().siblings('').animate({ opacity: 0 }, transitionTime/3);
-      }, transitionTime / 2.5)
+        teamBlock.parent().siblings('').animate({ opacity: 0 }, 300);
+      }, transitionTime / 2)
 
       setTimeout(function(){
         deferred.resolve();
@@ -842,7 +842,7 @@ $(document).ready(function(){
 
     landAnimation: function() {
       var _this = this;
-      var $el = $(this.newContainer);
+      var $el = $(this.newContainer).addClass('one-team-anim');
 
       $(this.oldContainer).css({
         'position': 'absolute',
