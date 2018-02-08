@@ -120,6 +120,7 @@
 
 .one-member
   margin-top: 30px
+  padding-bottom: 15px
   &__photo
     max-height: 450px
     background-image: linear-gradient(to bottom, #fff 55px, #ededed 55px, #ededed 100%)
@@ -144,20 +145,22 @@
   &__prev,
   &__next
     position: absolute
-    top: 55px
+    top: 50px
     font-size: 15px
     text-transform: uppercase
     font-weight: 400
     color: #1C1C1C
+    &:hover
+      opacity: 0.8
   &__prev
     transform: rotate(-90deg)
     transform-origin: top right
-    left: -170px
+    left: -172px
     min-width: 170px
   &__next
     transform: rotate(90deg)
     transform-origin: top left
-    right: -170px
+    right: -172px
     min-width: 170px
   h3
     margin-top: 43px
@@ -181,8 +184,8 @@
     transform: translate3d(0,20px,0)
   &__back-btn
     position: absolute
-    top: 25px
-    right: -25px
+    top: 27px
+    right: -24px
     width: 50px
     height: 50px
     display: flex
@@ -227,6 +230,7 @@
       margin-bottom: 15px
 
   .one-member
+    padding-bottom: 0
     &__back-btn
       top: 35px
       right: -15px

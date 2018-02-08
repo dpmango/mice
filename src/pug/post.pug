@@ -8,10 +8,14 @@ block content
   
   // BREADCRUMBS
   .breadcrumbs
-    a.breadcrumbs__link.is-active(href="homepage.html") Главная
-    a.breadcrumbs__link(href="#") Темы
-    a.breadcrumbs__link.is-active(href="#") Интервью
-    a.breadcrumbs__link(href="#") Хайп. Триггеры. Тотальная визуализация. А на что способна ваша площадка?
+    a.breadcrumbs__link.is-active(href="homepage.html") 
+      span Главная
+    a.breadcrumbs__link(href="#") 
+      span Темы
+    a.breadcrumbs__link.is-active(href="#") 
+      span Интервью
+    a.breadcrumbs__link(href="#") 
+      span Хайп. Триггеры. Тотальная визуализация. А на что способна ваша площадка?
     
   // ONE ARTICLE SECTION
   .one-article
@@ -100,7 +104,7 @@ block content
         .item
         .item
         +icon('ico-vk')
-      
+    
     
   // ONE ARTICLE ANOTHER INTERVIEW
   section.articles-sec#weekly
@@ -112,7 +116,6 @@ block content
             a(href='post.html')
               .weekly__week__image(js-lazy data-src="img/weekly/1.png")
             .weekly__week__properties
-              span.tag Тема
               span.data 30 октября
             a.weekly__week__content(href='post.html')
               h4 Провокация — прекрасная начинка для рекламной кампании
@@ -124,7 +127,6 @@ block content
             a(href='post.html')
               .weekly__week__image(js-lazy data-src="img/weekly/2.png")
             .weekly__week__properties
-              span.tag Событие
               span.data 27 октября
             a.weekly__week__content(href='post.html')
               h4 Хайп. Триггеры. Тотальная визуализация. А на что способна ваша площадка?
@@ -137,7 +139,6 @@ block content
             a(href='post.html')
               .weekly__week__image(js-lazy data-src="img/weekly/3.png")
             .weekly__week__properties
-              span.tag Интервью
               span.data 26 октября
             a.weekly__week__content(href='post.html')
               h4 «Мной всегда двигала жажда быть впереди»
@@ -150,7 +151,6 @@ block content
             a(href='post.html')
               .weekly__week__image(js-lazy data-src="img/weekly/4.png")
             .weekly__week__properties
-              span.tag Экспертный совет
               span.data 30 октября
             a.weekly__week__content(href='post.html')
               h4 Идеальное корпоративное событие, или как #успетьвсе?
@@ -163,7 +163,6 @@ block content
             a(href='post.html')
               .weekly__week__image(js-lazy data-src="img/weekly/5.png")
             .weekly__week__properties
-              span.tag Тема
               span.data 19 октября
             a.weekly__week__content(href='post.html')
               h4 MICE&more — журнал для русскоязычных MICE специалистов и о них самих
@@ -177,7 +176,6 @@ block content
               .weekly__week__image(js-lazy data-src="img/weekly/6.png")
             .weekly__week__properties
               span.tag Спецпредложения
-              span.data 19 октября
             a.weekly__week__content(href='post.html')
               h4 MICE&more — журнал для русскоязычных MICE специалистов и о них самих
               p

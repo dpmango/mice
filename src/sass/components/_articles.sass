@@ -28,12 +28,16 @@
     .tag:after
       display: none
   .weekly__week__content h4
-    margin-top: 5px
+    margin-top: 8px
   .weekly__week__image
     position: relative
     display: flex
     justify-content: center
     align-items: center
+  .weekly__week
+    &:hover
+      .articles-sec__video-btn
+        transform: scale(1)
   &__video-btn
     background-repeat: no-repeat
     width: 100px
@@ -41,6 +45,8 @@
     height: 100px
     display: block
     background-image: url(../../img/play.svg)
+    transition: all $transitionSpeed $ease
+    transform: scale(0)
 
 // .one-article-page
 //   .menu__progress
@@ -121,6 +127,9 @@
     text-transform: uppercase
     font-weight: 400
     color: #1C1C1C
+    transition: all $transitionSpeed $ease
+    &:hover
+      opacity: 0.8
   &__prev
     transform: rotate(-90deg)
     transform-origin: top right
@@ -132,7 +141,7 @@
   img
     display: block
     width: 100%
-    max-width: 1110px
+    max-width: calc(100% - 16px)
     margin-left: auto
     margin-right: auto
     height: auto
@@ -152,7 +161,7 @@
     margin-bottom: 37px
     font-size: 35px !important
     font-family: 'Intro'
-    font-weight: bold
+    font-weight: 600
     color: $fontColor
     text-align: left
     max-width: 760px
@@ -177,20 +186,6 @@
     max-width: 760px
     margin-top: 0
     margin-bottom: 25px
-  figcaption
-    display: block
-    font-size: 12px
-    line-height: 150%
-    margin-left: auto
-    margin-right: auto
-    max-width: 760px
-    margin-top: 28px
-    padding-bottom: 5px
-    color: transparentize($fontColor, 0.4)
-    margin-bottom: 0
-    span
-      display: block
-      max-width: 350px
   blockquote
     font-family: 'Intro'
     text-transform: uppercase
@@ -211,6 +206,21 @@
       margin-left: auto
       margin-right: auto
       max-width: 645px
+  figcaption
+    display: block
+    font-size: 12px
+    line-height: 150%
+    max-width: 760px
+    margin-left: auto
+    margin-right: auto
+    max-width: 760px
+    margin-top: 28px
+    padding-bottom: 5px
+    color: transparentize($fontColor, 0.4)
+    margin-bottom: 0
+    span
+      display: block
+      max-width: 350px
 
   &__slider
     max-width: 760px
@@ -312,10 +322,11 @@
     font-weight: 500
     color: $primaryColor
     margin-right: 15px
+    transition: all $transitionSpeed $ease
     &:last-child
       margin-right: 0
     &:hover
-      text-decoration: underline
+      opacity: 0.8
   &__info
     margin-bottom: 113px
     padding-top: 44px
@@ -367,6 +378,11 @@
     font-size: 17px !important
     padding: 17px 5px !important
 
+@media (max-width: 1681px)
+  .one-article
+    img
+      max-width: 1110px
+    
 
 +r($wide)
   .one-article

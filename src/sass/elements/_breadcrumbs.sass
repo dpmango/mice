@@ -15,8 +15,8 @@
     color: transparentize($fontColor, 0.4)
     margin-right: 20px
     position: relative
-    &.is-active
-      text-decoration: underline
+    text-decoration: none
+    border: 0
     &:after
       content: '→'
       position: absolute
@@ -27,6 +27,35 @@
       margin-right: 0
     &:last-child:after
       display: none
+    &.is-active
+      span
+        color: transparentize($fontColor, 0.4)
+        position: relative
+        transition: all .3s cubic-bezier(0.455, 0.03, 0.515, 0.955)
+        &:before
+          content: ''
+          background: transparentize($fontColor, 0.4)
+          width: 100%
+          transition: all .3s cubic-bezier(0.455, 0.03, 0.515, 0.955)
+          bottom: 0px
+          right: 0
+          position: absolute
+          height: 1px
+        &:after
+          content: ''
+          transition: all .3s cubic-bezier(0.455, 0.03, 0.515, 0.955)
+          transition-delay: .2s
+          background: transparentize($fontColor, 0.4)
+          width: 0%
+          bottom: 0px
+          left: 0
+          position: absolute
+          height: 1px
+        &:hover
+          &:before
+            width: 0%
+          &:after
+            width: 100%
     
 +r($desktop)
   .breadcrumbs

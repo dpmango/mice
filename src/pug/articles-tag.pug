@@ -7,9 +7,12 @@ block content
   
   // BREADCRUMBS
   .breadcrumbs
-    a.breadcrumbs__link.is-active(href="#") Главная
-    a.breadcrumbs__link(href="#") Темы
-    a.breadcrumbs__link(href="#") Интервью
+    a.breadcrumbs__link.is-active(href="#") 
+      span Главная
+    a.breadcrumbs__link(href="#") 
+      span Темы
+    a.breadcrumbs__link(href="#") 
+      span Интервью
     
   // ARTICLES SECTION
   section.articles-sec#weekly
@@ -117,8 +120,9 @@ block content
           .item
           .item
           .item
-        a.page-pagination__page.page-pagination__next.btn(href="#") >
+        a.page-pagination__page.page-pagination__next.btn(href="#") 
           .item
           .item
           .item
           .item
+          +icon('ico-arrow-right')
