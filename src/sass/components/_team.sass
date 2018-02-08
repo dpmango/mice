@@ -215,7 +215,7 @@
 +r($desktop)
   .team-members
     padding-top: 0
-    padding-bottom: 90px
+    padding-bottom: 78px
     padding-left: 10px
     padding-right: 10px
     .col-lg-4
@@ -225,12 +225,28 @@
       margin-left: -13px
       margin-right: -13px
     h2
-      margin-top: 0
+      margin-top: 25px
       font-size: 60px !important
-      margin-bottom: 15px
+      margin-bottom: 28px !important
+    &__photo
+      min-height: 240px
+    &__img
+      max-height: 100%
+    &__member
+      margin-bottom: 45px
 
   .one-member
-    padding-bottom: 0
+    padding-bottom: 22px
+    &__photo
+      max-height: 355px
+      margin-top: 35px
+      img
+        max-height: 100%
+        max-width: 320px
+    h3
+      margin-top: 44px
+    p
+      max-width: 620px
     &__back-btn
       top: 35px
       right: -15px
@@ -240,23 +256,32 @@
     padding-bottom: 80px
     h2
       font-size: 40px !important
+      margin-top: 20px !important
+      margin-bottom: 32px !important
       margin-left: auto !important
       margin-right: auto !important
     &__member
-      margin-bottom: 32px
+      margin-bottom: 36px
+    &__photo
+      min-height: 230px
+      &:after
+        top: 50px
   .one-member
+    padding-bottom: 7px
     &__photo
       max-height: 350px
       width: calc(100% + 50px)
       transform: translateX(-25px)
+      background-image: linear-gradient(to bottom, #fff 45px, #ededed 45px, #ededed 100%)
       img
         max-width: 340px
     h3
-      margin-top: 23px
-      margin-bottom: 15px
+      margin-top: 26px
+      margin-bottom: 22px
       font-size: 23px
       line-height: 100%
     &__back-btn
+      top: 30px
       right: 25px
 
 +r($mobile)

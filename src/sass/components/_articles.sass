@@ -393,14 +393,23 @@
 +r($desktop)
   .articles-sec
     padding-top: 0px !important
+    padding-bottom: 80px !important
     h2
-      font-size: 40px !important
+      font-size: 60px !important
+      margin-top: 25px !important
     &__tag-wrapper
       margin-top: -20px
       margin-bottom: 35px
 
   .one-article
     padding-top: 43px
+    h1
+      font-size: 40px
+      max-width: 705px
+      line-height: 128%
+      margin-top: 27px
+      letter-spacing: 0
+      margin-bottom: 38px
     &__short,
     h2,
     p,
@@ -411,14 +420,40 @@
     blockquote span
       max-width: 618px
     &__share
+      margin-bottom: 65px
+    &__short
+      line-height: 153%
+      margin-top: 42px
+    h2
+      margin-top: 83px
+    figcaption
+      margin-top: 20px
+    blockquote
+      margin-top: 44px
+      margin-bottom: 46px
+    &__video-sec
+      padding-top: 50px
+      padding-bottom: 42px
+      margin-top: 47px
+      margin-bottom: 100px
+    &__video-wrap
+      min-height: 358px
+    &__facts
+      margin-bottom: 95px
+      padding: 40px 46px
+      h2
+        margin-top: 0
+    &__tags
+      margin-bottom: 95px
+    &__info
       margin-bottom: 90px
 
 +r($tablet)
   .articles-sec
     padding-top: 0px !important
-
-+r($mobile)
-  .articles-sec
+    h2
+      font-size: 40px !important
+      margin-top: 20px !important
     &__tag-wrapper
       margin-top: 0
       margin-bottom: 20px
@@ -428,11 +463,11 @@
   .one-article
     padding-left: 15px
     padding-right: 15px
-    padding-top: 30px
+    padding-top: 27px
     h1
       font-size: 30px
       line-height: 40px
-      margin-bottom: 30px
+      margin-bottom: 35px
     img
       width: calc(100% + 30px)
       transform: translateX(-15px)
@@ -442,9 +477,11 @@
       margin-top: 75px !important
       margin-left: 0 !important
       font-size: 23px !important
+      margin-bottom: 25px !important
     .slick-arrow
       width: 50px
       height: 50px
+      top: 42%
       &:first-child
         left: -10px
       &:last-child
@@ -456,9 +493,9 @@
     figcaption
       margin-top: 12px
     blockquote
-      margin-top: 50px
-      margin-bottom: 50px
-      padding-top: 30px
+      margin-top: 40px
+      margin-bottom: 40px
+      padding-top: 24px
       padding-bottom: 28px
     &__video-sec
       margin-top: 50px
@@ -475,15 +512,18 @@
     &__facts
       border-left: 0
       border-right: 0
-      margin-bottom: 88px
-      padding-top: 45px
-      padding-bottom: 45px
+      margin-bottom: 83px
+      padding-top: 35px
+      padding-bottom: 37px
       padding-left: 0
       padding-right: 0
       h2
         margin-top: 0 !important
-        margin-bottom: 35px !important
+        margin-bottom: 25px !important
     &__tags
       margin-bottom: 90px
     &__info
-      margin-bottom: 80px
+      margin-bottom: 75px
+      padding-top: 37px
+    &__share
+      margin-bottom: 55px
