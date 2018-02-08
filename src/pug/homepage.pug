@@ -12,11 +12,11 @@ block content
       .header_slider
         .slide
           .left
-            video(muted loop poster="video/placeholder.jpg")
-              source(src='video/with_audio.webm', type='vide/webm')
-              source(src='video/with_audio.mp4', type='video/mp4')
+            video(muted loop js-lazy data-poster="video/placeholder.jpg")
+              data-src(src='video/with_audio.webm', type='vide/webm')
+              data-src(src='video/with_audio.mp4', type='video/mp4')
             
-            .bg.bg--mobile(style='background-image: url(video/placeholder.jpg)')
+            .bg.bg--mobile(js-lazy data-src='video/placeholder.jpg')
             a.video__button.btn(js-popupVideo href="https://www.youtube.com/watch?v=6j5t6WjtSfk")
               .item
               .item
@@ -31,7 +31,7 @@ block content
               | Коммуникация выступает одним из базовых инструментов, который мы используем.
         .slide
           .left
-            .bg(style='background-image: url(img/1.jpg)')
+            .bg(js-lazy data-src='img/1.jpg')
               a.video__button.btn(href='#')
                 .item
                 .item
@@ -46,7 +46,7 @@ block content
               | все, — бренд Oriflame по праву можно назвать одним из титанов индустрии специальных событий.
         .slide
           .left
-            .bg(style='background-image: url(img/2.jpg)')
+            .bg(js-lazy data-src='img/2.jpg')
               a.video__button.btn(href='#')
                 .item
                 .item
@@ -69,7 +69,7 @@ block content
         .col-lg-4.col-md-6
           .weekly__week
             a(href='post.html')
-              .weekly__week__image(style="background-image: url('img/weekly/1.png')")
+              .weekly__week__image(js-lazy data-src="img/weekly/1.png")
             .weekly__week__properties
               span.tag Тема
               span.data 30 октября
@@ -81,7 +81,7 @@ block content
         .col-lg-4.col-md-6
           .weekly__week
             a(href='post.html')
-              .weekly__week__image(style="background-image: url('img/weekly/2.png')")
+              .weekly__week__image(js-lazy data-src="img/weekly/2.png")
             .weekly__week__properties
               span.tag Событие
               span.data 27 октября
@@ -94,7 +94,7 @@ block content
         .col-lg-4.col-md-6
           .weekly__week
             a(href='post.html')
-              .weekly__week__image(style="background-image: url('img/weekly/3.png')")
+              .weekly__week__image(js-lazy data-src="img/weekly/3.png")
             .weekly__week__properties
               span.tag Интервью
               span.data 26 октября
@@ -107,7 +107,7 @@ block content
         .col-lg-4.col-md-6
           .weekly__week
             a(href='post.html')
-              .weekly__week__image(style="background-image: url('img/weekly/4.png')")
+              .weekly__week__image(js-lazy data-src="img/weekly/4.png")
             .weekly__week__properties
               span.tag Экспертный совет
               span.data 30 октября
@@ -120,7 +120,7 @@ block content
         .col-lg-4.col-md-6
           .weekly__week
             a(href='post.html')
-              .weekly__week__image(style="background-image: url('img/weekly/5.png')")
+              .weekly__week__image(js-lazy data-src="img/weekly/5.png")
             .weekly__week__properties
               span.tag Тема
               span.data 19 октября
@@ -133,7 +133,7 @@ block content
         .col-lg-4.col-md-6
           .weekly__week
             a(href='post.html')
-              .weekly__week__image(style="background-image: url('img/weekly/6.png')")
+              .weekly__week__image(js-lazy data-src="img/weekly/6.png")
             .weekly__week__properties
               span.tag Спецпредложения
               span.data 19 октября
@@ -147,7 +147,7 @@ block content
   section#next_issue
     .next_issue__container.container-fluid
       .col-lg-6
-        img(src='img/next_issue/image.png', alt='')
+        img(js-lazy data-src='img/next_issue/image.png', alt='')
       .col-lg-6
         h5 Читайте в следующем номере
         h2 № 15
@@ -164,7 +164,7 @@ block content
     .reviews__slider
       .reviews_slide
         .left
-          img(src='img/reviews_slider/1.png', alt='')
+          img(js-lazy data-src='img/reviews_slider/1.png', alt='')
           .bg
         .right
           h4 Ицхак Пинтосевич
@@ -181,7 +181,7 @@ block content
                 path#path0_fill(d='M 15.0525 10.45C 16.1025 10.45 16.9525 11.35 16.9525 12.4C 16.9525 13.45 16.1025 14.3 15.0525 14.3C 14.0025 14.3 13.1525 13.45 13.1525 12.4C 13.1525 11.35 14.0025 10.45 15.0525 10.45ZM 18.1025 15.45L 21.2025 15.45L 21.2025 15.95C 22.4025 15.35 24.0525 15.45 25.2025 16.05C 26.4525 16.75 27.3025 18.25 27.3025 19.65L 27.3025 26.2L 24.2525 26.2L 24.2525 19.65C 24.2525 19.35 23.9525 18.85 23.7025 18.75C 22.5025 18.05 21.2025 19.3 21.2025 19.3L 21.2025 26.2L 18.1025 26.2L 18.1025 15.45ZM 16.6025 26.2L 13.5025 26.2L 13.5025 15.45L 16.6025 15.45L 16.6025 26.2ZM 20.0025 38C 29.7025 38 37.6025 30.1 37.6025 20.4C 37.6025 10.7 29.7025 2.85 20.0025 2.85C 10.3025 2.85 2.45254 10.7 2.45254 20.4C 2.45254 30.1 10.3025 38 20.0025 38Z')
       .reviews_slide
         .left
-          img(src='img/reviews_slider/2.png', alt='')
+          img(js-lazy data-src='img/reviews_slider/2.png', alt='')
           .bg
         .right
           h4 Антон Гроза
@@ -201,55 +201,55 @@ block content
     .container-fluid
       .partners__row
         .partner__row__item
-          img(src='img/partners/1.png', alt='')
+          img(js-lazy data-src='img/partners/1.png', alt='')
         .partner__row__item
-          img(src='img/partners/2.png', alt='')
+          img(js-lazy data-src='img/partners/2.png', alt='')
         .partner__row__item
-          img(src='img/partners/3.png', alt='')
+          img(js-lazy data-src='img/partners/3.png', alt='')
         .partner__row__item
-          img(src='img/partners/4.png', alt='')
+          img(js-lazy data-src='img/partners/4.png', alt='')
         .partner__row__item
-          img(src='img/partners/5.png', alt='')
+          img(js-lazy data-src='img/partners/5.png', alt='')
         .partner__row__item
-          img(src='img/partners/6.png', alt='')
+          img(js-lazy data-src='img/partners/6.png', alt='')
         .partner__row__item
-          img(src='img/partners/7.png', alt='')
+          img(js-lazy data-src='img/partners/7.png', alt='')
         .partner__row__item
-          img(src='img/partners/8.png', alt='')
+          img(js-lazy data-src='img/partners/8.png', alt='')
         .partner__row__item
-          img(src='img/partners/9.png', alt='')
+          img(js-lazy data-src='img/partners/9.png', alt='')
         .partner__row__item
-          img(src='img/partners/10.png', alt='')
+          img(js-lazy data-src='img/partners/10.png', alt='')
         .partner__row__item
-          img(src='img/partners/11.png', alt='')
+          img(js-lazy data-src='img/partners/11.png', alt='')
         .partner__row__item
-          img(src='img/partners/12.png', alt='')
+          img(js-lazy data-src='img/partners/12.png', alt='')
         .partner__row__item
-          img(src='img/partners/13.png', alt='')
+          img(js-lazy data-src='img/partners/13.png', alt='')
         .partner__row__item
-          img(src='img/partners/14.png', alt='')
+          img(js-lazy data-src='img/partners/14.png', alt='')
         .partner__row__item
-          img(src='img/partners/15.png', alt='')
+          img(js-lazy data-src='img/partners/15.png', alt='')
         .partner__row__item
-          img(src='img/partners/16.png', alt='')
+          img(js-lazy data-src='img/partners/16.png', alt='')
         .partner__row__item
-          img(src='img/partners/17.png', alt='')
+          img(js-lazy data-src='img/partners/17.png', alt='')
         .partner__row__item
-          img(src='img/partners/18.png', alt='')
+          img(js-lazy data-src='img/partners/18.png', alt='')
         .partner__row__item
-          img(src='img/partners/19.png', alt='')
+          img(js-lazy data-src='img/partners/19.png', alt='')
         .partner__row__item
-          img(src='img/partners/20.png', alt='')
+          img(js-lazy data-src='img/partners/20.png', alt='')
         .partner__row__item
-          img(src='img/partners/21.png', alt='')
+          img(js-lazy data-src='img/partners/21.png', alt='')
         .partner__row__item
-          img(src='img/partners/22.png', alt='')
+          img(js-lazy data-src='img/partners/22.png', alt='')
         .partner__row__item
-          img(src='img/partners/23.png', alt='')
+          img(js-lazy data-src='img/partners/23.png', alt='')
         .partner__row__item
-          img(src='img/partners/24.png', alt='')
+          img(js-lazy data-src='img/partners/24.png', alt='')
         .partner__row__item
-          img(src='img/partners/25.png', alt='')
+          img(js-lazy data-src='img/partners/25.png', alt='')
   section#awards
     h2 Награды
     .container-fluid
@@ -266,17 +266,17 @@ block content
             .awards__slider-bg
             .carousel.owl-carousel
               .slide
-                img(src='img/awards/slider/1.png', alt='')
+                img(js-lazy data-src='img/awards/slider/1.png', alt='')
               .slide
-                img(src='img/awards/slider/2.png', alt='')
+                img(js-lazy data-src='img/awards/slider/2.png', alt='')
               .slide
-                img(src='img/awards/slider/3.png', alt='')
+                img(js-lazy data-src='img/awards/slider/3.png', alt='')
               .slide
-                img(src='img/awards/slider/1.png', alt='')
+                img(js-lazy data-src='img/awards/slider/1.png', alt='')
               .slide
-                img(src='img/awards/slider/2.png', alt='')
+                img(js-lazy data-src='img/awards/slider/2.png', alt='')
               .slide
-                img(src='img/awards/slider/3.png', alt='')
+                img(js-lazy data-src='img/awards/slider/3.png', alt='')
   section#partnership
     .partnership__container
       .left
@@ -375,16 +375,3 @@ block content
               br
               | с вами свяжется наш менеджер.
               
-  //- 
-  //- // VIDEO
-  //- transition(name='video')
-  //-   .video-box(js-openVideoHeader)
-  //-     .video-box__close-button.btn
-  //-       .item
-  //-       .item
-  //-       .item
-  //-       .item
-  //-       img(src='img/setting/video_close.svg', alt='')
-  //-     .video-box__content
-  //-       iframe(width='100%', height='710', src='https://www.youtube.com/embed/dsE2d9Np82g?rel=0&showinfo=0', frameborder='0', allow='encrypted-media', allowfullscreen='')
-  

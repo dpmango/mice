@@ -59,17 +59,21 @@ $(document).ready(function(){
   // DEVELOPMENT HELPER
   //////////
   function setBreakpoint(){
-    var wWidth = _window.width();
+    var wHost = window.location.host.toLowerCase()
+    var displayCondition = wHost.indexOf("localhost") >= 0 || wHost.indexOf("surge") >= 0
+    if (displayCondition){
+      var wWidth = _window.width();
 
-    var content = "<div class='dev-bp-debug'>"+wWidth+"</div>";
+      var content = "<div class='dev-bp-debug'>"+wWidth+"</div>";
 
-    $('.page').append(content);
-    setTimeout(function(){
-      $('.dev-bp-debug').fadeOut();
-    },1000);
-    setTimeout(function(){
-      $('.dev-bp-debug').remove();
-    },1500)
+      $('.page').append(content);
+      setTimeout(function(){
+        $('.dev-bp-debug').fadeOut();
+      },1000);
+      setTimeout(function(){
+        $('.dev-bp-debug').remove();
+      },1500)
+    }
   }
 
   _window.on('resize', debounce(setBreakpoint, 200))
@@ -77,6 +81,8 @@ $(document).ready(function(){
   ////////////
   // READY - triggered when PJAX DONE
   ////////////
+  var lazyInstance;
+
   function pageReady(){
     legacySupport();
     initBuggifill();
@@ -88,18 +94,19 @@ $(document).ready(function(){
     // initSliders(); // moved to onload
     runScrollMonitor();
     initMasks();
-
+    initLazyLoad();
     fitText();
     _window.on('resize', throttle(fitText, 200));
 
     teleportQmark();
+    hoverTeam();
 
     adjustBreadcrumbs();
     _window.on('resize', debounce(adjustBreadcrumbs, 200));
-
     Pace.on('hide', function(){
       $('.breadcrumbs').css('opacity', 1)
     });
+
     setArticleProgressBar();
     _window.on('scroll', throttle(ArticleProgressBar, 5))
 
@@ -108,10 +115,9 @@ $(document).ready(function(){
 
     // temp - developer
     _window.on('resize', debounce(setBreakpoint, 200));
-    
+
     // map
     initMap();
-
   }
 
   pageReady();
@@ -411,34 +417,6 @@ $(document).ready(function(){
   //////////
 
   function initSliders(){
-    // var slickNextArrow = '<div class="slick-prev"><svg class="ico ico-back-arrow"><use xlink:href="img/sprite.svg#ico-back-arrow"></use></svg></div>';
-    // var slickPrevArrow = '<div class="slick-next"><svg class="ico ico-next-arrow"><use xlink:href="img/sprite.svg#ico-next-arrow"></use></svg></div>'
-    //
-    // // General purpose sliders
-    // $('[js-slider]').each(function(i, slider){
-    //   var self = $(slider);
-    //
-    //   // set data attributes on slick instance to control
-    //   if (self && self !== undefined) {
-    //     self.slick({
-    //       autoplay: self.data('slick-autoplay') !== undefined ? true : false,
-    //       dots: self.data('slick-dots') !== undefined ? true : false,
-    //       arrows: self.data('slick-arrows') !== undefined ? true : false,
-    //       prevArrow: slickNextArrow,
-    //       nextArrow: slickPrevArrow,
-    //       infinite: self.data('slick-infinite') !== undefined ? true : true,
-    //       speed: 300,
-    //       slidesToShow: 1,
-    //       accessibility: false,
-    //       adaptiveHeight: true,
-    //       draggable: self.data('slick-no-controls') !== undefined ? false : true,
-    //       swipe: self.data('slick-no-controls') !== undefined ? false : true,
-    //       swipeToSlide: self.data('slick-no-controls') !== undefined ? false : true,
-    //       touchMove: self.data('slick-no-controls') !== undefined ? false : true
-    //     });
-    //   }
-    //
-    // })
 
     // other individual sliders goes here
     var slickPrev = '<div class="btn"><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><img src="img/reviews_slider/slider_prev.svg"></div>';
@@ -526,10 +504,7 @@ $(document).ready(function(){
       slick.$list.addClass('is-ready')
     });
 
-    //////////
     // POST SLIDER
-    //////////
-
     $('.one-article__slider').not('.slick-initialized').slick({
       dots: false,
       arrows: true,
@@ -765,6 +740,40 @@ $(document).ready(function(){
   }
 
   //////////
+  // LAZY LOAD
+  //////////
+  function initLazyLoad(){
+    _document.find('[js-lazy]').Lazy({
+      threshold: 300,
+      scrollDirection: 'vertical',
+      effect: 'fadeIn',
+      // visibleOnly: true,
+      // placeholder: "data:image/gif;base64,R0lGODlhEALAPQAPzl5uLr9Nrl8e7...",
+      onError: function(element) {
+          console.log('error loading ' + element.data('src'));
+      },
+      beforeLoad: function(element){
+        element.attr('style', '')
+      }
+    });
+  }
+
+
+  function hoverTeam(){
+    // _document.on('mouseenter', '.team-members__member', function(){
+    //   $(this).find('.team-members__img:not(.team-members__img--flip)').animate({ opacity: .5 }, 200, function(){
+    //     $(this).css({display: 'none'})
+    //   });
+    //   $(this).find('.team-members__img--flip').css({display: 'block'}).animate({ opacity: 1 }, 200)
+    // })
+    // _document.on('mouseleave', '.team-members__member', function(){
+    //   $(this).find('.team-members__img--flip').animate({ opacity: .5 }, 200, function(){
+    //     $(this).css({display: 'none'})
+    //   });
+    //   $(this).find('.team-members__img:not(.team-members__img--flip)').css({display: 'block'}).animate({ opacity: 1 }, 200)
+    // })
+  }
+  //////////
   // BARBA PJAX
   //////////
 
@@ -799,12 +808,73 @@ $(document).ready(function(){
     }
   });
 
+  var TeamTransition = Barba.BaseTransition.extend({
+    start: function() {
+      Promise
+        .all([this.newContainerLoading, this.startAnimation()])
+        .then(this.landAnimation.bind(this));
+    },
+
+    startAnimation: function() {
+      var deferred = Barba.Utils.deferred();
+      var teamBlock = $(this.oldContainer).find(lastClickEl);
+      var transitionTime = 1500;
+
+      teamBlock.addClass('is-growing');
+
+      setTimeout(function(){
+        teamBlock.parent().siblings('').animate({ opacity: 0 }, transitionTime/3.5);
+      }, transitionTime / 2)
+
+      setTimeout(function(){
+        deferred.resolve();
+      }, transitionTime)
+
+      return deferred.promise
+
+    },
+
+    landAnimation: function() {
+      var _this = this;
+      var $el = $(this.newContainer);
+
+      $(this.oldContainer).animate({ opacity: 0 }, 200)
+
+      $el.css({
+        visibility : 'visible',
+        opacity : 1
+      });
+
+      document.body.scrollTop = 0;
+      _this.done();
+
+      // $el.animate({ opacity: 1 }, 200, function() {
+      //   document.body.scrollTop = 0;
+      //   _this.done();
+      // });
+    }
+  });
+
+  // transition logic
+  var lastClickEl;
   Barba.Pjax.getTransition = function() {
-    return FadeTransition;
+    var transitionObj = FadeTransition;
+
+    // console.log(Barba.HistoryManager.currentStatus())
+    if ( $(lastClickEl).attr('href') === 'team-member.html' ){
+      transitionObj = TeamTransition;
+    }
+    return transitionObj;
   };
 
+  // initialize
   Barba.Prefetch.init();
   Barba.Pjax.start();
+
+  // event handlers
+  Barba.Dispatcher.on('linkClicked', function(el) {
+    lastClickEl = el;
+  });
 
   Barba.Dispatcher.on('newPageReady', function(currentStatus, oldStatus, container, newPageRawHTML) {
     var newBodyClass = $(newPageRawHTML).find('[js-bodyClassToggler]').attr('class')
@@ -816,13 +886,16 @@ $(document).ready(function(){
     initSliders();
     forceAutoplay();
     closeMobileMenu();
-    $('.breadcrumbs').css('opacity', 1)
-
+    $('.breadcrumbs').css('opacity', 1);
+    _window.scrollTop(1);
+    _window.trigger('scroll, resize')
+    // console.log(lazyInstance)
+    // lazyInstance.update(true);
 
   });
-  
-  
-  
+
+
+
   // Map
   function initMap() {
 	  var cntr = {
@@ -830,29 +903,29 @@ $(document).ready(function(){
 	  	lng: 37.603144
 	  }
 	  var myicon = '../img/map-marker.svg';
-    
+
     if($('#contacts-map').length > 0) {
+      var locations = [
+        {
+          lat: 55.753892,
+          lng: 37.603144
+        }
+      ];
+
+      var markers = locations.map(function (location, i) {
+        return new google.maps.Marker({
+          position: location,
+          map: contactMap,
+          icon: myicon
+        });
+      });
+
       var contactMap = new google.maps.Map(document.getElementById('contacts-map'), {
 	    	center: cntr,
 	    	zoom: 17
 	    });
     }
-    
-    var locations = [
-  	  {
-  	  	lat: 55.753892,
-	  	  lng: 37.603144
-  	  }
-    ];
-    
-	  var markers = locations.map(function (location, i) {
-	  	return new google.maps.Marker({
-	  		position: location,
-	  		map: contactMap,
-	  		icon: myicon
-	  	});
-	  });
-    
+
   }
 
 });

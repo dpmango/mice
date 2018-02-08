@@ -8,7 +8,7 @@ block content
   
   // BREADCRUMBS
   .breadcrumbs
-    a.breadcrumbs__link.is-active(href="#") Главная
+    a.breadcrumbs__link.is-active(href="homepage.html") Главная
     a.breadcrumbs__link(href="#") Темы
     a.breadcrumbs__link.is-active(href="#") Интервью
     a.breadcrumbs__link(href="#") Хайп. Триггеры. Тотальная визуализация. А на что способна ваша площадка?
@@ -21,7 +21,7 @@ block content
     h1 Хайп. Триггеры. Тотальная визуализация. А на что способна ваша площадка?
     .one-article__wrap
       a.one-article__prev(href="#") Предыдущий материал
-      img(src="img/promo.jpg")
+      img(js-lazy data-src="img/promo.jpg")
       a.one-article__next(href="#") Следующий материал
     span.one-article__short При разработке креативной концепции проекта команда организаторов хотела уйти от привычных для DTM стандартных конструкций и предложить клиенту что-то яркое, необыкновенное и надолго запоминающееся. На огромную, собранную из множества линий крышу.
     h2 Кейс
@@ -30,11 +30,11 @@ block content
     p Организовали прямую трансляцию гранд-финала на всю страну. Все, кто не смог лично присутствовать на стадионе, слушали прямой эфир интернет-радио. Это позволило стереть географические границы и окунуть более 6000 человек в единое футбольное движение.
     .one-article__slider
       .one-article__slide
-        img(src="img/slide1.jpg")
+        img(js-lazy data-src="img/slide1.jpg")
         figcaption
           span Марта Рослер. Photo Op. 2004 Фотомонтаж. Courtesy автор и Mitchell-Innes & Nash, Нью-Йорк
       .one-article__slide
-        img(src="img/slide1.jpg")
+        img(js-lazy data-src="img/slide1.jpg")
         figcaption
           span Марта Рослер. Photo Op. Дальше идет какой-то совершенно другой текст
     h2 Вопрос-ответ
@@ -110,8 +110,9 @@ block content
         .col-lg-4.col-md-6
           .weekly__week
             a(href='post.html')
-              .weekly__week__image(style="background-image: url('img/weekly/1.png')")
+              .weekly__week__image(js-lazy data-src="img/weekly/1.png")
             .weekly__week__properties
+              span.tag Тема
               span.data 30 октября
             a.weekly__week__content(href='post.html')
               h4 Провокация — прекрасная начинка для рекламной кампании
@@ -121,8 +122,9 @@ block content
         .col-lg-4.col-md-6
           .weekly__week
             a(href='post.html')
-              .weekly__week__image(style="background-image: url('img/weekly/2.png')")
+              .weekly__week__image(js-lazy data-src="img/weekly/2.png")
             .weekly__week__properties
+              span.tag Событие
               span.data 27 октября
             a.weekly__week__content(href='post.html')
               h4 Хайп. Триггеры. Тотальная визуализация. А на что способна ваша площадка?
@@ -133,8 +135,9 @@ block content
         .col-lg-4.col-md-6
           .weekly__week
             a(href='post.html')
-              .weekly__week__image(style="background-image: url('img/weekly/3.png')")
+              .weekly__week__image(js-lazy data-src="img/weekly/3.png")
             .weekly__week__properties
+              span.tag Интервью
               span.data 26 октября
             a.weekly__week__content(href='post.html')
               h4 «Мной всегда двигала жажда быть впереди»
@@ -145,8 +148,9 @@ block content
         .col-lg-4.col-md-6
           .weekly__week
             a(href='post.html')
-              .weekly__week__image(style="background-image: url('img/weekly/4.png')")
+              .weekly__week__image(js-lazy data-src="img/weekly/4.png")
             .weekly__week__properties
+              span.tag Экспертный совет
               span.data 30 октября
             a.weekly__week__content(href='post.html')
               h4 Идеальное корпоративное событие, или как #успетьвсе?
@@ -157,8 +161,9 @@ block content
         .col-lg-4.col-md-6
           .weekly__week
             a(href='post.html')
-              .weekly__week__image(style="background-image: url('img/weekly/5.png')")
+              .weekly__week__image(js-lazy data-src="img/weekly/5.png")
             .weekly__week__properties
+              span.tag Тема
               span.data 19 октября
             a.weekly__week__content(href='post.html')
               h4 MICE&more — журнал для русскоязычных MICE специалистов и о них самих
@@ -169,16 +174,16 @@ block content
         .col-lg-4.col-md-6
           .weekly__week
             a(href='post.html')
-              .weekly__week__image(style="background-image: url('img/weekly/6.png')")
+              .weekly__week__image(js-lazy data-src="img/weekly/6.png")
             .weekly__week__properties
               span.tag Спецпредложения
+              span.data 19 октября
             a.weekly__week__content(href='post.html')
               h4 MICE&more — журнал для русскоязычных MICE специалистов и о них самих
               p
                 | Российский MICE рынок давно вышел за границы своей страны и добрался до самых экзотических и далеких точек
                 | нашего земного шара. Задачей журнала MICE&more является помощь в развитии рынка, его профессиональном образовании
                 | и совершенствовании. Наши читатели всегда будут в курсе актуальных событий.
-                
       // PAGINATION/LOAD MORE
       .page-pagination
         a.page-pagination__more.btn(href="#") Загрузить еще

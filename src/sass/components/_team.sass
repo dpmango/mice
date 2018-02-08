@@ -1,7 +1,7 @@
 .team-page
   .menu
     left: 0
-    
+
 .team-members
   padding-top: 25px
   padding-bottom: 0
@@ -17,7 +17,7 @@
   .row
     margin-left: -25px
     margin-right: -25px
-    
+
   h2
     font-size: 70px !important
     margin-top: 100px
@@ -30,23 +30,60 @@
     width: 100%
     &:hover .team-members__img
       display: none
-      &--smile
-        display: block
+      &--flip
+        display: block !important
+    &.is-growing
+      position: relative
+      z-index: 10
+      .team-members
+        &__photo
+          &::after
+            // width: 166vw
+            animation: animateTeamTranstion 1.2s linear
+            animation-fill-mode: forwards
+        &__img
+          transform-origin: center top
+          animation: animateTeamTranstionPhoto 1.3s linear
+          animation-fill-mode: forwards
   &__photo
+    position: relative
+    // overflow: hidden
     display: flex
     justify-content: center
     align-items: flex-end
     min-height: 295px
-    background-image: linear-gradient(to bottom, #fff 55px, #ededed 55px, #ededed 100%)
+    &::after
+      display: inline-block
+      content: ' '
+      position: absolute
+      z-index: 1
+      top: 55px
+      bottom: 0
+      width: 100%
+      left: 50%
+      transform: translateX(-50%)
+      background-image: linear-gradient(to bottom, #fff 0px, #ededed 0px, #ededed 100%)
+      // transition: .4s easeOutQuart
   &__img
+    position: absolute
+    z-index: 2
+    left: 2.5%
+    right: 2.5%
+    bottom: 0
+    // transform: translateX(-50%)
     max-width: 95%
-    height: 100%
+    min-height: 100%
+    // height: auto
+    // width: auto
+    // min-width: 100%
+    // min-height: 100%
     display: block
     margin-left: auto
     margin-right: auto
-    &--smile
-      display: none
-  
+    &--flip
+      // opacity: 0
+      display: none !important
+
   &__name
     font-size: 23px
     text-align: center
@@ -59,9 +96,27 @@
     color: transparentize($fontColor, 0.4)
     font-size: 15px
     font-weight: 400
-    
-    
-    
+
+@keyframes animateTeamTranstion
+  from
+    width: 100%
+    height: 100%
+  60%
+    width: 166vw
+    height: 100%
+  100%
+    width: 160vw
+    height: 80vh
+
+@keyframes animateTeamTranstionPhoto
+  from
+    transform: scale(1)
+  50%
+    transform: scale(1)
+  100%
+    transform: scale(1.5)
+
+
 .one-member
   margin-top: 30px
   &__photo
@@ -136,8 +191,8 @@
     img
       width: 40%
       height: 40%
-    
-    
+
+
 +r($desktop)
   .team-members
     padding-top: 0
@@ -154,12 +209,12 @@
       margin-top: 0
       font-size: 60px !important
       margin-bottom: 15px
-    
+
   .one-member
     &__back-btn
       top: 35px
       right: -15px
-    
+
 +r($tablet)
   .team-members
     padding-bottom: 80px
@@ -183,7 +238,7 @@
       line-height: 100%
     &__back-btn
       right: 25px
-      
+
 +r($mobile)
   .team-members
     padding-left: 0
