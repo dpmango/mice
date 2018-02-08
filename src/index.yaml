@@ -5,6 +5,8 @@ PageList:
   ready: 100
 - file: articles.html
   ready: 80
+- file: articles-tag.html
+  ready: 80
 - file: video.html
   ready: 80
 - file: post.html
