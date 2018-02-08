@@ -772,6 +772,12 @@ $(document).ready(function(){
     //   });
     //   $(this).find('.team-members__img:not(.team-members__img--flip)').css({display: 'block'}).animate({ opacity: 1 }, 200)
     // })
+    _document.on('mouseenter', '.team-members__member', function(){
+      $(this).addClass('is-hovered');
+    })
+    _document.on('mouseleave', '.team-members__member', function(){
+      $(this).removeClass('is-hovered');
+    })
   }
   //////////
   // BARBA PJAX
@@ -820,11 +826,11 @@ $(document).ready(function(){
       var teamBlock = $(this.oldContainer).find(lastClickEl);
       var transitionTime = 1500;
 
-      teamBlock.addClass('is-growing');
+      teamBlock.addClass('is-growing').removeClass('is-hovered');
 
       setTimeout(function(){
-        teamBlock.parent().siblings('').animate({ opacity: 0 }, transitionTime/3.5);
-      }, transitionTime / 2)
+        teamBlock.parent().siblings('').animate({ opacity: 0 }, transitionTime/3);
+      }, transitionTime / 2.5)
 
       setTimeout(function(){
         deferred.resolve();
@@ -838,20 +844,28 @@ $(document).ready(function(){
       var _this = this;
       var $el = $(this.newContainer);
 
-      $(this.oldContainer).animate({ opacity: 0 }, 200)
+      $(this.oldContainer).css({
+        'position': 'absolute',
+        'top': 0,
+        'left': 0,
+        'right': 0
+      }).animate({ opacity: 0 }, 300, function(){
+        // when fade is compleate
+        document.body.scrollTop = 0;
+        _this.done();
+      })
 
       $el.css({
         visibility : 'visible',
         opacity : 1
       });
 
-      document.body.scrollTop = 0;
-      _this.done();
+      $el.find('[js-lazy]').Lazy({
+        threshold: 300,
+        scrollDirection: 'vertical',
+        effect: 'fadeIn',
+      });
 
-      // $el.animate({ opacity: 1 }, 200, function() {
-      //   document.body.scrollTop = 0;
-      //   _this.done();
-      // });
     }
   });
 
@@ -888,7 +902,8 @@ $(document).ready(function(){
     closeMobileMenu();
     $('.breadcrumbs').css('opacity', 1);
     _window.scrollTop(1);
-    _window.trigger('scroll, resize')
+    $(window).trigger('scroll, resize');
+    $(document).trigger('scroll, resize')
     // console.log(lazyInstance)
     // lazyInstance.update(true);
 
