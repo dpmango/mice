@@ -808,12 +808,73 @@ $(document).ready(function(){
     }
   });
 
+  var TeamTransition = Barba.BaseTransition.extend({
+    start: function() {
+      Promise
+        .all([this.newContainerLoading, this.startAnimation()])
+        .then(this.landAnimation.bind(this));
+    },
+
+    startAnimation: function() {
+      var deferred = Barba.Utils.deferred();
+      var teamBlock = $(this.oldContainer).find(lastClickEl);
+      var transitionTime = 1500;
+
+      teamBlock.addClass('is-growing');
+
+      setTimeout(function(){
+        teamBlock.parent().siblings('').animate({ opacity: 0 }, transitionTime/3.5);
+      }, transitionTime / 2)
+
+      setTimeout(function(){
+        deferred.resolve();
+      }, transitionTime)
+
+      return deferred.promise
+
+    },
+
+    landAnimation: function() {
+      var _this = this;
+      var $el = $(this.newContainer);
+
+      $(this.oldContainer).animate({ opacity: 0 }, 200)
+
+      $el.css({
+        visibility : 'visible',
+        opacity : 1
+      });
+
+      document.body.scrollTop = 0;
+      _this.done();
+
+      // $el.animate({ opacity: 1 }, 200, function() {
+      //   document.body.scrollTop = 0;
+      //   _this.done();
+      // });
+    }
+  });
+
+  // transition logic
+  var lastClickEl;
   Barba.Pjax.getTransition = function() {
-    return FadeTransition;
+    var transitionObj = FadeTransition;
+
+    // console.log(Barba.HistoryManager.currentStatus())
+    if ( $(lastClickEl).attr('href') === 'team-member.html' ){
+      transitionObj = TeamTransition;
+    }
+    return transitionObj;
   };
 
+  // initialize
   Barba.Prefetch.init();
   Barba.Pjax.start();
+
+  // event handlers
+  Barba.Dispatcher.on('linkClicked', function(el) {
+    lastClickEl = el;
+  });
 
   Barba.Dispatcher.on('newPageReady', function(currentStatus, oldStatus, container, newPageRawHTML) {
     var newBodyClass = $(newPageRawHTML).find('[js-bodyClassToggler]').attr('class')
