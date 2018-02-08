@@ -186,18 +186,23 @@ $(document).ready(function(){
   function fitText(){
     var defaults = {
       headerSlide: 50,
-      forms: 70
+      forms: 70,
+      h2: 70
     }
     // make it a bit smaller to fit
     if ( _window.width() < 1250 ){
       defaults.headerSlide = 45;
-      defaults.forms = 60
+      defaults.forms = 60,
+      defaults.h2 = 70
     }
     $('.header_slider .slide .right h3').css({
       'font-size':''+ Math.floor(defaults.headerSlide*(_document.width()/1440)) +'px'
     });
-    $('.partnership__container .right h4, .partnership__container .left h4, h2').css({
+    $('.partnership__container .right h4, .partnership__container .left h4').css({
       'font-size':''+ Math.floor(defaults.forms*(_document.width()/1440)) +'px'
+    });
+    $('h2').css({
+      'font-size':''+ Math.floor(defaults.h2*(_document.width()/1440)) +'px'
     });
   }
 

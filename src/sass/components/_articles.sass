@@ -29,15 +29,7 @@
       display: none
   .weekly__week__content h4
     margin-top: 8px
-  .weekly__week__image
-    position: relative
-    display: flex
-    justify-content: center
-    align-items: center
-  .weekly__week
-    &:hover
-      .articles-sec__video-btn
-        transform: scale(1)
+
   &__video-btn
     background-repeat: no-repeat
     width: 100px
@@ -47,6 +39,17 @@
     background-image: url(../../img/play.svg)
     transition: all $transitionSpeed $ease
     transform: scale(0)
+
+.weekly__week__image
+  position: relative
+  display: flex
+  justify-content: center
+  align-items: center
+
+.weekly__week
+  &:hover
+    .articles-sec__video-btn
+      transform: scale(1)
 
 // .one-article-page
 //   .menu__progress
@@ -382,7 +385,7 @@
   .one-article
     img
       max-width: 1110px
-    
+
 
 +r($wide)
   .one-article

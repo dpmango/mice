@@ -4,18 +4,18 @@ PageList:
 - file: homepage.html
   ready: 100
 - file: articles.html
-  ready: 80
+  ready: 90
 - file: articles-tag.html
-  ready: 80
+  ready: 90
 - file: video.html
-  ready: 80
+  ready: 90
 - file: post.html
-  ready: 80
+  ready: 90
 - file: team.html
-  ready: 80
+  ready: 90
 - file: team-member.html
-  ready: 80
+  ready: 90
 - file: contact.html
-  ready: 80
+  ready: 90
 - file: 404.html
-  ready: 0
+  ready: 10
