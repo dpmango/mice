@@ -100,6 +100,9 @@ $(document).ready(function(){
 
     teleportQmark();
     hoverTeam();
+    positionPrevNext();
+    _window.on('resize', debounce(positionPrevNext, 200));
+    // _window.on('scroll', throttle(positionPrevNext, 50));
 
     adjustBreadcrumbs();
     _window.on('resize', debounce(adjustBreadcrumbs, 200));
@@ -784,6 +787,27 @@ $(document).ready(function(){
       $(this).removeClass('is-hovered');
     })
   }
+
+
+  //////////
+  // positionPrevNext
+  /////////
+
+  function positionPrevNext(){
+    if ( _document.find('.one-article__prev').length > 0 ){
+      var topOffset = _document.find('.one-article__wrap').offset().top;
+      var prevBtn = _document.find('.one-article__prev')
+      var nextBtn = _document.find('.one-article__next');
+
+      prevBtn.css({
+        'top': topOffset + prevBtn.width() + 'px'
+      })
+      nextBtn.css({
+        'top': topOffset + nextBtn.width() + 'px'
+      })
+    }
+  }
+
   //////////
   // BARBA PJAX
   //////////
