@@ -827,8 +827,8 @@ $(document).ready(function(){
       }
     }, 1500)
   })
-  
-  
+
+
   // Map
   function initMap() {
 	  var cntr = {
@@ -845,6 +845,11 @@ $(document).ready(function(){
         }
       ];
 
+      var contactMap = new google.maps.Map(document.getElementById('contacts-map'), {
+	    	center: cntr,
+	    	zoom: 17
+	    });
+
       var markers = locations.map(function (location, i) {
         return new google.maps.Marker({
           position: location,
@@ -855,10 +860,7 @@ $(document).ready(function(){
         });
       });
 
-      var contactMap = new google.maps.Map(document.getElementById('contacts-map'), {
-	    	center: cntr,
-	    	zoom: 17
-	    });
+
     }
 
   }
