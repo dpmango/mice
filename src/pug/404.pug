@@ -1,9 +1,30 @@
 ---
 title: 404 - MICE
-bodyClass: 404
+bodyClass: not-found-page
 ---
 extends shared/_layout
 block content
   
-  div(style="display: flex; align-items: center; justify-content: center; height: 100vh")
-    h1 Зе пейдж из нот фаунд !!
+  section.not-found
+    .container-fluid
+      .not-found__wrapper
+        .not-found__error
+          span.not-found__error-text Ошибка
+          span.not-found__error-404 404
+        .not-found__info
+          p.not-found__info-text К сожалению, страницы, которую вы запросили, не существует. Она была удалена с сервера или вовсе никогда не существовала. Вы можете попробовать снова, перейдя на страницу одного из разделов сайта:
+          .not-found__info-wrap
+            .not-found__info-col
+              a.not-found__info-link(href="#") 
+                span Главная страница
+              a.not-found__info-link(href="#") 
+                span Темы
+              a.not-found__info-link(href="#") 
+                span События
+            .not-found__info-col
+              a.not-found__info-link(href="#") 
+                span Интервью
+              a.not-found__info-link(href="#") 
+                span Экспертный совет
+              a.not-found__info-link(href="#") 
+                span Видео

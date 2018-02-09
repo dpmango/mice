@@ -827,6 +827,41 @@ $(document).ready(function(){
       }
     }, 1500)
   })
+  
+  
+  // Map
+  function initMap() {
+	  var cntr = {
+	  	lat: 55.753892,
+	  	lng: 37.603144
+	  }
+	  //var myicon = '../img/map-marker.svg';
+
+    if($('#contacts-map').length > 0) {
+      var locations = [
+        {
+          lat: 55.753892,
+          lng: 37.603144
+        }
+      ];
+
+      var markers = locations.map(function (location, i) {
+        return new google.maps.Marker({
+          position: location,
+          map: contactMap,
+          icon: {
+            url: '../img/map-marker.svg'
+	        }
+        });
+      });
+
+      var contactMap = new google.maps.Map(document.getElementById('contacts-map'), {
+	    	center: cntr,
+	    	zoom: 17
+	    });
+    }
+
+  }
 
 
 
@@ -959,39 +994,5 @@ $(document).ready(function(){
     // lazyInstance.update(true);
 
   });
-
-
-
-  // Map
-  function initMap() {
-	  var cntr = {
-	  	lat: 55.753892,
-	  	lng: 37.603144
-	  }
-	  var myicon = '../img/map-marker.svg';
-
-    if($('#contacts-map').length > 0) {
-      var locations = [
-        {
-          lat: 55.753892,
-          lng: 37.603144
-        }
-      ];
-
-      var markers = locations.map(function (location, i) {
-        return new google.maps.Marker({
-          position: location,
-          map: contactMap,
-          icon: myicon
-        });
-      });
-
-      var contactMap = new google.maps.Map(document.getElementById('contacts-map'), {
-	    	center: cntr,
-	    	zoom: 17
-	    });
-    }
-
-  }
 
 });
