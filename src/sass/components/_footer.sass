@@ -29,36 +29,42 @@ footer
     margin: 44px 0 45px
   .mini__content
     margin: 20px 0 40px
-    .phone
-      display: inline-block
-      font-size: 30px
-      margin-top: 3px
-    .design
+    p
+      font-family: "Intro"
       font-size: 15px
-      margin-bottom: 5px
-    .street
+      margin: 0 0 11px
+    a
       display: inline-block
-      margin-top: -2px
-      line-height: 1.5
+      font-family: "Intro"
+      font-weight: 800
+      font-size: 20px
+      transition: all .3s easeInOutQuad
+      color: #231F20
+      &:hover
+        color: #8547AD !important
+    &--phone
+      a
+        display: inline-block
+        font-size: 30px
+        margin-top: 3px
+    &--mail
+      a
+        margin-bottom: 5px
+    &--design
+      a
+        font-size: 15px
+        margin-bottom: 5px
+
+    &--street
+      span
+        display: inline-block
+        margin-top: -2px
+        line-height: 1.5
+
   .copiright
     font-size: 15px
-.footer__link
-  display: inline-block
-  font-family: "Intro"
-  font-weight: 800
-  font-size: 20px
-  transition: all .3s easeInOutQuad
-  color: #231F20
-  &--mail
-    margin-bottom: 5px
 
-footer .mini__content
-  a:hover
-    color: #8547AD !important
-  .footer__title
-    font-family: "Intro"
-    font-size: 15px
-    margin: 0 0 11px
+
 
 
 +r($desktop)
@@ -90,12 +96,13 @@ footer .mini__content
       margin-bottom: 45px
       &--licence
         margin-top: -10px
-      .street
-        font-size: 21px
-        margin: 0 0 0
-        // line-height: 27px
-      .design
-        font-size: 15px
+      &--street
+        span
+          font-size: 21px
+          margin: 0 0 0
+      &--design
+        a
+          font-size: 15px
 
     .copiright
       font-size: 15px
@@ -109,8 +116,9 @@ footer .mini__content
       margin-bottom: 15px
       &--licence
         margin-bottom: 40px
-      .street
-        margin-bottom: 10px
+      &--street
+        span
+          margin-bottom: 10px
 
     .col-md-12:last-child .mini__content
       width: 100%
