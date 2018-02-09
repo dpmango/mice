@@ -170,7 +170,7 @@ $(document).ready(function(){
     if ( _document.find('.header-static').length == 0 ){
       _window.on('scroll', throttle(function() {
         var vScroll = _window.scrollTop();
-        if (vScroll > 150) {
+        if (vScroll > 25) {
           $('.menu').addClass('menu_fixed');
         } else {
           $('.menu').removeClass('menu_fixed');
@@ -795,7 +795,8 @@ $(document).ready(function(){
 
   function positionPrevNext(){
     if ( _document.find('.one-article__prev').length > 0 ){
-      var topOffset = _document.find('.one-article__wrap').offset().top;
+      var topOffset = _document.find('.one-article__wrap').length > 0 ? _document.find('.one-article__wrap').offset().top :
+                      _document.find('.one-member__wrapper').offset().top + 55;
       var prevBtn = _document.find('.one-article__prev')
       var nextBtn = _document.find('.one-article__next');
 
@@ -807,6 +808,27 @@ $(document).ready(function(){
       })
     }
   }
+
+  //////////
+  // LOAD MORE
+  //////////
+  _document.on('click', '[js-load-more]', function(){
+    var _that = $(this)
+    _that.addClass('is-loading');
+    var cloned = _document.find('#weekly .row .col-lg-4').clone().css({'display': 'none'});
+
+    setTimeout(function(){
+      _that.removeClass('is-loading');
+      if ( cloned ){
+        $('#weekly .row').append(cloned)
+        cloned.each(function(i, el){
+          $(el).fadeIn();
+        })
+      }
+    }, 1500)
+  })
+
+
 
   //////////
   // BARBA PJAX

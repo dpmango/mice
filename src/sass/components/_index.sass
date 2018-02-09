@@ -14,38 +14,42 @@
   overflow: hidden
   position: absolute
   cursor: pointer
+  span
+    position: relative
+    z-index: 2
   .item
     background: $primaryColor
     position: absolute
     transition: all .3s easeInOutQuad
-    &:nth-child(1)
+
+    &:nth-of-type(1)
       height: 3px
       width: 250px
       right: 100%
       top: 0
-    &:nth-child(2)
+    &:nth-of-type(2)
       width: 3px
       height: 250px
       bottom: 100%
       right: 0
-    &:nth-child(3)
+    &:nth-of-type(3)
       width: 250px
       height: 3px
       bottom: 0
       left: 100%
-    &:nth-child(4)
+    &:nth-of-type(4)
       width: 3px
       height: 250px
       top: 100%
       left: 0
   &:hover .item
-    &:nth-child(1)
+    &:nth-of-type(1)
       right: 0
-    &:nth-child(2)
+    &:nth-of-type(2)
       bottom: 0
-    &:nth-child(3)
+    &:nth-of-type(3)
       left: 0
-    &:nth-child(4)
+    &:nth-of-type(4)
       top: 0
 
 
@@ -441,7 +445,7 @@
   margin: 0 auto
   .slick-arrow
     position: absolute
-    z-index: 10
+    z-index: 1000 !important
     top: calc(55% - 25px)
     height: 50px
     left: 65px
@@ -1265,7 +1269,11 @@ button:focus
           top: 7%
         flex-direction: column
       .slick-arrow
+        position: fixed
         top: 243px
+        left: 50px
+        &:last-child
+          left: auto
       .reviews_slide
         .left
           width: 100%
