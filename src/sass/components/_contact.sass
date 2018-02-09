@@ -34,26 +34,30 @@
     background-color: $fontColor
     padding: 48px 52px
     height: calc(100% - 78px)
-  &__subtitle
+  h3
     margin-top: 0
     margin-bottom: 10px
     font-size: 15px
     color: #fff
     font-weight: 400
-  &__link
+  a,
+  address
     display: inline-block
     text-decoration: none
     color: #fff
     font-weight: 700
+    font-style: normal
     font-size: 23px
     line-height: 150%
     margin-top: 0
     margin-bottom: 39px
     transition: all $transitionSpeed $ease
-    &:last-child
-      margin-bottom: 0
-    &:hover:not(p)
+    &:hover
       color: $primaryColor
+  address
+    margin-bottom: 0
+    &:hover
+      color: #fff
     
 +r($desktop)
   .contacts
