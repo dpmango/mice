@@ -33,7 +33,7 @@ footer
       font-family: "Intro"
       font-size: 15px
       margin: 0 0 11px
-    a, span
+    a, > span
       display: inline-block
       font-family: "Intro"
       font-weight: 800
@@ -118,13 +118,17 @@ footer
       &--licence
         margin-bottom: 40px
       &--street
-        span
+        margin-top: 10px
+        > span
+          margin-top: -3px
           margin-bottom: 10px
+          span
+            display: inline-block
 
     .col-md-12:last-child .mini__content
       width: 100%
       &:nth-child(2)
-        margin-top: 25px
+        margin-top: 20px
         padding-left: 0
     hr
-      margin: 30px 0 25px 0
+      margin: 22px 0 25px 0

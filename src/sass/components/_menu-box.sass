@@ -27,11 +27,12 @@
   transform: translate3d(0,0,0)
   pointer-events: all
 
-.menu-box__spoiler h3:hover, .menu-box__spoiler__content a:hover, .menu-box__close-button:hover
+.menu-box__spoiler__content a:hover, .menu-box__close-button:hover
   opacity: .8
 
 .menu-box__spoiler
   display: block
+  transition: .25s easeInOutQuad
   h3
     color: #fff
     font-size: 30px
@@ -40,7 +41,11 @@
     font-weight: 800
     text-transform: uppercase
     margin: 35px 0
-    cursor: pointer
+    // cursor: pointer
+
+a.menu-box__spoiler
+  &:hover
+    opacity: .8
 
 .menu-box__spoiler__content a
   display: inline-block
