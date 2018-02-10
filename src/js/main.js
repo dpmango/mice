@@ -835,6 +835,19 @@ $(document).ready(function(){
             'top': Math.floor(topOffset + nextBtnW) + 'px'
           })
         }
+
+        var stopStickyHeight = _document.find('.one-article').length > 0 ? _document.find('.one-article').height() :
+                        _document.find('.one-member__wrapper').height();
+
+        stopStickyHeight = stopStickyHeight - (_window.height() / 2);
+
+        if ( wScroll > stopStickyHeight ){
+          prevBtn.css({'opacity': '0'});
+          nextBtn.css({'opacity': '0'});
+        } else {
+          prevBtn.css({'opacity': '1'});
+          nextBtn.css({'opacity': '1'});
+        }
       }
     }
   }
