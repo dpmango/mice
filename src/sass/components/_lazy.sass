@@ -1,2 +1,14 @@
 div[js-lazy]
   background: #f5f5f5
+
+.one-article__wrap
+  img[js-lazy][data-src]
+    background: #f5f5f5
+    min-height: 500px
+    border: 0
+    +r($desktop)
+      min-height: 350px
+    +r($mobile)
+      min-height: 200px
+    +r(414)
+      min-height: 150px

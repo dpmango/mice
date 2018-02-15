@@ -260,21 +260,39 @@ $(document).ready(function(){
   }
 
   function disableScroll() {
+    var target = $('.page').get(0)
     if (window.addEventListener) // older FF
-      window.addEventListener('DOMMouseScroll', preventDefault, false);
-    window.onwheel = preventDefault; // modern standard
-    window.onmousewheel = document.onmousewheel = preventDefault; // older browsers, IE
-    window.ontouchmove = preventDefault; // mobile
-    document.onkeydown = preventDefaultForScrollKeys;
+      target.addEventListener('DOMMouseScroll', preventDefault, false);
+    target.onwheel = preventDefault; // modern standard
+    target.onmousewheel = target.onmousewheel = preventDefault; // older browsers, IE
+    target.ontouchmove = preventDefault; // mobile
+    target.onkeydown = preventDefaultForScrollKeys;
   }
 
+  function bindOverflowScroll(){
+    var $menuLayer = $(".menu-box");
+    $menuLayer.bind('touchstart', function (ev) {
+        var $this = $(this);
+        var layer = $menuLayer.get(0);
+
+        if ($this.scrollTop() === 0) $this.scrollTop(1);
+        var scrollTop = layer.scrollTop;
+        var scrollHeight = layer.scrollHeight;
+        var offsetHeight = layer.offsetHeight;
+        var contentHeight = scrollHeight - offsetHeight;
+        if (contentHeight == scrollTop) $this.scrollTop(scrollTop-1);
+    });
+  }
+  bindOverflowScroll();
+
   function enableScroll() {
+    var target = $('.page').get(0)
     if (window.removeEventListener)
-      window.removeEventListener('DOMMouseScroll', preventDefault, false);
-    window.onmousewheel = document.onmousewheel = null;
-    window.onwheel = null;
-    window.ontouchmove = null;
-    document.onkeydown = null;
+      target.removeEventListener('DOMMouseScroll', preventDefault, false);
+    target.onmousewheel = target.onmousewheel = null;
+    target.onwheel = null;
+    target.ontouchmove = null;
+    target.onkeydown = null;
   }
 
   function blockScroll(unlock) {
