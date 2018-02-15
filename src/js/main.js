@@ -956,7 +956,20 @@ $(document).ready(function(){
     },
 
     fadeOut: function() {
-      return $(this.oldContainer).animate({ opacity: .5 }, 200).promise();
+      var deferred = Barba.Utils.deferred();
+
+      // return $(this.oldContainer).animate({ opacity: .5 }, 200).promise();
+      anime({
+        targets: this.oldContainer,
+        opacity : .5,
+        easing: [.02, .01, .47, 1], // swing
+        duration: 200,
+        complete: function(anim){
+          deferred.resolve();
+        }
+      })
+
+      return deferred.promise
     },
 
     fadeIn: function() {
@@ -970,10 +983,23 @@ $(document).ready(function(){
         opacity : .5
       });
 
-      $el.animate({ opacity: 1 }, 200, function() {
-        triggerBody(1)
-        _this.done();
+      document.body.scrollTop = 0;
+
+      anime({
+        targets: $el.get(0),
+        opacity: 1,
+        easing: [.02, .01, .47, 1], // swing
+        duration: 200,
+        complete: function(anim) {
+          triggerBody(1)
+          _this.done();
+        }
       });
+
+      // $el.animate({ opacity: 1 }, 200, function() {
+      //   triggerBody(1)
+      //   _this.done();
+      // });
     }
   });
 
@@ -1049,28 +1075,47 @@ $(document).ready(function(){
 
         // animate container with gray BG
         setTimeout(function(){
-          clonedEl.animate({
+          // var tlBasic = anime.timeline();
+          var tlTarget = clonedEl.get(0);
+          var tlTargetPhoto = clonedEl.find(".team-members__photo").get(0)
+          // tlBasic
+          //   .add({
+          //     targets: tlTarget,
+          //     top: targetPositions.top
+          //   })
+          anime({
+            targets: tlTarget,
             top: targetPositions.top,
             left: targetPositions.left,
             width: targetPositions.width,
-          }, 500)
-          // animate image height
-          clonedEl.find(".team-members__photo").animate({
-            height: targetPositions.height
-          }, 500, function(){
-            clonedAnimationDone();
-          })
+            easing: 'easeInOutQuad',
+            duration: 500
+          });
+
+          anime({
+            targets: tlTargetPhoto,
+            height: targetPositions.height,
+            easing: 'easeInOutQuad',
+            duration: 500,
+            complete: function(anim) {
+              setTimeout(clonedAnimationDone, 70)
+            }
+          });
+
         }, 400)
       }
 
       // when transition is compleate
       function clonedAnimationDone(){
-        $(_this.oldContainer).css({
-          'position': 'absolute',
-          'top': 0,
-          'left': 0,
-          'right': 0
-        }).animate({ opacity: 0 }, 300, function(){
+        $(_this.oldContainer)
+        // .css({
+        //   'position': 'absolute',
+        //   'top': 0,
+        //   'left': 0,
+        //   'right': 0
+        // })
+        .animate({ opacity: 0 }, 300, function(){
+          document.body.scrollTop = 0;
           triggerBody(1);
           _this.done();
         })
@@ -1125,7 +1170,7 @@ $(document).ready(function(){
 
   function triggerBody(num){
     // console.log('scrolling to ' + num)
-    document.body.scrollTop = 0;
+    // document.body.scrollTop = 0;
     $(window).scroll();
     $(window).resize();
     // $(window).trigger('scroll, resize, load');

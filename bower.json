@@ -24,6 +24,8 @@
     "viewport-units-buggyfill": "^0.6.2",
     "scrollMonitor": "^1.2.4",
     "barba.js": "luruke/barba.js#^1.0.0",
-    "jquery-lazy": "^1.7.7"
+    "jquery-lazy": "^1.7.7",
+    "gsap": "^1.20.3",
+    "animejs": "^2.2.0"
   }
 }

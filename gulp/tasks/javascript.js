@@ -20,6 +20,8 @@ gulp.task('javascript:vendor', function() {
       path.resolve('bower_components', 'barba.js/dist/barba.min.js'),
       path.resolve('bower_components', 'jquery-lazy/jquery.lazy.min.js'),
       path.resolve('bower_components', 'jquery-lazy/plugins/jquery.lazy.av.min.js'),
+      // path.resolve('bower_components', 'gsap/src/minified/TimelineMax.min.js'),
+      path.resolve('bower_components', 'animejs/anime.min.js'),
       config.src.js + '/vendor/**/*.js'
      ])
     .pipe(plumber({ errorHandler: config.errorHandler }))
