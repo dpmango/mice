@@ -962,7 +962,7 @@ $(document).ready(function(){
     landAnimation: function() {
       var _this = this;
 
-      var $newContainer = $(this.newContainer).addClass('one-team-anim');
+      var $newContainer = $(this.newContainer);
       $newContainer.css({
         'position': 'absolute',
         'top': 0,
@@ -981,13 +981,6 @@ $(document).ready(function(){
         'top': originalElPostion.top + 'px',
         'width': originalElPostion.width + 'px'
       });
-      var transitionTime = 1000;
-
-      // hide prev elements and append animation obj
-      originalEl.removeClass('is-hovered').addClass('is-disabled');
-      originalEl.animate({ opacity: 0 }, 300);
-      originalEl.parent().siblings('').animate({ opacity: 0 }, 300);
-      $(this.oldContainer).append(clonedEl)
 
       // wait till image is pased to calculate
       var targetImage = $newContainer.find('.one-member__photo').find('[js-lazy]');
@@ -1004,6 +997,12 @@ $(document).ready(function(){
       targetImageLazyInstance.force(targetImage);
 
       function whenLazyLoaded(){
+        // hide prev elements and append animation obj
+        originalEl.removeClass('is-hovered').addClass('is-disabled');
+        originalEl.animate({ opacity: 0 }, 400);
+        originalEl.parent().siblings('').animate({ opacity: 0 }, 400);
+        $(_this.oldContainer).append(clonedEl)
+
         // get calculation of new container and it's positions
         var targetContainerPhoto = $newContainer.find('.one-member__photo')
         var targetPositions = {
@@ -1015,23 +1014,21 @@ $(document).ready(function(){
             height: targetImage.height()
           }
         }
-        console.log(targetPositions);
-        // animate container with gray BG
-        clonedEl.animate({
-          top: targetPositions.top,
-          left: targetPositions.left,
-          width: targetPositions.width,
-        }, 400)
 
-        // animate image height
+        // animate container with gray BG
         setTimeout(function(){
+          clonedEl.animate({
+            top: targetPositions.top,
+            left: targetPositions.left,
+            width: targetPositions.width,
+          }, 500)
+          // animate image height
           clonedEl.find(".team-members__photo").animate({
             height: targetPositions.height
-          }, 600, function(){
+          }, 500, function(){
             clonedAnimationDone();
           })
-        }, 150)
-
+        }, 400)
       }
 
       // when transition is compleate
@@ -1046,6 +1043,7 @@ $(document).ready(function(){
           _this.done();
         })
 
+        $newContainer.addClass('one-team-anim')
         $newContainer.css({
           visibility : 'visible',
           opacity : 1
