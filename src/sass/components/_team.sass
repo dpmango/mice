@@ -33,19 +33,29 @@
       &--flip
         display: block !important
     &.is-growing
-      position: relative
-      z-index: 10
+      // position: relative
+      // z-index: 10
+      // pointer-events: none
+      // .team-members
+      //   &__photo
+      //     &::after
+      //       // width: 166vw
+      //       animation: animateTeamTranstion 1.2s linear
+      //       animation-fill-mode: forwards
+      //   &__img
+      //     transform-origin: center top
+      //     animation: animateTeamTranstionPhoto 1.3s linear
+      //     animation-fill-mode: forwards
+    &.is-disabled
+      // added to originl element that was cloned
       pointer-events: none
-      .team-members
-        &__photo
-          &::after
-            // width: 166vw
-            animation: animateTeamTranstion 1.2s linear
-            animation-fill-mode: forwards
-        &__img
-          transform-origin: center top
-          animation: animateTeamTranstionPhoto 1.3s linear
-          animation-fill-mode: forwards
+
+    &.is-cloned
+      pointer-events: none
+      position: absolute
+      top: 0
+      left: 0
+      z-index: 10
   &__photo
     position: relative
     // overflow: hidden

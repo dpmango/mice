@@ -945,6 +945,7 @@ $(document).ready(function(){
     }
   });
 
+  // team transition
   var TeamTransition = Barba.BaseTransition.extend({
     start: function() {
       Promise
@@ -954,17 +955,38 @@ $(document).ready(function(){
 
     startAnimation: function() {
       var deferred = Barba.Utils.deferred();
-      var teamBlock = $(this.oldContainer).find(lastClickEl);
+      var originalEl = $(this.oldContainer).find(lastClickEl);
+      var originalElPostion = {
+        left: originalEl.offset().left,
+        top: originalEl.offset().top,
+        width: originalEl.width()
+      }
+      var clonedEl = originalEl.clone().removeClass('is-hovered').addClass('is-cloned').css({
+        'left': originalElPostion.left + 'px',
+        'top': originalElPostion.top + 'px',
+        'width': originalElPostion.width + 'px'
+      });
       var transitionTime = 1500;
 
-      teamBlock.addClass('is-growing').removeClass('is-hovered');
+      // hide prev elements and append animation obj
+      originalEl.removeClass('is-hovered').addClass('is-disabled');
+      originalEl.animate({ opacity: 0 }, 300);
+      originalEl.parent().siblings('').animate({ opacity: 0 }, 300);
+      $(this.oldContainer).append(clonedEl)
+
+      // get calculation of new container and it's positions
+      console.log( this.newContainer )
+
+
+      // cloned element manipulations
+      setTimeout(function(){
+        clonedEl.animate({
+          left: 50
+        }, 300)
+      })
 
       setTimeout(function(){
-        teamBlock.parent().siblings('').animate({ opacity: 0 }, 300);
-      }, transitionTime / 2)
-
-      setTimeout(function(){
-        deferred.resolve();
+        // deferred.resolve();
       }, transitionTime)
 
       return deferred.promise
