@@ -45,6 +45,17 @@ $(document).ready(function(){
     $('body').addClass('is-mobile');
   }
 
+  var is_chrome = navigator.userAgent.indexOf('Chrome') > -1;
+  var is_firefox = navigator.userAgent.indexOf('Firefox') > -1;
+  var is_safari = navigator.userAgent.indexOf("Safari") > -1;
+  var is_opera = navigator.userAgent.toLowerCase().indexOf("op") > -1;
+  if ((is_chrome)&&(is_safari)) {is_safari=false;}
+  if ((is_chrome)&&(is_opera)) {is_chrome=false;}
+
+  if (is_safari){
+    $('html').addClass('is-safari');
+  }
+
   // BREAKPOINT SETTINGS
   var bp = {
     mobileS: 375,
@@ -284,6 +295,9 @@ $(document).ready(function(){
     });
   }
   bindOverflowScroll();
+  var container = document.querySelector('.menu-box');
+  var ps = new PerfectScrollbar(container);
+
 
   function enableScroll() {
     var target = $('.page').get(0)
