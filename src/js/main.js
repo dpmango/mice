@@ -955,6 +955,21 @@ $(document).ready(function(){
 
     startAnimation: function() {
       var deferred = Barba.Utils.deferred();
+      deferred.resolve();
+      return deferred.promise
+    },
+
+    landAnimation: function() {
+      var _this = this;
+
+      var $newContainer = $(this.newContainer).addClass('one-team-anim');
+      $newContainer.css({
+        'position': 'absolute',
+        'top': 0,
+        'left': 0,
+        'right': 0
+      });
+
       var originalEl = $(this.oldContainer).find(lastClickEl);
       var originalElPostion = {
         left: originalEl.offset().left,
@@ -966,7 +981,7 @@ $(document).ready(function(){
         'top': originalElPostion.top + 'px',
         'width': originalElPostion.width + 'px'
       });
-      var transitionTime = 1500;
+      var transitionTime = 1000;
 
       // hide prev elements and append animation obj
       originalEl.removeClass('is-hovered').addClass('is-disabled');
@@ -974,50 +989,68 @@ $(document).ready(function(){
       originalEl.parent().siblings('').animate({ opacity: 0 }, 300);
       $(this.oldContainer).append(clonedEl)
 
-      // get calculation of new container and it's positions
-      console.log( this.newContainer )
+      // wait till image is pased to calculate
+      var targetImage = $newContainer.find('.one-member__photo').find('[js-lazy]');
+      var targetImageLazyInstance = targetImage.Lazy({
+        chainable: false,
+        afterLoad: function(element) {
+          var img = new Image();
+          img.onload = function() {
+            whenLazyLoaded();
+          };
+          img.src = element.attr('src');
+        }
+      })
+      targetImageLazyInstance.force(targetImage);
 
-
-      // cloned element manipulations
-      setTimeout(function(){
+      function whenLazyLoaded(){
+        // get calculation of new container and it's positions
+        var targetContainerPhoto = $newContainer.find('.one-member__photo')
+        var targetPositions = {
+          width: targetContainerPhoto.width(),
+          height: targetContainerPhoto.height(),
+          top: targetContainerPhoto.offset().top,
+          left: targetContainerPhoto.offset().left + parseInt(targetContainerPhoto.css('padding-left')),
+          targetImage: {
+            height: targetImage.height()
+          }
+        }
+        console.log(targetPositions);
+        // animate container with gray BG
         clonedEl.animate({
-          left: 50
-        }, 300)
-      })
+          top: targetPositions.top,
+          left: targetPositions.left,
+          width: targetPositions.width,
+        }, 400)
 
-      setTimeout(function(){
-        // deferred.resolve();
-      }, transitionTime)
+        // animate image height
+        setTimeout(function(){
+          clonedEl.find(".team-members__photo").animate({
+            height: targetPositions.height
+          }, 600, function(){
+            clonedAnimationDone();
+          })
+        }, 150)
 
-      return deferred.promise
+      }
 
-    },
+      // when transition is compleate
+      function clonedAnimationDone(){
+        $(_this.oldContainer).css({
+          'position': 'absolute',
+          'top': 0,
+          'left': 0,
+          'right': 0
+        }).animate({ opacity: 0 }, 300, function(){
+          triggerBody(1);
+          _this.done();
+        })
 
-    landAnimation: function() {
-      var _this = this;
-      var $el = $(this.newContainer).addClass('one-team-anim');
-
-      $(this.oldContainer).css({
-        'position': 'absolute',
-        'top': 0,
-        'left': 0,
-        'right': 0
-      }).animate({ opacity: 0 }, 300, function(){
-        // when fade is compleate
-        triggerBody(1);
-        _this.done();
-      })
-
-      $el.css({
-        visibility : 'visible',
-        opacity : 1
-      });
-
-      $el.find('[js-lazy]').Lazy({
-        threshold: 300,
-        scrollDirection: 'vertical',
-        effect: 'fadeIn',
-      });
+        $newContainer.css({
+          visibility : 'visible',
+          opacity : 1
+        });
+      }
 
     }
   });
