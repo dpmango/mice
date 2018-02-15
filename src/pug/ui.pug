@@ -1,0 +1,81 @@
+---
+title: UI
+---
+extends shared/_layout
+block content
+  
+
+  // ARTICLES SECTION
+  section.articles-sec#weekly(style="margin-top: 300px;")
+    .container-fluid
+      
+      // PAGINATION
+      .page-pagination
+        a.page-pagination__more.btn(href="#") 
+          span Загрузить еще
+          .item
+          .item
+          .item
+          .item
+        a.page-pagination__page.btn.is-active(href="#") 1
+          .item
+          .item
+          .item
+          .item
+        a.page-pagination__page.btn(href="#") 2
+          .item
+          .item
+          .item
+          .item
+        a.page-pagination__page.btn(href="#") 3
+          .item
+          .item
+          .item
+          .item
+        a.page-pagination__page.btn(href="#") ...
+          .item
+          .item
+          .item
+          .item
+        a.page-pagination__page.page-pagination__next.btn(href="#") 
+          .item
+          .item
+          .item
+          .item
+          +icon('ico-arrow-right')
+          
+          
+      // PAGINATION
+      .page-pagination(style="margin-top: 100px;")
+        a.page-pagination__page.page-pagination__prev.btn(href="#") 
+          .item
+          .item
+          .item
+          .item
+          +icon('ico-arrow-right')
+        a.page-pagination__page.btn(href="#") 1
+          .item
+          .item
+          .item
+          .item
+        a.page-pagination__page.btn.is-active(href="#") 2
+          .item
+          .item
+          .item
+          .item
+        a.page-pagination__page.btn(href="#") 3
+          .item
+          .item
+          .item
+          .item
+        a.page-pagination__page.btn(href="#") ...
+          .item
+          .item
+          .item
+          .item
+        a.page-pagination__page.page-pagination__next.btn(href="#") 
+          .item
+          .item
+          .item
+          .item
+          +icon('ico-arrow-right')
