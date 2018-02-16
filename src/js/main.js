@@ -136,6 +136,7 @@ $(document).ready(function(){
 
     // map
     initMap();
+
   }
 
   pageReady();
@@ -144,6 +145,8 @@ $(document).ready(function(){
     setTimeout(dirtyFixes, 300)
     initSliders();
     forceAutoplay();
+    triggerBody()
+    setTimeout(triggerBody, 300)
   }
 
 
@@ -426,6 +429,8 @@ $(document).ready(function(){
       _document.find('footer hr').attr('style', '')
 
     }
+
+    // $('.one-member__back-btn').hover();
 
   }
 
