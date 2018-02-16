@@ -66,6 +66,8 @@ $(document).ready(function(){
     hd: 1680
   }
 
+  var easingSwing = [.02, .01, .47, 1];
+
   //////////
   // DEVELOPMENT HELPER
   //////////
@@ -962,8 +964,8 @@ $(document).ready(function(){
       anime({
         targets: this.oldContainer,
         opacity : .5,
-        easing: [.02, .01, .47, 1], // swing
-        duration: 200,
+        easing: easingSwing, // swing
+        duration: 300,
         complete: function(anim){
           deferred.resolve();
         }
@@ -983,15 +985,20 @@ $(document).ready(function(){
         opacity : .5
       });
 
-      document.body.scrollTop = 0;
+      anime({
+        targets: "html, body",
+        scrollTop: 0,
+        easing: easingSwing, // swing
+        duration: 150
+      });
 
       anime({
         targets: $el.get(0),
         opacity: 1,
-        easing: [.02, .01, .47, 1], // swing
-        duration: 200,
+        easing: easingSwing, // swing
+        duration: 300,
         complete: function(anim) {
-          triggerBody(1)
+          triggerBody()
           _this.done();
         }
       });
@@ -1012,6 +1019,10 @@ $(document).ready(function(){
     },
 
     startAnimation: function() {
+      var originalEl = $(this.oldContainer).find(lastClickEl);
+      originalEl.removeClass('is-hovered').addClass('is-disabled');
+      originalEl.parent().siblings('').addClass('is-disabled').animate({ opacity: 0 }, 500);
+
       var deferred = Barba.Utils.deferred();
       deferred.resolve();
       return deferred.promise
@@ -1025,7 +1036,9 @@ $(document).ready(function(){
         'position': 'absolute',
         'top': 0,
         'left': 0,
-        'right': 0
+        'right': 0,
+        'visibility': 'visible',
+        'opacity': 0
       });
 
       var originalEl = $(this.oldContainer).find(lastClickEl);
@@ -1056,9 +1069,7 @@ $(document).ready(function(){
 
       function whenLazyLoaded(){
         // hide prev elements and append animation obj
-        originalEl.removeClass('is-hovered').addClass('is-disabled');
         originalEl.animate({ opacity: 0 }, 400);
-        originalEl.parent().siblings('').animate({ opacity: 0 }, 400);
         $(_this.oldContainer).append(clonedEl)
 
         // get calculation of new container and it's positions
@@ -1070,6 +1081,10 @@ $(document).ready(function(){
           left: targetContainerPhoto.offset().left + parseInt(targetContainerPhoto.css('padding-left')),
           targetImage: {
             height: targetImage.height()
+          },
+          oneMemberName: {
+            size: $newContainer.find('.one-member h3').css('font-size'),
+            margin: $newContainer.find('.one-member h3').css('margin-top')
           }
         }
 
@@ -1078,6 +1093,8 @@ $(document).ready(function(){
           // var tlBasic = anime.timeline();
           var tlTarget = clonedEl.get(0);
           var tlTargetPhoto = clonedEl.find(".team-members__photo").get(0)
+          var tlTargetName = clonedEl.find(".team-members__name").get(0)
+          var tlTargetPosition = clonedEl.find(".team-members__position").get(0)
           // tlBasic
           //   .add({
           //     targets: tlTarget,
@@ -1091,6 +1108,33 @@ $(document).ready(function(){
             easing: 'easeInOutQuad',
             duration: 500
           });
+
+          // animation title and position
+          anime({
+            targets: tlTargetName,
+            fontSize: targetPositions.oneMemberName.size,
+            marginTop: targetPositions.oneMemberName.margin,
+            easing: 'easeInOutQuad',
+            duration: 500
+          });
+
+          anime({
+            targets: tlTargetPosition,
+            opacity: 0,
+            easing: 'easeInOutQuad',
+            duration: 500
+          });
+
+          // if viewport is not matched - move to where actions is happens
+          var menuHeight = $('.menu').height();
+          if ( (_window.scrollTop() + menuHeight + 60 ) > targetPositions.top  ){
+            anime({
+              targets: "html, body",
+              scrollTop: 0,
+              easing: easingSwing, // swing
+              duration: 400
+            });
+          }
 
           anime({
             targets: tlTargetPhoto,
@@ -1107,24 +1151,35 @@ $(document).ready(function(){
 
       // when transition is compleate
       function clonedAnimationDone(){
-        $(_this.oldContainer)
-        // .css({
-        //   'position': 'absolute',
-        //   'top': 0,
-        //   'left': 0,
-        //   'right': 0
-        // })
-        .animate({ opacity: 0 }, 300, function(){
-          document.body.scrollTop = 0;
-          triggerBody(1);
-          _this.done();
+        // scroll body
+        anime({
+          targets: "html, body",
+          scrollTop: 0,
+          easing: easingSwing, // swing
+          duration: 150
+        });
+
+        // fadeOut oldContainer
+        anime({
+          targets: this.oldContainer,
+          opacity : .5,
+          easing: easingSwing, // swing
+          duration: 300
         })
 
-        $newContainer.addClass('one-team-anim')
-        $newContainer.css({
-          visibility : 'visible',
-          opacity : 1
+        // show new Container
+        anime({
+          targets: $newContainer.get(0),
+          opacity: 1,
+          easing: easingSwing, // swing
+          duration: 300,
+          complete: function(anim) {
+            triggerBody()
+            _this.done();
+          }
         });
+
+        $newContainer.addClass('one-team-anim')
       }
 
     }
