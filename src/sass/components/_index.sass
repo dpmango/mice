@@ -427,6 +427,8 @@
 
 #reviews
   position: relative
+  .reviews-swipe
+    display: none
   h2
     margin-top: 95px
     margin-bottom: 33px
@@ -1262,9 +1264,19 @@ button:focus
     bottom: unset
 
   #reviews
+    .reviews-swipe
+      display: inline-block
+      position: absolute
+      z-index: 1000
+      font-size: 43px
+      color: #C2C2C2
+      top: 265px
+      right: 96px
     .reviews__slider
       .slick-arrow:last-child
         right: 50px
+
+
       .reviews_slide
         .left .bg
           height: 439px
@@ -1274,6 +1286,7 @@ button:focus
           top: 7%
         flex-direction: column
       .slick-arrow
+        display: none !important
         position: absolute
         top: 243px
         left: 50px
@@ -1482,6 +1495,9 @@ button:focus
   #reviews
     h2
       margin: 74px 42px 22px !important
+    .reviews-swipe
+      top: 196px
+      right: 35px
     .reviews__slider
       .reviews_slide
         .right
@@ -1645,3 +1661,9 @@ button:focus
     margin-bottom: 25px
   .next_issue__container h2
     margin-bottom: 0 !important
+
++r(380)
+  #reviews
+    .reviews-swipe
+      top: 236px
+      right: 35px

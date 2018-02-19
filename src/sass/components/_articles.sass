@@ -130,13 +130,13 @@
   &__prev,
   &__next
     position: fixed
-    top: 0
+    top: 416px
     z-index: 10
     font-size: 15px
     text-transform: uppercase
     font-weight: 400
     color: #1C1C1C
-    transition: all $transitionSpeed $ease
+    transition: opacity $transitionSpeed $ease
     &:hover
       color: rgba(#1C1C1C, .6)
       // opacity: 0.8
@@ -145,6 +145,7 @@
     transform-origin: left top 0
     left: 50px
   &__next
+    top: 458px
     transform: rotate(90deg)
     transform-origin: right top 0
     // right: -165px

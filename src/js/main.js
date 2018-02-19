@@ -481,6 +481,14 @@ $(document).ready(function(){
       draggable: false,
       prevArrow: slickPrev,
       nextArrow: slickNextBtn,
+      responsive: [
+        {
+          breakpoint: 992,
+          settings: {
+            draggable: true,
+          }
+        }
+      ]
     });
 
     // $('.awards__slider .carousel').not('.slick-initialized').slick({
@@ -1196,10 +1204,9 @@ $(document).ready(function(){
   Barba.Pjax.getTransition = function() {
     var transitionObj = FadeTransition;
 
-    // console.log(Barba.HistoryManager.currentStatus())
-    if ( $(lastClickEl).attr('href') === 'team-member.html' ){
-      transitionObj = TeamTransition;
-    }
+    // if ( $(lastClickEl).attr('href') === 'team-member.html' ){
+    //   transitionObj = TeamTransition;
+    // }
     return transitionObj;
   };
 
