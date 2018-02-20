@@ -552,7 +552,7 @@ $(document).ready(function(){
       prevArrow: '',
       nextArrow: '',
       autoplay: true,
-      autoplaySpeed: 4000,
+      autoplaySpeed: 10000,
       pauseOnHover: false,
       pauseOnFocus: false,
       pauseOnDotsHover: false,
