@@ -993,19 +993,25 @@
     font-size: 15px
     color: red !important
     transform: translateY(-20px)
-
+  .left
+    input:-webkit-autofill
+      -webkit-box-shadow: inset 0 0 0 50px #ededed !important
+      /* Цвет фона
+      -webkit-text-fill-color: $fontColor !important
+      /* цвет текста
+      color: #999 !important
+  .right
+    input:-webkit-autofill
+      -webkit-box-shadow: inset 0 0 0 50px #231F20 !important
+      /* Цвет фона
+      -webkit-text-fill-color: white !important
+      /* цвет текста
+      color: white !important
+      /* цвет текста
 
 /* animate input
 
 /* animate input end
-
-input:-webkit-autofill
-  -webkit-box-shadow: inset 0 0 0 50px #ededed !important
-  /* Цвет фона
-  -webkit-text-fill-color: $fontColor !important
-  /* цвет текста
-  color: #999 !important
-  /* цвет текста
 
 .partnership__container
   .view
@@ -1677,19 +1683,12 @@ button:focus
       top: 236px
       right: 35px
 
-input:-webkit-autofill
-  -webkit-animation: autofill 0s forwards
-  animation: autofill 0s forwards
-  &:hover, &:focus, &:active
-    -webkit-animation: autofill 0s forwards
-    animation: autofill 0s forwards
-
 @keyframes autofill
   100%
-    background: transparent
+    background: rgba(white, .01)
     color: inherit
 
 @-webkit-keyframes autofill
   100%
-    background: transparent
+    background: rgba(white, .01)
     color: inherit
