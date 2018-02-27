@@ -1,0 +1,28 @@
+include _mixins
+doctype html
+html(lang="ru")
+  head
+    include _head
+
+  body(class=bodyClass)
+    block preloader
+      include ../components/_preloader
+    
+    #barba-wrapper
+      block header
+        include ../components/_header
+      block menu
+        include ../components/_menu
+      
+      
+      // no container here ! test page
+      
+      .page__content
+        block content
+
+      block footer
+        include ../components/_footer
+      div(class=bodyClass js-bodyClassToggler)
+      block scripts
+        include _scripts
+        

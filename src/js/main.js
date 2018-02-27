@@ -992,6 +992,11 @@ $(document).ready(function(){
       var _this = this;
       var $el = $(this.newContainer);
 
+      // if page resulted error (no container found)
+      if ( !$el ){
+        window.location.href = "404.html"
+      }
+
       $(this.oldContainer).hide();
 
       $el.css({
@@ -1215,6 +1220,16 @@ $(document).ready(function(){
   Barba.Pjax.start();
 
   // event handlers
+  Barba.Dispatcher.on('initStateChange', function(currentStatus){
+    var container = Barba.Pjax.Dom.getContainer()
+    var haveContainer = $(container).find('.page__content').length > 0
+
+    if ( !haveContainer){
+      // handle error - redirect ot page regular way
+      window.location.href = currentStatus.url
+    }
+
+  });
   Barba.Dispatcher.on('linkClicked', function(el) {
     lastClickEl = el;
   });
