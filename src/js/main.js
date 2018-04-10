@@ -576,6 +576,7 @@ $(document).ready(function(){
       draggable: false,
       pauseOnHover: false,
       pauseOnFocus: false,
+      adaptiveHeight: true,
       pauseOnDotsHover: false,
       infinite: true,
       fade: true,
@@ -682,7 +683,7 @@ $(document).ready(function(){
     //   }
     // });
     var parent = $(this).closest('.input-field')
-
+    $(this).toggleClass('is-active');
     parent.find('.down').toggleClass('rotate'); // arrow
     parent.find('.dropdown_label').toggleClass('dropdown_label_translate') // label
     parent.find('.dropdown').toggleClass('dropdown_open') // dropdown

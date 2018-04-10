@@ -777,6 +777,7 @@
   font-size: 15px !important
   color: #696969 !important
 
+
 .partnership__container
   .right
     .view
@@ -873,10 +874,13 @@
       max-height: 46px
       border-bottom: 3px solid #fff
       // padding: 0px 0 3px
+      transition: .24s $ease
       >span
         position: absolute
         left: 0
         top: 13px
+      &.is-active
+        border-color: #8643b0 !important
     .dropdown_open
       height: 100px !important
     .payment .down
